@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002Test
+ * BatchUpdateTest
  *
  * PHP version 5
  *
@@ -42,17 +42,17 @@
 namespace PaymentRails\Client;
 
 /**
- * InlineResponse2002Test Class Doc Comment
+ * BatchUpdateTest Class Doc Comment
  *
  * @category    Class */
-// * @description InlineResponse2002
+// * @description BatchUpdate
 /**
  * @package     PaymentRails\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002Test extends \PHPUnit_Framework_TestCase
+class BatchUpdateTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -88,25 +88,17 @@ class InlineResponse2002Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "InlineResponse2002"
+     * Test "BatchUpdate"
      */
-    public function testInlineResponse2002()
+    public function testBatchUpdate()
     {
 
     }
 
     /**
-     * Test attribute "records"
+     * Test attribute "payments"
      */
-    public function testPropertyRecords()
-    {
-
-    }
-
-    /**
-     * Test attribute "meta"
-     */
-    public function testPropertyMeta()
+    public function testPropertyPayments()
     {
 
     }

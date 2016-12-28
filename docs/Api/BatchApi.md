@@ -1,16 +1,16 @@
-# PaymentRails\Client\BalancesApi
+# PaymentRails\Client\BatchApi
 
 All URIs are relative to *http://api.railz.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getPaymentrails**](BalancesApi.md#getPaymentrails) | **GET** /profile/balances/paymentrails | 
-[**getPaypal**](BalancesApi.md#getPaypal) | **GET** /profile/balances/paypal | 
-[**queryBalances**](BalancesApi.md#queryBalances) | **GET** /profile/balances | 
+[**getBatch**](BatchApi.md#getBatch) | **GET** /batches/{batchId} | 
+[**startProcessingBatch**](BatchApi.md#startProcessingBatch) | **POST** /batches/{batchId}/start-processing | 
+[**updateBatch**](BatchApi.md#updateBatch) | **PATCH** /batches/{batchId} | 
 
 
-# **getPaymentrails**
-> \PaymentRails\Client\Model\Balance getPaymentrails()
+# **getBatch**
+> \PaymentRails\Client\Model\Batch getBatch($batch_id)
 
 
 
@@ -24,23 +24,27 @@ PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-k
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
-$api_instance = new PaymentRails\Client\Api\BalancesApi();
+$api_instance = new PaymentRails\Client\Api\BatchApi();
+$batch_id = "batch_id_example"; // string | B-XXXXXXXXXXXXXXXX
 
 try {
-    $result = $api_instance->getPaymentrails();
+    $result = $api_instance->getBatch($batch_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalancesApi->getPaymentrails: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BatchApi->getBatch: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_id** | **string**| B-XXXXXXXXXXXXXXXX |
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Balance**](../Model/Balance.md)
+[**\PaymentRails\Client\Model\Batch**](../Model/Batch.md)
 
 ### Authorization
 
@@ -53,8 +57,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getPaypal**
-> \PaymentRails\Client\Model\Balance getPaypal()
+# **startProcessingBatch**
+> \PaymentRails\Client\Model\Batch startProcessingBatch($batch_id)
 
 
 
@@ -68,23 +72,27 @@ PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-k
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
-$api_instance = new PaymentRails\Client\Api\BalancesApi();
+$api_instance = new PaymentRails\Client\Api\BatchApi();
+$batch_id = "batch_id_example"; // string | P-XXXXXXXXXXXXX
 
 try {
-    $result = $api_instance->getPaypal();
+    $result = $api_instance->startProcessingBatch($batch_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalancesApi->getPaypal: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BatchApi->startProcessingBatch: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_id** | **string**| P-XXXXXXXXXXXXX |
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Balance**](../Model/Balance.md)
+[**\PaymentRails\Client\Model\Batch**](../Model/Batch.md)
 
 ### Authorization
 
@@ -97,8 +105,8 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **queryBalances**
-> \PaymentRails\Client\Model\Balance[] queryBalances()
+# **updateBatch**
+> \PaymentRails\Client\Model\Batch updateBatch($batch_id, $body)
 
 
 
@@ -112,23 +120,29 @@ PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-k
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
-$api_instance = new PaymentRails\Client\Api\BalancesApi();
+$api_instance = new PaymentRails\Client\Api\BatchApi();
+$batch_id = "batch_id_example"; // string | B-XXXXXXXXXXXXXXXX
+$body = new \PaymentRails\Client\Model\BatchUpdate(); // \PaymentRails\Client\Model\BatchUpdate | 
 
 try {
-    $result = $api_instance->queryBalances();
+    $result = $api_instance->updateBatch($batch_id, $body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalancesApi->queryBalances: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BatchApi->updateBatch: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_id** | **string**| B-XXXXXXXXXXXXXXXX |
+ **body** | [**\PaymentRails\Client\Model\BatchUpdate**](../Model/\PaymentRails\Client\Model\BatchUpdate.md)|  |
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Balance[]**](../Model/Balance.md)
+[**\PaymentRails\Client\Model\Batch**](../Model/Batch.md)
 
 ### Authorization
 

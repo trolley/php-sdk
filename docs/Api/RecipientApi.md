@@ -1,26 +1,26 @@
 # PaymentRails\Client\RecipientApi
 
-All URIs are relative to *http://api.railz.io/*
+All URIs are relative to *http://api.railz.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createBankAccount**](RecipientApi.md#createBankAccount) | **POST** /v1/recipients/{recipientId}/payout-methods/accounts/bank | 
-[**createPaypalAccount**](RecipientApi.md#createPaypalAccount) | **POST** /v1/recipients/{recipientId}/payout-methods/accounts/paypal | 
-[**createRecipientPayoutMethods**](RecipientApi.md#createRecipientPayoutMethods) | **POST** /v1/recipients/{recipientId}/payout-methods | 
-[**deleteRecipient**](RecipientApi.md#deleteRecipient) | **DELETE** /v1/recipients/{recipientId} | 
-[**getBankAccount**](RecipientApi.md#getBankAccount) | **GET** /v1/recipients/{recipientId}/payout-methods/accounts/bank | 
-[**getPaypalAccount**](RecipientApi.md#getPaypalAccount) | **GET** /v1/recipients/{recipientId}/payout-methods/accounts/paypal | 
-[**getRecipient**](RecipientApi.md#getRecipient) | **GET** /v1/recipients/{recipientId} | 
-[**getRecipientInfo**](RecipientApi.md#getRecipientInfo) | **GET** /v1/recipients/{recipientId}/info | 
-[**getRecipientPayoutMethods**](RecipientApi.md#getRecipientPayoutMethods) | **GET** /v1/recipients/{recipientId}/payout-methods | 
-[**queryRecipientComplianceHistory**](RecipientApi.md#queryRecipientComplianceHistory) | **GET** /v1/recipients/{recipientId}/compliance | 
-[**queryRecipientLogHistory**](RecipientApi.md#queryRecipientLogHistory) | **GET** /v1/recipients/{recipientId}/logs | 
-[**queryRecipientPaymentHistory**](RecipientApi.md#queryRecipientPaymentHistory) | **GET** /v1/recipients/{recipientId}/payments | 
-[**updateBankAccount**](RecipientApi.md#updateBankAccount) | **PATCH** /v1/recipients/{recipientId}/payout-methods/accounts/bank | 
-[**updatePaypalAccount**](RecipientApi.md#updatePaypalAccount) | **PATCH** /v1/recipients/{recipientId}/payout-methods/accounts/paypal | 
-[**updateRecipient**](RecipientApi.md#updateRecipient) | **PATCH** /v1/recipients/{recipientId} | 
-[**updateRecipientInfo**](RecipientApi.md#updateRecipientInfo) | **PATCH** /v1/recipients/{recipientId}/info | 
-[**updateRecipientPayoutMethods**](RecipientApi.md#updateRecipientPayoutMethods) | **PATCH** /v1/recipients/{recipientId}/payout-methods | 
+[**createBankAccount**](RecipientApi.md#createBankAccount) | **POST** /recipients/{recipientId}/payout-methods/accounts/bank | 
+[**createPaypalAccount**](RecipientApi.md#createPaypalAccount) | **POST** /recipients/{recipientId}/payout-methods/accounts/paypal | 
+[**createRecipientPayoutMethods**](RecipientApi.md#createRecipientPayoutMethods) | **POST** /recipients/{recipientId}/payout-methods | 
+[**deleteRecipient**](RecipientApi.md#deleteRecipient) | **DELETE** /recipients/{recipientId} | 
+[**getBankAccount**](RecipientApi.md#getBankAccount) | **GET** /recipients/{recipientId}/payout-methods/accounts/bank | 
+[**getPaypalAccount**](RecipientApi.md#getPaypalAccount) | **GET** /recipients/{recipientId}/payout-methods/accounts/paypal | 
+[**getRecipient**](RecipientApi.md#getRecipient) | **GET** /recipients/{recipientId} | 
+[**getRecipientInfo**](RecipientApi.md#getRecipientInfo) | **GET** /recipients/{recipientId}/info | 
+[**getRecipientPayoutMethods**](RecipientApi.md#getRecipientPayoutMethods) | **GET** /recipients/{recipientId}/payout-methods | 
+[**queryRecipientComplianceHistory**](RecipientApi.md#queryRecipientComplianceHistory) | **GET** /recipients/{recipientId}/compliance | 
+[**queryRecipientLogHistory**](RecipientApi.md#queryRecipientLogHistory) | **GET** /recipients/{recipientId}/logs | 
+[**queryRecipientPaymentHistory**](RecipientApi.md#queryRecipientPaymentHistory) | **GET** /recipients/{recipientId}/payments | 
+[**updateBankAccount**](RecipientApi.md#updateBankAccount) | **PATCH** /recipients/{recipientId}/payout-methods/accounts/bank | 
+[**updatePaypalAccount**](RecipientApi.md#updatePaypalAccount) | **PATCH** /recipients/{recipientId}/payout-methods/accounts/paypal | 
+[**updateRecipient**](RecipientApi.md#updateRecipient) | **PATCH** /recipients/{recipientId} | 
+[**updateRecipientInfo**](RecipientApi.md#updateRecipientInfo) | **PATCH** /recipients/{recipientId}/info | 
+[**updateRecipientPayoutMethods**](RecipientApi.md#updateRecipientPayoutMethods) | **PATCH** /recipients/{recipientId}/payout-methods | 
 
 
 # **createBankAccount**
@@ -471,7 +471,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipientComplianceHistory**
-> \PaymentRails\Client\Model\InlineResponse2002 queryRecipientComplianceHistory($recipient_id)
+> \PaymentRails\Client\Model\InlineResponse2003 queryRecipientComplianceHistory($recipient_id)
 
 
 
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\PaymentRails\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipientLogHistory**
-> \PaymentRails\Client\Model\InlineResponse2003 queryRecipientLogHistory($recipient_id)
+> \PaymentRails\Client\Model\InlineResponse2004 queryRecipientLogHistory($recipient_id)
 
 
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\PaymentRails\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipientPaymentHistory**
-> \PaymentRails\Client\Model\InlineResponse2004 queryRecipientPaymentHistory($recipient_id, $page, $page_size, $status, $start_date, $end_date, $source_currency, $search)
+> \PaymentRails\Client\Model\InlineResponse2005 queryRecipientPaymentHistory($recipient_id, $page, $page_size, $status, $start_date, $end_date, $source_currency, $search)
 
 
 
@@ -615,7 +615,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\PaymentRails\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002
+ * BatchUpdate
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace PaymentRails\Client\Model;
 use \ArrayAccess;
 
 /**
- * InlineResponse2002 Class Doc Comment
+ * BatchUpdate Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,21 +53,20 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002 implements ArrayAccess
+class BatchUpdate implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_2';
+    protected static $swaggerModelName = 'BatchUpdate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\Recipient[]',
-        'meta' => '\PaymentRails\Client\Model\MetaQuery'
+        'payments' => '\PaymentRails\Client\Model\BatchPaymentPatch[]'
     );
 
     public static function swaggerTypes()
@@ -80,8 +79,7 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records',
-        'meta' => 'meta'
+        'payments' => 'payments'
     );
 
     public static function attributeMap()
@@ -94,8 +92,7 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords',
-        'meta' => 'setMeta'
+        'payments' => 'setPayments'
     );
 
     public static function setters()
@@ -108,8 +105,7 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords',
-        'meta' => 'getMeta'
+        'payments' => 'getPayments'
     );
 
     public static function getters()
@@ -133,8 +129,7 @@ class InlineResponse2002 implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
-        $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
+        $this->container['payments'] = isset($data['payments']) ? $data['payments'] : null;
     }
 
     /**
@@ -161,43 +156,22 @@ class InlineResponse2002 implements ArrayAccess
 
 
     /**
-     * Gets records
-     * @return \PaymentRails\Client\Model\Recipient[]
+     * Gets payments
+     * @return \PaymentRails\Client\Model\BatchPaymentPatch[]
      */
-    public function getRecords()
+    public function getPayments()
     {
-        return $this->container['records'];
+        return $this->container['payments'];
     }
 
     /**
-     * Sets records
-     * @param \PaymentRails\Client\Model\Recipient[] $records
+     * Sets payments
+     * @param \PaymentRails\Client\Model\BatchPaymentPatch[] $payments
      * @return $this
      */
-    public function setRecords($records)
+    public function setPayments($payments)
     {
-        $this->container['records'] = $records;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     * @return \PaymentRails\Client\Model\MetaQuery
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     * @param \PaymentRails\Client\Model\MetaQuery $meta
-     * @return $this
-     */
-    public function setMeta($meta)
-    {
-        $this->container['meta'] = $meta;
+        $this->container['payments'] = $payments;
 
         return $this;
     }

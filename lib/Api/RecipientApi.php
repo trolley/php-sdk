@@ -73,7 +73,7 @@ class RecipientApi
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('http://api.railz.io/');
+            $apiClient->getConfig()->setHost('http://api.railz.io/v1');
         }
 
         $this->apiClient = $apiClient;
@@ -139,7 +139,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling createBankAccount');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods/accounts/bank";
+        $resourcePath = "/recipients/{recipientId}/payout-methods/accounts/bank";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -187,7 +187,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\BankAccount',
-                '/v1/recipients/{recipientId}/payout-methods/accounts/bank'
+                '/recipients/{recipientId}/payout-methods/accounts/bank'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\BankAccount', $httpHeader), $statusCode, $httpHeader);
@@ -240,7 +240,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling createPaypalAccount');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods/accounts/paypal";
+        $resourcePath = "/recipients/{recipientId}/payout-methods/accounts/paypal";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -288,7 +288,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\PaypalAccount',
-                '/v1/recipients/{recipientId}/payout-methods/accounts/paypal'
+                '/recipients/{recipientId}/payout-methods/accounts/paypal'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\PaypalAccount', $httpHeader), $statusCode, $httpHeader);
@@ -341,7 +341,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling createRecipientPayoutMethods');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods";
+        $resourcePath = "/recipients/{recipientId}/payout-methods";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -389,7 +389,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\RecipientPayoutMethods',
-                '/v1/recipients/{recipientId}/payout-methods'
+                '/recipients/{recipientId}/payout-methods'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\RecipientPayoutMethods', $httpHeader), $statusCode, $httpHeader);
@@ -436,7 +436,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling deleteRecipient');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}";
+        $resourcePath = "/recipients/{recipientId}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -479,7 +479,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/v1/recipients/{recipientId}'
+                '/recipients/{recipientId}'
             );
 
             return array(null, $statusCode, $httpHeader);
@@ -522,7 +522,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling getBankAccount');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods/accounts/bank";
+        $resourcePath = "/recipients/{recipientId}/payout-methods/accounts/bank";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -565,7 +565,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\BankAccount',
-                '/v1/recipients/{recipientId}/payout-methods/accounts/bank'
+                '/recipients/{recipientId}/payout-methods/accounts/bank'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\BankAccount', $httpHeader), $statusCode, $httpHeader);
@@ -612,7 +612,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling getPaypalAccount');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods/accounts/paypal";
+        $resourcePath = "/recipients/{recipientId}/payout-methods/accounts/paypal";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -655,7 +655,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\PaypalAccount',
-                '/v1/recipients/{recipientId}/payout-methods/accounts/paypal'
+                '/recipients/{recipientId}/payout-methods/accounts/paypal'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\PaypalAccount', $httpHeader), $statusCode, $httpHeader);
@@ -702,7 +702,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling getRecipient');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}";
+        $resourcePath = "/recipients/{recipientId}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -745,7 +745,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\Recipient',
-                '/v1/recipients/{recipientId}'
+                '/recipients/{recipientId}'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Recipient', $httpHeader), $statusCode, $httpHeader);
@@ -792,7 +792,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling getRecipientInfo');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/info";
+        $resourcePath = "/recipients/{recipientId}/info";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -835,7 +835,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\RecipientInfoOut',
-                '/v1/recipients/{recipientId}/info'
+                '/recipients/{recipientId}/info'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\RecipientInfoOut', $httpHeader), $statusCode, $httpHeader);
@@ -882,7 +882,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling getRecipientPayoutMethods');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods";
+        $resourcePath = "/recipients/{recipientId}/payout-methods";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -925,7 +925,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\RecipientPayoutMethods',
-                '/v1/recipients/{recipientId}/payout-methods'
+                '/recipients/{recipientId}/payout-methods'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\RecipientPayoutMethods', $httpHeader), $statusCode, $httpHeader);
@@ -947,7 +947,7 @@ class RecipientApi
      * 
      *
      * @param string $recipient_id  (required)
-     * @return \PaymentRails\Client\Model\InlineResponse2002
+     * @return \PaymentRails\Client\Model\InlineResponse2003
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientComplianceHistory($recipient_id)
@@ -962,7 +962,7 @@ class RecipientApi
      * 
      *
      * @param string $recipient_id  (required)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientComplianceHistoryWithHttpInfo($recipient_id)
@@ -972,97 +972,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling queryRecipientComplianceHistory');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/compliance";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array());
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
-
-        // path params
-        if ($recipient_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "recipientId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($recipient_id),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->apiClient->getApiKeyWithPrefix('x-api-key');
-        if (strlen($apiKey) !== 0) {
-            $headerParams['x-api-key'] = $apiKey;
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse2002',
-                '/v1/recipients/{recipientId}/compliance'
-            );
-
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2002', $httpHeader), $statusCode, $httpHeader);
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2002', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation queryRecipientLogHistory
-     *
-     * 
-     *
-     * @param string $recipient_id R-XXXXXXXXXXXXXX (required)
-     * @return \PaymentRails\Client\Model\InlineResponse2003
-     * @throws \PaymentRails\Client\ApiException on non-2xx response
-     */
-    public function queryRecipientLogHistory($recipient_id)
-    {
-        list($response) = $this->queryRecipientLogHistoryWithHttpInfo($recipient_id);
-        return $response;
-    }
-
-    /**
-     * Operation queryRecipientLogHistoryWithHttpInfo
-     *
-     * 
-     *
-     * @param string $recipient_id R-XXXXXXXXXXXXXX (required)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
-     * @throws \PaymentRails\Client\ApiException on non-2xx response
-     */
-    public function queryRecipientLogHistoryWithHttpInfo($recipient_id)
-    {
-        // verify the required parameter 'recipient_id' is set
-        if ($recipient_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling queryRecipientLogHistory');
-        }
-        // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/logs";
+        $resourcePath = "/recipients/{recipientId}/compliance";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1105,7 +1015,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\InlineResponse2003',
-                '/v1/recipients/{recipientId}/logs'
+                '/recipients/{recipientId}/compliance'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
@@ -1113,6 +1023,96 @@ class RecipientApi
             switch ($e->getCode()) {
                 case 200:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2003', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation queryRecipientLogHistory
+     *
+     * 
+     *
+     * @param string $recipient_id R-XXXXXXXXXXXXXX (required)
+     * @return \PaymentRails\Client\Model\InlineResponse2004
+     * @throws \PaymentRails\Client\ApiException on non-2xx response
+     */
+    public function queryRecipientLogHistory($recipient_id)
+    {
+        list($response) = $this->queryRecipientLogHistoryWithHttpInfo($recipient_id);
+        return $response;
+    }
+
+    /**
+     * Operation queryRecipientLogHistoryWithHttpInfo
+     *
+     * 
+     *
+     * @param string $recipient_id R-XXXXXXXXXXXXXX (required)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @throws \PaymentRails\Client\ApiException on non-2xx response
+     */
+    public function queryRecipientLogHistoryWithHttpInfo($recipient_id)
+    {
+        // verify the required parameter 'recipient_id' is set
+        if ($recipient_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling queryRecipientLogHistory');
+        }
+        // parse inputs
+        $resourcePath = "/recipients/{recipientId}/logs";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = $this->apiClient->selectHeaderAccept(array());
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+
+        // path params
+        if ($recipient_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "recipientId" . "}",
+                $this->apiClient->getSerializer()->toPathValue($recipient_id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('x-api-key');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['x-api-key'] = $apiKey;
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\PaymentRails\Client\Model\InlineResponse2004',
+                '/recipients/{recipientId}/logs'
+            );
+
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2004', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1134,7 +1134,7 @@ class RecipientApi
      * @param string $end_date filter recipient payment creation date to date (optional)
      * @param string $source_currency filter recipient payments by source currency, 3 letters ISO code (optional)
      * @param string $search search payments using key words, payment ids, names (optional)
-     * @return \PaymentRails\Client\Model\InlineResponse2004
+     * @return \PaymentRails\Client\Model\InlineResponse2005
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientPaymentHistory($recipient_id, $page = null, $page_size = null, $status = null, $start_date = null, $end_date = null, $source_currency = null, $search = null)
@@ -1156,7 +1156,7 @@ class RecipientApi
      * @param string $end_date filter recipient payment creation date to date (optional)
      * @param string $source_currency filter recipient payments by source currency, 3 letters ISO code (optional)
      * @param string $search search payments using key words, payment ids, names (optional)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientPaymentHistoryWithHttpInfo($recipient_id, $page = null, $page_size = null, $status = null, $start_date = null, $end_date = null, $source_currency = null, $search = null)
@@ -1166,7 +1166,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $recipient_id when calling queryRecipientPaymentHistory');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payments";
+        $resourcePath = "/recipients/{recipientId}/payments";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1236,15 +1236,15 @@ class RecipientApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse2004',
-                '/v1/recipients/{recipientId}/payments'
+                '\PaymentRails\Client\Model\InlineResponse2005',
+                '/recipients/{recipientId}/payments'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2004', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2005', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1290,7 +1290,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling updateBankAccount');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods/accounts/bank";
+        $resourcePath = "/recipients/{recipientId}/payout-methods/accounts/bank";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1338,7 +1338,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\BankAccount',
-                '/v1/recipients/{recipientId}/payout-methods/accounts/bank'
+                '/recipients/{recipientId}/payout-methods/accounts/bank'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\BankAccount', $httpHeader), $statusCode, $httpHeader);
@@ -1391,7 +1391,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling updatePaypalAccount');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods/accounts/paypal";
+        $resourcePath = "/recipients/{recipientId}/payout-methods/accounts/paypal";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1439,7 +1439,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\PaypalAccount',
-                '/v1/recipients/{recipientId}/payout-methods/accounts/paypal'
+                '/recipients/{recipientId}/payout-methods/accounts/paypal'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\PaypalAccount', $httpHeader), $statusCode, $httpHeader);
@@ -1492,7 +1492,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling updateRecipient');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}";
+        $resourcePath = "/recipients/{recipientId}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1540,7 +1540,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\Recipient',
-                '/v1/recipients/{recipientId}'
+                '/recipients/{recipientId}'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Recipient', $httpHeader), $statusCode, $httpHeader);
@@ -1593,7 +1593,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling updateRecipientInfo');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/info";
+        $resourcePath = "/recipients/{recipientId}/info";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1641,7 +1641,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\RecipientInfoOut',
-                '/v1/recipients/{recipientId}/info'
+                '/recipients/{recipientId}/info'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\RecipientInfoOut', $httpHeader), $statusCode, $httpHeader);
@@ -1694,7 +1694,7 @@ class RecipientApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling updateRecipientPayoutMethods');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/{recipientId}/payout-methods";
+        $resourcePath = "/recipients/{recipientId}/payout-methods";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1742,7 +1742,7 @@ class RecipientApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\RecipientPayoutMethods',
-                '/v1/recipients/{recipientId}/payout-methods'
+                '/recipients/{recipientId}/payout-methods'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\RecipientPayoutMethods', $httpHeader), $statusCode, $httpHeader);

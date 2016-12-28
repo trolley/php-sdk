@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002Test
+ * BatchTest
  *
  * PHP version 5
  *
@@ -42,17 +42,17 @@
 namespace PaymentRails\Client;
 
 /**
- * InlineResponse2002Test Class Doc Comment
+ * BatchTest Class Doc Comment
  *
  * @category    Class */
-// * @description InlineResponse2002
+// * @description Batch
 /**
  * @package     PaymentRails\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002Test extends \PHPUnit_Framework_TestCase
+class BatchTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -88,25 +88,89 @@ class InlineResponse2002Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "InlineResponse2002"
+     * Test "Batch"
      */
-    public function testInlineResponse2002()
+    public function testBatch()
     {
 
     }
 
     /**
-     * Test attribute "records"
+     * Test attribute "id"
      */
-    public function testPropertyRecords()
+    public function testPropertyId()
     {
 
     }
 
     /**
-     * Test attribute "meta"
+     * Test attribute "status"
      */
-    public function testPropertyMeta()
+    public function testPropertyStatus()
+    {
+
+    }
+
+    /**
+     * Test attribute "total_payments"
+     */
+    public function testPropertyTotalPayments()
+    {
+
+    }
+
+    /**
+     * Test attribute "currency"
+     */
+    public function testPropertyCurrency()
+    {
+
+    }
+
+    /**
+     * Test attribute "description"
+     */
+    public function testPropertyDescription()
+    {
+
+    }
+
+    /**
+     * Test attribute "sent_at"
+     */
+    public function testPropertySentAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "completed_at"
+     */
+    public function testPropertyCompletedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "updated_at"
+     */
+    public function testPropertyUpdatedAt()
+    {
+
+    }
+
+    /**
+     * Test attribute "payments"
+     */
+    public function testPropertyPayments()
     {
 
     }

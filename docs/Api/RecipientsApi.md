@@ -1,14 +1,14 @@
 # PaymentRails\Client\RecipientsApi
 
-All URIs are relative to *http://api.railz.io/*
+All URIs are relative to *http://api.railz.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createRecipient**](RecipientsApi.md#createRecipient) | **POST** /v1/recipients | 
-[**deleteRecipients**](RecipientsApi.md#deleteRecipients) | **DELETE** /v1/recipients | 
-[**exportRecipientCsv**](RecipientsApi.md#exportRecipientCsv) | **GET** /v1/recipients/exports.csv | 
-[**queryRecipients**](RecipientsApi.md#queryRecipients) | **GET** /v1/recipients | 
-[**uploadRecipientCsv**](RecipientsApi.md#uploadRecipientCsv) | **POST** /v1/recipients/upload | 
+[**createRecipient**](RecipientsApi.md#createRecipient) | **POST** /recipients | 
+[**deleteRecipients**](RecipientsApi.md#deleteRecipients) | **DELETE** /recipients | 
+[**exportRecipientCsv**](RecipientsApi.md#exportRecipientCsv) | **GET** /recipients/exports.csv | 
+[**queryRecipients**](RecipientsApi.md#queryRecipients) | **GET** /recipients | 
+[**uploadRecipientCsv**](RecipientsApi.md#uploadRecipientCsv) | **POST** /recipients/upload | 
 
 
 # **createRecipient**
@@ -172,7 +172,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipients**
-> \PaymentRails\Client\Model\InlineResponse2001 queryRecipients($page, $page_size, $start_date, $end_date, $status, $compliance_status, $payout_method, $payout_currency, $country)
+> \PaymentRails\Client\Model\InlineResponse2002 queryRecipients($page, $page_size, $start_date, $end_date, $status, $compliance_status, $payout_method, $payout_currency, $country)
 
 
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\PaymentRails\Client\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
 
 ### Authorization
 

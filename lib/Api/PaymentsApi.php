@@ -73,7 +73,7 @@ class PaymentsApi
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('http://api.railz.io/');
+            $apiClient->getConfig()->setHost('http://api.railz.io/v1');
         }
 
         $this->apiClient = $apiClient;
@@ -206,7 +206,7 @@ class PaymentsApi
      * @param string $recipient filter by recipient ID R-XXXXXXXXXXXXXXXX (optional)
      * @param string $source_currency filter by source currency 3 letters ISO code (optional)
      * @param string $target_currency filter by target currency 3 letters ISO code (optional)
-     * @return \PaymentRails\Client\Model\InlineResponse200
+     * @return \PaymentRails\Client\Model\InlineResponse2001
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryPayments($page = null, $page_size = null, $start_date = null, $end_date = null, $status = null, $country = null, $recipient = null, $source_currency = null, $target_currency = null)
@@ -229,13 +229,13 @@ class PaymentsApi
      * @param string $recipient filter by recipient ID R-XXXXXXXXXXXXXXXX (optional)
      * @param string $source_currency filter by source currency 3 letters ISO code (optional)
      * @param string $target_currency filter by target currency 3 letters ISO code (optional)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryPaymentsWithHttpInfo($page = null, $page_size = null, $start_date = null, $end_date = null, $status = null, $country = null, $recipient = null, $source_currency = null, $target_currency = null)
     {
         // parse inputs
-        $resourcePath = "/v1/payments";
+        $resourcePath = "/payments";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -305,15 +305,15 @@ class PaymentsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse200',
-                '/v1/payments'
+                '\PaymentRails\Client\Model\InlineResponse2001',
+                '/payments'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse200', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse200', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2001', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

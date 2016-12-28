@@ -103,12 +103,4 @@ class InlineResponse2004Test extends \PHPUnit_Framework_TestCase
 
     }
 
-    /**
-     * Test attribute "meta"
-     */
-    public function testPropertyMeta()
-    {
-
-    }
-
 }

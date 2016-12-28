@@ -73,7 +73,7 @@ class UtilsApi
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('http://api.railz.io/');
+            $apiClient->getConfig()->setHost('http://api.railz.io/v1');
         }
 
         $this->apiClient = $apiClient;
@@ -133,7 +133,7 @@ class UtilsApi
             throw new \InvalidArgumentException('Missing the required parameter $currency_code when calling getCurrency');
         }
         // parse inputs
-        $resourcePath = "/v1/forex/currencies/{currencyCode}";
+        $resourcePath = "/forex/currencies/{currencyCode}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -176,7 +176,7 @@ class UtilsApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\Currency',
-                '/v1/forex/currencies/{currencyCode}'
+                '/forex/currencies/{currencyCode}'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Currency', $httpHeader), $statusCode, $httpHeader);
@@ -217,7 +217,7 @@ class UtilsApi
     public function queryCurrenciesWithHttpInfo()
     {
         // parse inputs
-        $resourcePath = "/v1/forex/currencies";
+        $resourcePath = "/forex/currencies";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -252,7 +252,7 @@ class UtilsApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\Currency[]',
-                '/v1/forex/currencies'
+                '/forex/currencies'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Currency[]', $httpHeader), $statusCode, $httpHeader);

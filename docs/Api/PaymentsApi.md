@@ -1,11 +1,11 @@
 # PaymentRails\Client\PaymentsApi
 
-All URIs are relative to *http://api.railz.io/*
+All URIs are relative to *http://api.railz.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getPayment**](PaymentsApi.md#getPayment) | **GET** /v1/payments/{paymentId} | 
-[**queryPayments**](PaymentsApi.md#queryPayments) | **GET** /v1/payments | 
+[**queryPayments**](PaymentsApi.md#queryPayments) | **GET** /payments | 
 
 
 # **getPayment**
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryPayments**
-> \PaymentRails\Client\Model\InlineResponse200 queryPayments($page, $page_size, $start_date, $end_date, $status, $country, $recipient, $source_currency, $target_currency)
+> \PaymentRails\Client\Model\InlineResponse2001 queryPayments($page, $page_size, $start_date, $end_date, $status, $country, $recipient, $source_currency, $target_currency)
 
 
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\PaymentRails\Client\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
 
 ### Authorization
 

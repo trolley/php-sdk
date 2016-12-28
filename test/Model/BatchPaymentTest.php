@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002Test
+ * BatchPaymentTest
  *
  * PHP version 5
  *
@@ -42,17 +42,17 @@
 namespace PaymentRails\Client;
 
 /**
- * InlineResponse2002Test Class Doc Comment
+ * BatchPaymentTest Class Doc Comment
  *
  * @category    Class */
-// * @description InlineResponse2002
+// * @description BatchPayment
 /**
  * @package     PaymentRails\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002Test extends \PHPUnit_Framework_TestCase
+class BatchPaymentTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -88,25 +88,57 @@ class InlineResponse2002Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "InlineResponse2002"
+     * Test "BatchPayment"
      */
-    public function testInlineResponse2002()
+    public function testBatchPayment()
     {
 
     }
 
     /**
-     * Test attribute "records"
+     * Test attribute "id"
      */
-    public function testPropertyRecords()
+    public function testPropertyId()
     {
 
     }
 
     /**
-     * Test attribute "meta"
+     * Test attribute "reference_id"
      */
-    public function testPropertyMeta()
+    public function testPropertyReferenceId()
+    {
+
+    }
+
+    /**
+     * Test attribute "email"
+     */
+    public function testPropertyEmail()
+    {
+
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+
+    }
+
+    /**
+     * Test attribute "method"
+     */
+    public function testPropertyMethod()
+    {
+
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
     {
 
     }

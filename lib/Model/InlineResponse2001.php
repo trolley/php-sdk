@@ -66,7 +66,7 @@ class InlineResponse2001 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\Recipient[]',
+        'records' => '\PaymentRails\Client\Model\PaymentOut[]',
         'meta' => '\PaymentRails\Client\Model\MetaQuery'
     );
 
@@ -162,7 +162,7 @@ class InlineResponse2001 implements ArrayAccess
 
     /**
      * Gets records
-     * @return \PaymentRails\Client\Model\Recipient[]
+     * @return \PaymentRails\Client\Model\PaymentOut[]
      */
     public function getRecords()
     {
@@ -171,7 +171,7 @@ class InlineResponse2001 implements ArrayAccess
 
     /**
      * Sets records
-     * @param \PaymentRails\Client\Model\Recipient[] $records
+     * @param \PaymentRails\Client\Model\PaymentOut[] $records
      * @return $this
      */
     public function setRecords($records)

@@ -66,8 +66,7 @@ class InlineResponse2004 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\RecipientPayment[]',
-        'meta' => '\PaymentRails\Client\Model\MetaQuery'
+        'records' => '\PaymentRails\Client\Model\RecipientLog[]'
     );
 
     public static function swaggerTypes()
@@ -80,8 +79,7 @@ class InlineResponse2004 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records',
-        'meta' => 'meta'
+        'records' => 'records'
     );
 
     public static function attributeMap()
@@ -94,8 +92,7 @@ class InlineResponse2004 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords',
-        'meta' => 'setMeta'
+        'records' => 'setRecords'
     );
 
     public static function setters()
@@ -108,8 +105,7 @@ class InlineResponse2004 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords',
-        'meta' => 'getMeta'
+        'records' => 'getRecords'
     );
 
     public static function getters()
@@ -134,7 +130,6 @@ class InlineResponse2004 implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['records'] = isset($data['records']) ? $data['records'] : null;
-        $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
     }
 
     /**
@@ -162,7 +157,7 @@ class InlineResponse2004 implements ArrayAccess
 
     /**
      * Gets records
-     * @return \PaymentRails\Client\Model\RecipientPayment[]
+     * @return \PaymentRails\Client\Model\RecipientLog[]
      */
     public function getRecords()
     {
@@ -171,33 +166,12 @@ class InlineResponse2004 implements ArrayAccess
 
     /**
      * Sets records
-     * @param \PaymentRails\Client\Model\RecipientPayment[] $records
+     * @param \PaymentRails\Client\Model\RecipientLog[] $records
      * @return $this
      */
     public function setRecords($records)
     {
         $this->container['records'] = $records;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     * @return \PaymentRails\Client\Model\MetaQuery
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     * @param \PaymentRails\Client\Model\MetaQuery $meta
-     * @return $this
-     */
-    public function setMeta($meta)
-    {
-        $this->container['meta'] = $meta;
 
         return $this;
     }

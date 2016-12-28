@@ -102,7 +102,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'http://api.railz.io/';
+    protected $host = 'http://api.railz.io/v1';
 
     /**
      * Timeout (second) of the HTTP request, by default set to 0, no timeout

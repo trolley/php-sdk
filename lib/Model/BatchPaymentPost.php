@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002
+ * BatchPaymentPost
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace PaymentRails\Client\Model;
 use \ArrayAccess;
 
 /**
- * InlineResponse2002 Class Doc Comment
+ * BatchPaymentPost Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,21 +53,25 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002 implements ArrayAccess
+class BatchPaymentPost implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_2';
+    protected static $swaggerModelName = 'BatchPaymentPost';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\Recipient[]',
-        'meta' => '\PaymentRails\Client\Model\MetaQuery'
+        'recipient' => '\PaymentRails\Client\Model\BatchPaymentRecipient',
+        'source_amount' => 'float',
+        'source_currency' => 'string',
+        'source_currency_name' => 'string',
+        'target_amount' => 'float',
+        'target_currency' => 'string'
     );
 
     public static function swaggerTypes()
@@ -80,8 +84,12 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records',
-        'meta' => 'meta'
+        'recipient' => 'recipient',
+        'source_amount' => 'sourceAmount',
+        'source_currency' => 'sourceCurrency',
+        'source_currency_name' => 'sourceCurrencyName',
+        'target_amount' => 'targetAmount',
+        'target_currency' => 'targetCurrency'
     );
 
     public static function attributeMap()
@@ -94,8 +102,12 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords',
-        'meta' => 'setMeta'
+        'recipient' => 'setRecipient',
+        'source_amount' => 'setSourceAmount',
+        'source_currency' => 'setSourceCurrency',
+        'source_currency_name' => 'setSourceCurrencyName',
+        'target_amount' => 'setTargetAmount',
+        'target_currency' => 'setTargetCurrency'
     );
 
     public static function setters()
@@ -108,8 +120,12 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords',
-        'meta' => 'getMeta'
+        'recipient' => 'getRecipient',
+        'source_amount' => 'getSourceAmount',
+        'source_currency' => 'getSourceCurrency',
+        'source_currency_name' => 'getSourceCurrencyName',
+        'target_amount' => 'getTargetAmount',
+        'target_currency' => 'getTargetCurrency'
     );
 
     public static function getters()
@@ -133,8 +149,12 @@ class InlineResponse2002 implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
-        $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
+        $this->container['recipient'] = isset($data['recipient']) ? $data['recipient'] : null;
+        $this->container['source_amount'] = isset($data['source_amount']) ? $data['source_amount'] : null;
+        $this->container['source_currency'] = isset($data['source_currency']) ? $data['source_currency'] : null;
+        $this->container['source_currency_name'] = isset($data['source_currency_name']) ? $data['source_currency_name'] : null;
+        $this->container['target_amount'] = isset($data['target_amount']) ? $data['target_amount'] : null;
+        $this->container['target_currency'] = isset($data['target_currency']) ? $data['target_currency'] : null;
     }
 
     /**
@@ -161,43 +181,127 @@ class InlineResponse2002 implements ArrayAccess
 
 
     /**
-     * Gets records
-     * @return \PaymentRails\Client\Model\Recipient[]
+     * Gets recipient
+     * @return \PaymentRails\Client\Model\BatchPaymentRecipient
      */
-    public function getRecords()
+    public function getRecipient()
     {
-        return $this->container['records'];
+        return $this->container['recipient'];
     }
 
     /**
-     * Sets records
-     * @param \PaymentRails\Client\Model\Recipient[] $records
+     * Sets recipient
+     * @param \PaymentRails\Client\Model\BatchPaymentRecipient $recipient
      * @return $this
      */
-    public function setRecords($records)
+    public function setRecipient($recipient)
     {
-        $this->container['records'] = $records;
+        $this->container['recipient'] = $recipient;
 
         return $this;
     }
 
     /**
-     * Gets meta
-     * @return \PaymentRails\Client\Model\MetaQuery
+     * Gets source_amount
+     * @return float
      */
-    public function getMeta()
+    public function getSourceAmount()
     {
-        return $this->container['meta'];
+        return $this->container['source_amount'];
     }
 
     /**
-     * Sets meta
-     * @param \PaymentRails\Client\Model\MetaQuery $meta
+     * Sets source_amount
+     * @param float $source_amount
      * @return $this
      */
-    public function setMeta($meta)
+    public function setSourceAmount($source_amount)
     {
-        $this->container['meta'] = $meta;
+        $this->container['source_amount'] = $source_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_currency
+     * @return string
+     */
+    public function getSourceCurrency()
+    {
+        return $this->container['source_currency'];
+    }
+
+    /**
+     * Sets source_currency
+     * @param string $source_currency source currency code
+     * @return $this
+     */
+    public function setSourceCurrency($source_currency)
+    {
+        $this->container['source_currency'] = $source_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_currency_name
+     * @return string
+     */
+    public function getSourceCurrencyName()
+    {
+        return $this->container['source_currency_name'];
+    }
+
+    /**
+     * Sets source_currency_name
+     * @param string $source_currency_name currency name
+     * @return $this
+     */
+    public function setSourceCurrencyName($source_currency_name)
+    {
+        $this->container['source_currency_name'] = $source_currency_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_amount
+     * @return float
+     */
+    public function getTargetAmount()
+    {
+        return $this->container['target_amount'];
+    }
+
+    /**
+     * Sets target_amount
+     * @param float $target_amount
+     * @return $this
+     */
+    public function setTargetAmount($target_amount)
+    {
+        $this->container['target_amount'] = $target_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_currency
+     * @return string
+     */
+    public function getTargetCurrency()
+    {
+        return $this->container['target_currency'];
+    }
+
+    /**
+     * Sets target_currency
+     * @param string $target_currency target currency code
+     * @return $this
+     */
+    public function setTargetCurrency($target_currency)
+    {
+        $this->container['target_currency'] = $target_currency;
 
         return $this;
     }

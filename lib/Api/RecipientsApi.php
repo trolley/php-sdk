@@ -73,7 +73,7 @@ class RecipientsApi
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('http://api.railz.io/');
+            $apiClient->getConfig()->setHost('http://api.railz.io/v1');
         }
 
         $this->apiClient = $apiClient;
@@ -129,7 +129,7 @@ class RecipientsApi
     public function createRecipientWithHttpInfo($body = null)
     {
         // parse inputs
-        $resourcePath = "/v1/recipients";
+        $resourcePath = "/recipients";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -169,7 +169,7 @@ class RecipientsApi
                 $httpBody,
                 $headerParams,
                 '\PaymentRails\Client\Model\Recipient',
-                '/v1/recipients'
+                '/recipients'
             );
 
             return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Recipient', $httpHeader), $statusCode, $httpHeader);
@@ -212,7 +212,7 @@ class RecipientsApi
     public function deleteRecipientsWithHttpInfo($ids = null)
     {
         // parse inputs
-        $resourcePath = "/v1/recipients";
+        $resourcePath = "/recipients";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -252,7 +252,7 @@ class RecipientsApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/v1/recipients'
+                '/recipients'
             );
 
             return array(null, $statusCode, $httpHeader);
@@ -307,7 +307,7 @@ class RecipientsApi
     public function exportRecipientCsvWithHttpInfo($page = null, $page_size = null, $start_date = null, $end_date = null, $status = null, $compliance_status = null, $payout_method = null, $payout_currency = null, $country = null)
     {
         // parse inputs
-        $resourcePath = "/v1/recipients/exports.csv";
+        $resourcePath = "/recipients/exports.csv";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -378,7 +378,7 @@ class RecipientsApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/v1/recipients/exports.csv'
+                '/recipients/exports.csv'
             );
 
             return array(null, $statusCode, $httpHeader);
@@ -404,7 +404,7 @@ class RecipientsApi
      * @param string $payout_method filter recipients list by payout methods multiple values separated by comas (optional)
      * @param string $payout_currency filter recipients list by payout currency 3 letters ISO code, multiple values separated by comas (optional)
      * @param string $country filter recipients list by country multiple values separated by comas (optional)
-     * @return \PaymentRails\Client\Model\InlineResponse2001
+     * @return \PaymentRails\Client\Model\InlineResponse2002
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipients($page = null, $page_size = null, $start_date = null, $end_date = null, $status = null, $compliance_status = null, $payout_method = null, $payout_currency = null, $country = null)
@@ -427,13 +427,13 @@ class RecipientsApi
      * @param string $payout_method filter recipients list by payout methods multiple values separated by comas (optional)
      * @param string $payout_currency filter recipients list by payout currency 3 letters ISO code, multiple values separated by comas (optional)
      * @param string $country filter recipients list by country multiple values separated by comas (optional)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientsWithHttpInfo($page = null, $page_size = null, $start_date = null, $end_date = null, $status = null, $compliance_status = null, $payout_method = null, $payout_currency = null, $country = null)
     {
         // parse inputs
-        $resourcePath = "/v1/recipients";
+        $resourcePath = "/recipients";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -503,15 +503,15 @@ class RecipientsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse2001',
-                '/v1/recipients'
+                '\PaymentRails\Client\Model\InlineResponse2002',
+                '/recipients'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2001', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2002', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2001', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2002', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -551,7 +551,7 @@ class RecipientsApi
             throw new \InvalidArgumentException('Missing the required parameter $file when calling uploadRecipientCsv');
         }
         // parse inputs
-        $resourcePath = "/v1/recipients/upload";
+        $resourcePath = "/recipients/upload";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -596,7 +596,7 @@ class RecipientsApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/v1/recipients/upload'
+                '/recipients/upload'
             );
 
             return array(null, $statusCode, $httpHeader);

@@ -1,6 +1,6 @@
 <?php
 /**
- * BalancesApi
+ * BatchApi
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \PaymentRails\Client\ApiException;
 use \PaymentRails\Client\ObjectSerializer;
 
 /**
- * BalancesApi Class Doc Comment
+ * BatchApi Class Doc Comment
  *
  * @category Class
  * @package  PaymentRails\Client
@@ -54,7 +54,7 @@ use \PaymentRails\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class BalancesApi
+class BatchApi
 {
 
     /**
@@ -94,7 +94,7 @@ class BalancesApi
      *
      * @param \PaymentRails\Client\ApiClient $apiClient set the API client
      *
-     * @return BalancesApi
+     * @return BatchApi
      */
     public function setApiClient(\PaymentRails\Client\ApiClient $apiClient)
     {
@@ -103,31 +103,37 @@ class BalancesApi
     }
 
     /**
-     * Operation getPaymentrails
+     * Operation getBatch
      *
      * 
      *
-     * @return \PaymentRails\Client\Model\Balance
+     * @param string $batch_id B-XXXXXXXXXXXXXXXX (required)
+     * @return \PaymentRails\Client\Model\Batch
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
-    public function getPaymentrails()
+    public function getBatch($batch_id)
     {
-        list($response) = $this->getPaymentrailsWithHttpInfo();
+        list($response) = $this->getBatchWithHttpInfo($batch_id);
         return $response;
     }
 
     /**
-     * Operation getPaymentrailsWithHttpInfo
+     * Operation getBatchWithHttpInfo
      *
      * 
      *
-     * @return Array of \PaymentRails\Client\Model\Balance, HTTP status code, HTTP response headers (array of strings)
+     * @param string $batch_id B-XXXXXXXXXXXXXXXX (required)
+     * @return Array of \PaymentRails\Client\Model\Batch, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
-    public function getPaymentrailsWithHttpInfo()
+    public function getBatchWithHttpInfo($batch_id)
     {
+        // verify the required parameter 'batch_id' is set
+        if ($batch_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $batch_id when calling getBatch');
+        }
         // parse inputs
-        $resourcePath = "/profile/balances/paymentrails";
+        $resourcePath = "/batches/{batchId}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -138,6 +144,14 @@ class BalancesApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
 
+        // path params
+        if ($batch_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "batchId" . "}",
+                $this->apiClient->getSerializer()->toPathValue($batch_id),
+                $resourcePath
+            );
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
@@ -161,15 +175,15 @@ class BalancesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\Balance',
-                '/profile/balances/paymentrails'
+                '\PaymentRails\Client\Model\Batch',
+                '/batches/{batchId}'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Balance', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Batch', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Balance', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Batch', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -179,31 +193,37 @@ class BalancesApi
     }
 
     /**
-     * Operation getPaypal
+     * Operation startProcessingBatch
      *
      * 
      *
-     * @return \PaymentRails\Client\Model\Balance
+     * @param string $batch_id P-XXXXXXXXXXXXX (required)
+     * @return \PaymentRails\Client\Model\Batch
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
-    public function getPaypal()
+    public function startProcessingBatch($batch_id)
     {
-        list($response) = $this->getPaypalWithHttpInfo();
+        list($response) = $this->startProcessingBatchWithHttpInfo($batch_id);
         return $response;
     }
 
     /**
-     * Operation getPaypalWithHttpInfo
+     * Operation startProcessingBatchWithHttpInfo
      *
      * 
      *
-     * @return Array of \PaymentRails\Client\Model\Balance, HTTP status code, HTTP response headers (array of strings)
+     * @param string $batch_id P-XXXXXXXXXXXXX (required)
+     * @return Array of \PaymentRails\Client\Model\Batch, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
-    public function getPaypalWithHttpInfo()
+    public function startProcessingBatchWithHttpInfo($batch_id)
     {
+        // verify the required parameter 'batch_id' is set
+        if ($batch_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $batch_id when calling startProcessingBatch');
+        }
         // parse inputs
-        $resourcePath = "/profile/balances/paypal";
+        $resourcePath = "/batches/{batchId}/start-processing";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -214,6 +234,14 @@ class BalancesApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
 
+        // path params
+        if ($batch_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "batchId" . "}",
+                $this->apiClient->getSerializer()->toPathValue($batch_id),
+                $resourcePath
+            );
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
@@ -233,19 +261,19 @@ class BalancesApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\Balance',
-                '/profile/balances/paypal'
+                '\PaymentRails\Client\Model\Batch',
+                '/batches/{batchId}/start-processing'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Balance', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Batch', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Balance', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Batch', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -255,31 +283,43 @@ class BalancesApi
     }
 
     /**
-     * Operation queryBalances
+     * Operation updateBatch
      *
      * 
      *
-     * @return \PaymentRails\Client\Model\Balance[]
+     * @param string $batch_id B-XXXXXXXXXXXXXXXX (required)
+     * @param \PaymentRails\Client\Model\BatchUpdate $body  (required)
+     * @return \PaymentRails\Client\Model\Batch
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
-    public function queryBalances()
+    public function updateBatch($batch_id, $body)
     {
-        list($response) = $this->queryBalancesWithHttpInfo();
+        list($response) = $this->updateBatchWithHttpInfo($batch_id, $body);
         return $response;
     }
 
     /**
-     * Operation queryBalancesWithHttpInfo
+     * Operation updateBatchWithHttpInfo
      *
      * 
      *
-     * @return Array of \PaymentRails\Client\Model\Balance[], HTTP status code, HTTP response headers (array of strings)
+     * @param string $batch_id B-XXXXXXXXXXXXXXXX (required)
+     * @param \PaymentRails\Client\Model\BatchUpdate $body  (required)
+     * @return Array of \PaymentRails\Client\Model\Batch, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
-    public function queryBalancesWithHttpInfo()
+    public function updateBatchWithHttpInfo($batch_id, $body)
     {
+        // verify the required parameter 'batch_id' is set
+        if ($batch_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $batch_id when calling updateBatch');
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $body when calling updateBatch');
+        }
         // parse inputs
-        $resourcePath = "/profile/balances";
+        $resourcePath = "/batches/{batchId}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -290,10 +330,23 @@ class BalancesApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
 
+        // path params
+        if ($batch_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "batchId" . "}",
+                $this->apiClient->getSerializer()->toPathValue($batch_id),
+                $resourcePath
+            );
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
@@ -309,19 +362,19 @@ class BalancesApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'PATCH',
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\Balance[]',
-                '/profile/balances'
+                '\PaymentRails\Client\Model\Batch',
+                '/batches/{batchId}'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Balance[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Batch', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Balance[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Batch', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

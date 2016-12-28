@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002
+ * InlineResponse2005
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace PaymentRails\Client\Model;
 use \ArrayAccess;
 
 /**
- * InlineResponse2002 Class Doc Comment
+ * InlineResponse2005 Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,20 +53,20 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002 implements ArrayAccess
+class InlineResponse2005 implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_2';
+    protected static $swaggerModelName = 'inline_response_200_5';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\Recipient[]',
+        'records' => '\PaymentRails\Client\Model\RecipientPayment[]',
         'meta' => '\PaymentRails\Client\Model\MetaQuery'
     );
 
@@ -162,7 +162,7 @@ class InlineResponse2002 implements ArrayAccess
 
     /**
      * Gets records
-     * @return \PaymentRails\Client\Model\Recipient[]
+     * @return \PaymentRails\Client\Model\RecipientPayment[]
      */
     public function getRecords()
     {
@@ -171,7 +171,7 @@ class InlineResponse2002 implements ArrayAccess
 
     /**
      * Sets records
-     * @param \PaymentRails\Client\Model\Recipient[] $records
+     * @param \PaymentRails\Client\Model\RecipientPayment[] $records
      * @return $this
      */
     public function setRecords($records)

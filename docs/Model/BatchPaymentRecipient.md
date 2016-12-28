@@ -1,9 +1,9 @@
-# InlineResponse2003
+# BatchPaymentRecipient
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**records** | [**\PaymentRails\Client\Model\RecipientCompliance[]**](RecipientCompliance.md) |  | [optional] 
+**id** | **string** | R-XXXXXXXXX | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

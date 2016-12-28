@@ -1,19 +1,17 @@
-# PaymentRails\Client\UtilsApi
+# PaymentRails\Client\BatchesApi
 
 All URIs are relative to *http://api.railz.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrency**](UtilsApi.md#getCurrency) | **GET** /forex/currencies/{currencyCode} | 
-[**queryCurrencies**](UtilsApi.md#queryCurrencies) | **GET** /forex/currencies | 
+[**createBatch**](BatchesApi.md#createBatch) | **POST** /batches | 
+[**queryBatches**](BatchesApi.md#queryBatches) | **GET** /batches | 
 
 
-# **getCurrency**
-> \PaymentRails\Client\Model\Currency getCurrency($currency_code)
+# **createBatch**
+> \PaymentRails\Client\Model\Batch createBatch($body)
 
 
-
-Returns currency
 
 ### Example
 ```php
@@ -25,14 +23,14 @@ PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-k
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
-$api_instance = new PaymentRails\Client\Api\UtilsApi();
-$currency_code = "currency_code_example"; // string | 2 letters ISO country code
+$api_instance = new PaymentRails\Client\Api\BatchesApi();
+$body = new \PaymentRails\Client\Model\BatchPost(); // \PaymentRails\Client\Model\BatchPost | B-XXXXXXXXXXXXXXXX
 
 try {
-    $result = $api_instance->getCurrency($currency_code);
+    $result = $api_instance->createBatch($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UtilsApi->getCurrency: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BatchesApi->createBatch: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -41,11 +39,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency_code** | **string**| 2 letters ISO country code |
+ **body** | [**\PaymentRails\Client\Model\BatchPost**](../Model/\PaymentRails\Client\Model\BatchPost.md)| B-XXXXXXXXXXXXXXXX |
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Currency**](../Model/Currency.md)
+[**\PaymentRails\Client\Model\Batch**](../Model/Batch.md)
 
 ### Authorization
 
@@ -54,16 +52,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **queryCurrencies**
-> \PaymentRails\Client\Model\Currency[] queryCurrencies()
+# **queryBatches**
+> \PaymentRails\Client\Model\InlineResponse200 queryBatches($start_date, $end_date, $status)
 
 
-
-Returns currencies
 
 ### Example
 ```php
@@ -75,23 +71,31 @@ PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-k
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // PaymentRails\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
 
-$api_instance = new PaymentRails\Client\Api\UtilsApi();
+$api_instance = new PaymentRails\Client\Api\BatchesApi();
+$start_date = "start_date_example"; // string | 
+$end_date = "end_date_example"; // string | 
+$status = "status_example"; // string | filter one or more status. multiple value comma separated
 
 try {
-    $result = $api_instance->queryCurrencies();
+    $result = $api_instance->queryBatches($start_date, $end_date, $status);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UtilsApi->queryCurrencies: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BatchesApi->queryBatches: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start_date** | **string**|  | [optional]
+ **end_date** | **string**|  | [optional]
+ **status** | **string**| filter one or more status. multiple value comma separated | [optional]
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Currency[]**](../Model/Currency.md)
+[**\PaymentRails\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

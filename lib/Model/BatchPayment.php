@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2002
+ * BatchPayment
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace PaymentRails\Client\Model;
 use \ArrayAccess;
 
 /**
- * InlineResponse2002 Class Doc Comment
+ * BatchPayment Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,21 +53,25 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2002 implements ArrayAccess
+class BatchPayment implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_2';
+    protected static $swaggerModelName = 'BatchPayment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\Recipient[]',
-        'meta' => '\PaymentRails\Client\Model\MetaQuery'
+        'id' => 'string',
+        'reference_id' => 'string',
+        'email' => 'string',
+        'name' => 'string',
+        'method' => 'string',
+        'status' => 'string'
     );
 
     public static function swaggerTypes()
@@ -80,8 +84,12 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records',
-        'meta' => 'meta'
+        'id' => 'id',
+        'reference_id' => 'referenceId',
+        'email' => 'email',
+        'name' => 'name',
+        'method' => 'method',
+        'status' => 'status'
     );
 
     public static function attributeMap()
@@ -94,8 +102,12 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords',
-        'meta' => 'setMeta'
+        'id' => 'setId',
+        'reference_id' => 'setReferenceId',
+        'email' => 'setEmail',
+        'name' => 'setName',
+        'method' => 'setMethod',
+        'status' => 'setStatus'
     );
 
     public static function setters()
@@ -108,8 +120,12 @@ class InlineResponse2002 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords',
-        'meta' => 'getMeta'
+        'id' => 'getId',
+        'reference_id' => 'getReferenceId',
+        'email' => 'getEmail',
+        'name' => 'getName',
+        'method' => 'getMethod',
+        'status' => 'getStatus'
     );
 
     public static function getters()
@@ -133,8 +149,12 @@ class InlineResponse2002 implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
-        $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['reference_id'] = isset($data['reference_id']) ? $data['reference_id'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -161,43 +181,127 @@ class InlineResponse2002 implements ArrayAccess
 
 
     /**
-     * Gets records
-     * @return \PaymentRails\Client\Model\Recipient[]
+     * Gets id
+     * @return string
      */
-    public function getRecords()
+    public function getId()
     {
-        return $this->container['records'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets records
-     * @param \PaymentRails\Client\Model\Recipient[] $records
+     * Sets id
+     * @param string $id P-XXXXXXXXXXXXXXXX
      * @return $this
      */
-    public function setRecords($records)
+    public function setId($id)
     {
-        $this->container['records'] = $records;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets meta
-     * @return \PaymentRails\Client\Model\MetaQuery
+     * Gets reference_id
+     * @return string
      */
-    public function getMeta()
+    public function getReferenceId()
     {
-        return $this->container['meta'];
+        return $this->container['reference_id'];
     }
 
     /**
-     * Sets meta
-     * @param \PaymentRails\Client\Model\MetaQuery $meta
+     * Sets reference_id
+     * @param string $reference_id
      * @return $this
      */
-    public function setMeta($meta)
+    public function setReferenceId($reference_id)
     {
-        $this->container['meta'] = $meta;
+        $this->container['reference_id'] = $reference_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     * @param string $email
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     * @return string
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     * @param string $method payout method
+     * @return $this
+     */
+    public function setMethod($method)
+    {
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     * @param string $status payment status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
