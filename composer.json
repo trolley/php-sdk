@@ -1,18 +1,20 @@
 {
-    "name": "GIT_USER_ID/GIT_REPO_ID",
+    "name": "paymentrails/php",
     "description": "",
     "keywords": [
+        "PaymentRails",
+        "PaymentRailsApi",
         "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
+    "homepage": "https://bitbucket.org/paymentrails/php",
     "license": "Apache v2",
     "authors": [
         {
             "name": "PaymentRails and contributors",
-            "homepage": "https://github.com/swagger-api/swagger-codegen"
+            "homepage": "https://paymentrails.comn"
         }
     ],
     "require": {
