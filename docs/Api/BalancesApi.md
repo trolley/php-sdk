@@ -98,7 +98,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryBalances**
-> \PaymentRails\Client\Model\Balance[] queryBalances()
+> map[string,\PaymentRails\Client\Model\Balance[]] queryBalances()
 
 
 
@@ -128,7 +128,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Balance[]**](../Model/Balance.md)
+[**map[string,\PaymentRails\Client\Model\Balance[]]**](../Model/array.md)
 
 ### Authorization
 

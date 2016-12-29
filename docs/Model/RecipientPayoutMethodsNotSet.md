@@ -1,9 +1,9 @@
-# InlineResponse2005
+# RecipientPayoutMethodsNotSet
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**records** | [**\PaymentRails\Client\Model\RecipientLog[]**](RecipientLog.md) |  | [optional] 
+**method** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

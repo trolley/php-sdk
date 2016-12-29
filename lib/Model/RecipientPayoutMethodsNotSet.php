@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2005
+ * RecipientPayoutMethodsNotSet
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace PaymentRails\Client\Model;
 use \ArrayAccess;
 
 /**
- * InlineResponse2005 Class Doc Comment
+ * RecipientPayoutMethodsNotSet Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,20 +53,20 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2005 implements ArrayAccess
+class RecipientPayoutMethodsNotSet implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_5';
+    protected static $swaggerModelName = 'RecipientPayoutMethodsNotSet';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\RecipientLog[]'
+        'method' => 'string'
     );
 
     public static function swaggerTypes()
@@ -79,7 +79,7 @@ class InlineResponse2005 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records'
+        'method' => 'method'
     );
 
     public static function attributeMap()
@@ -92,7 +92,7 @@ class InlineResponse2005 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords'
+        'method' => 'setMethod'
     );
 
     public static function setters()
@@ -105,7 +105,7 @@ class InlineResponse2005 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords'
+        'method' => 'getMethod'
     );
 
     public static function getters()
@@ -129,7 +129,7 @@ class InlineResponse2005 implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
     }
 
     /**
@@ -156,22 +156,22 @@ class InlineResponse2005 implements ArrayAccess
 
 
     /**
-     * Gets records
-     * @return \PaymentRails\Client\Model\RecipientLog[]
+     * Gets method
+     * @return string
      */
-    public function getRecords()
+    public function getMethod()
     {
-        return $this->container['records'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets records
-     * @param \PaymentRails\Client\Model\RecipientLog[] $records
+     * Sets method
+     * @param string $method
      * @return $this
      */
-    public function setRecords($records)
+    public function setMethod($method)
     {
-        $this->container['records'] = $records;
+        $this->container['method'] = $method;
 
         return $this;
     }

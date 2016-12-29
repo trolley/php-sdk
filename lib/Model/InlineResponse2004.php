@@ -66,7 +66,7 @@ class InlineResponse2004 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\RecipientLog[]'
+        'records' => '\PaymentRails\Client\Model\RecipientCompliance[]'
     );
 
     public static function swaggerTypes()
@@ -157,7 +157,7 @@ class InlineResponse2004 implements ArrayAccess
 
     /**
      * Gets records
-     * @return \PaymentRails\Client\Model\RecipientLog[]
+     * @return \PaymentRails\Client\Model\RecipientCompliance[]
      */
     public function getRecords()
     {
@@ -166,7 +166,7 @@ class InlineResponse2004 implements ArrayAccess
 
     /**
      * Sets records
-     * @param \PaymentRails\Client\Model\RecipientLog[] $records
+     * @param \PaymentRails\Client\Model\RecipientCompliance[] $records
      * @return $this
      */
     public function setRecords($records)

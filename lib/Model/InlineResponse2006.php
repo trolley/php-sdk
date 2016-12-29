@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2005
+ * InlineResponse2006
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace PaymentRails\Client\Model;
 use \ArrayAccess;
 
 /**
- * InlineResponse2005 Class Doc Comment
+ * InlineResponse2006 Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,20 +53,21 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class InlineResponse2005 implements ArrayAccess
+class InlineResponse2006 implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'inline_response_200_5';
+    protected static $swaggerModelName = 'inline_response_200_6';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\RecipientLog[]'
+        'records' => '\PaymentRails\Client\Model\RecipientPayment[]',
+        'meta' => '\PaymentRails\Client\Model\MetaQuery'
     );
 
     public static function swaggerTypes()
@@ -79,7 +80,8 @@ class InlineResponse2005 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records'
+        'records' => 'records',
+        'meta' => 'meta'
     );
 
     public static function attributeMap()
@@ -92,7 +94,8 @@ class InlineResponse2005 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords'
+        'records' => 'setRecords',
+        'meta' => 'setMeta'
     );
 
     public static function setters()
@@ -105,7 +108,8 @@ class InlineResponse2005 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords'
+        'records' => 'getRecords',
+        'meta' => 'getMeta'
     );
 
     public static function getters()
@@ -130,6 +134,7 @@ class InlineResponse2005 implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['records'] = isset($data['records']) ? $data['records'] : null;
+        $this->container['meta'] = isset($data['meta']) ? $data['meta'] : null;
     }
 
     /**
@@ -157,7 +162,7 @@ class InlineResponse2005 implements ArrayAccess
 
     /**
      * Gets records
-     * @return \PaymentRails\Client\Model\RecipientLog[]
+     * @return \PaymentRails\Client\Model\RecipientPayment[]
      */
     public function getRecords()
     {
@@ -166,12 +171,33 @@ class InlineResponse2005 implements ArrayAccess
 
     /**
      * Sets records
-     * @param \PaymentRails\Client\Model\RecipientLog[] $records
+     * @param \PaymentRails\Client\Model\RecipientPayment[] $records
      * @return $this
      */
     public function setRecords($records)
     {
         $this->container['records'] = $records;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     * @return \PaymentRails\Client\Model\MetaQuery
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     * @param \PaymentRails\Client\Model\MetaQuery $meta
+     * @return $this
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
 
         return $this;
     }

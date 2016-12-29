@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **createRecipient**
-> \PaymentRails\Client\Model\Recipient createRecipient($body)
+> \PaymentRails\Client\Model\InlineResponse2003 createRecipient($body)
 
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\Recipient**](../Model/Recipient.md)
+[**\PaymentRails\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
 
 ### Authorization
 

@@ -66,7 +66,8 @@ class InlineResponse2003 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'records' => '\PaymentRails\Client\Model\RecipientCompliance[]'
+        'message' => 'string',
+        'data' => '\PaymentRails\Client\Model\Recipient'
     );
 
     public static function swaggerTypes()
@@ -79,7 +80,8 @@ class InlineResponse2003 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'records' => 'records'
+        'message' => 'message',
+        'data' => 'data'
     );
 
     public static function attributeMap()
@@ -92,7 +94,8 @@ class InlineResponse2003 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'records' => 'setRecords'
+        'message' => 'setMessage',
+        'data' => 'setData'
     );
 
     public static function setters()
@@ -105,7 +108,8 @@ class InlineResponse2003 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'records' => 'getRecords'
+        'message' => 'getMessage',
+        'data' => 'getData'
     );
 
     public static function getters()
@@ -129,7 +133,8 @@ class InlineResponse2003 implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['records'] = isset($data['records']) ? $data['records'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -156,22 +161,43 @@ class InlineResponse2003 implements ArrayAccess
 
 
     /**
-     * Gets records
-     * @return \PaymentRails\Client\Model\RecipientCompliance[]
+     * Gets message
+     * @return string
      */
-    public function getRecords()
+    public function getMessage()
     {
-        return $this->container['records'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets records
-     * @param \PaymentRails\Client\Model\RecipientCompliance[] $records
+     * Sets message
+     * @param string $message
      * @return $this
      */
-    public function setRecords($records)
+    public function setMessage($message)
     {
-        $this->container['records'] = $records;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     * @return \PaymentRails\Client\Model\Recipient
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     * @param \PaymentRails\Client\Model\Recipient $data
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

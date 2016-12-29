@@ -259,7 +259,7 @@ class BalancesApi
      *
      * 
      *
-     * @return \PaymentRails\Client\Model\Balance[]
+     * @return map[string,\PaymentRails\Client\Model\Balance[]]
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryBalances()
@@ -273,7 +273,7 @@ class BalancesApi
      *
      * 
      *
-     * @return Array of \PaymentRails\Client\Model\Balance[], HTTP status code, HTTP response headers (array of strings)
+     * @return Array of map[string,\PaymentRails\Client\Model\Balance[]], HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryBalancesWithHttpInfo()
@@ -313,15 +313,15 @@ class BalancesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\Balance[]',
+                'map[string,\PaymentRails\Client\Model\Balance[]]',
                 '/profile/balances'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Balance[]', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, 'map[string,\PaymentRails\Client\Model\Balance[]]', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Balance[]', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'map[string,\PaymentRails\Client\Model\Balance[]]', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

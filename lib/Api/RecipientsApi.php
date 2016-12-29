@@ -108,7 +108,7 @@ class RecipientsApi
      * 
      *
      * @param \PaymentRails\Client\Model\RecipientPost $body  (optional)
-     * @return \PaymentRails\Client\Model\Recipient
+     * @return \PaymentRails\Client\Model\InlineResponse2003
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function createRecipient($body = null)
@@ -123,7 +123,7 @@ class RecipientsApi
      * 
      *
      * @param \PaymentRails\Client\Model\RecipientPost $body  (optional)
-     * @return Array of \PaymentRails\Client\Model\Recipient, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function createRecipientWithHttpInfo($body = null)
@@ -168,15 +168,15 @@ class RecipientsApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\Recipient',
+                '\PaymentRails\Client\Model\InlineResponse2003',
                 '/recipients'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\Recipient', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\Recipient', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2003', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

@@ -947,7 +947,7 @@ class RecipientApi
      * 
      *
      * @param string $recipient_id  (required)
-     * @return \PaymentRails\Client\Model\InlineResponse2003
+     * @return \PaymentRails\Client\Model\InlineResponse2004
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientComplianceHistory($recipient_id)
@@ -962,7 +962,7 @@ class RecipientApi
      * 
      *
      * @param string $recipient_id  (required)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientComplianceHistoryWithHttpInfo($recipient_id)
@@ -1014,15 +1014,15 @@ class RecipientApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse2003',
+                '\PaymentRails\Client\Model\InlineResponse2004',
                 '/recipients/{recipientId}/compliance'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2003', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2003', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2004', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1037,7 +1037,7 @@ class RecipientApi
      * 
      *
      * @param string $recipient_id R-XXXXXXXXXXXXXX (required)
-     * @return \PaymentRails\Client\Model\InlineResponse2004
+     * @return \PaymentRails\Client\Model\InlineResponse2005
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientLogHistory($recipient_id)
@@ -1052,7 +1052,7 @@ class RecipientApi
      * 
      *
      * @param string $recipient_id R-XXXXXXXXXXXXXX (required)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientLogHistoryWithHttpInfo($recipient_id)
@@ -1104,15 +1104,15 @@ class RecipientApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse2004',
+                '\PaymentRails\Client\Model\InlineResponse2005',
                 '/recipients/{recipientId}/logs'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2004', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2004', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2005', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -1134,7 +1134,7 @@ class RecipientApi
      * @param string $end_date filter recipient payment creation date to date (optional)
      * @param string $source_currency filter recipient payments by source currency, 3 letters ISO code (optional)
      * @param string $search search payments using key words, payment ids, names (optional)
-     * @return \PaymentRails\Client\Model\InlineResponse2005
+     * @return \PaymentRails\Client\Model\InlineResponse2006
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientPaymentHistory($recipient_id, $page = null, $page_size = null, $status = null, $start_date = null, $end_date = null, $source_currency = null, $search = null)
@@ -1156,7 +1156,7 @@ class RecipientApi
      * @param string $end_date filter recipient payment creation date to date (optional)
      * @param string $source_currency filter recipient payments by source currency, 3 letters ISO code (optional)
      * @param string $search search payments using key words, payment ids, names (optional)
-     * @return Array of \PaymentRails\Client\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \PaymentRails\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      * @throws \PaymentRails\Client\ApiException on non-2xx response
      */
     public function queryRecipientPaymentHistoryWithHttpInfo($recipient_id, $page = null, $page_size = null, $status = null, $start_date = null, $end_date = null, $source_currency = null, $search = null)
@@ -1236,15 +1236,15 @@ class RecipientApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\PaymentRails\Client\Model\InlineResponse2005',
+                '\PaymentRails\Client\Model\InlineResponse2006',
                 '/recipients/{recipientId}/payments'
             );
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2005', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\PaymentRails\Client\Model\InlineResponse2006', $httpHeader), $statusCode, $httpHeader);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2005', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\PaymentRails\Client\Model\InlineResponse2006', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

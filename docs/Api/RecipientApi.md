@@ -471,7 +471,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipientComplianceHistory**
-> \PaymentRails\Client\Model\InlineResponse2003 queryRecipientComplianceHistory($recipient_id)
+> \PaymentRails\Client\Model\InlineResponse2004 queryRecipientComplianceHistory($recipient_id)
 
 
 
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\PaymentRails\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
 
 ### Authorization
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipientLogHistory**
-> \PaymentRails\Client\Model\InlineResponse2004 queryRecipientLogHistory($recipient_id)
+> \PaymentRails\Client\Model\InlineResponse2005 queryRecipientLogHistory($recipient_id)
 
 
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\PaymentRails\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 
@@ -567,7 +567,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryRecipientPaymentHistory**
-> \PaymentRails\Client\Model\InlineResponse2005 queryRecipientPaymentHistory($recipient_id, $page, $page_size, $status, $start_date, $end_date, $source_currency, $search)
+> \PaymentRails\Client\Model\InlineResponse2006 queryRecipientPaymentHistory($recipient_id, $page, $page_size, $status, $start_date, $end_date, $source_currency, $search)
 
 
 
@@ -615,7 +615,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\PaymentRails\Client\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\PaymentRails\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 

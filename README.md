@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse2003](docs/Model/InlineResponse2003.md)
  - [InlineResponse2004](docs/Model/InlineResponse2004.md)
  - [InlineResponse2005](docs/Model/InlineResponse2005.md)
+ - [InlineResponse2006](docs/Model/InlineResponse2006.md)
  - [MetaQuery](docs/Model/MetaQuery.md)
  - [PaymentBatch](docs/Model/PaymentBatch.md)
  - [PaymentComplianceStatus](docs/Model/PaymentComplianceStatus.md)
