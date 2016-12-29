@@ -1,6 +1,6 @@
 # PaymentRails\Client\UtilsApi
 
-All URIs are relative to *http://api.railz.io/v1*
+All URIs are relative to *https://api.paymentrails.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
