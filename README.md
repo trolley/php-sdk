@@ -28,7 +28,7 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
     }
   ],
   "require": {
-    "PaymentRails/php-sdk": "*@staging"
+    "PaymentRails/php-sdk": "*"
   }
 }
 ```
