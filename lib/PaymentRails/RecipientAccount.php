@@ -1,0 +1,155 @@
+<?php
+namespace PaymentRails;
+
+/**
+ * PaymentRails RecipientAccount module
+ * PHP Version 5
+ * Creates and manages PaymentRails RecipientsAccounts
+ *
+ * @package   PaymentRails
+ *
+ */
+class RecipientAccount extends Base
+{
+    /**
+     * @access protected
+     * @var array registry of customer data
+     */
+    protected $_attributes = [
+        "id" => "",
+        "primary" => "",
+        "currency" => "",
+        "recipientAccountId" => "",
+        "routeType" => "",
+        "recipientFees" => "",
+
+        "emailAddress" => "",
+
+        "country" => "",
+        "type" => "",
+        "iban" => "",
+        "accountNum" => "",
+        "accountHolderName" => "",
+        "swiftBic" => "",
+        "branchId" => "",
+        "bankId" => "",
+        "bankName" => "",
+        "bankAddress" => "",
+        "bankCity" => "",
+        "bankRegionCode" => "",
+        "bankPostalCode" => "",
+    ];
+
+    /**
+     * Get all accounts for a given recipient ID
+     *
+     * @param string $accountId
+     * @throws Exception\NotFound
+     * @return Iterator of RecipientAccount[]
+     */
+    public static function all($recipientId)
+    {
+        return Configuration::gateway()->recipientAccount()->all($recipientId);
+    }
+
+    /**
+     * Get a single accountId
+     *
+     * @param string $recipientId
+     * @param string $accountId
+     * @throws Exception\NotFound
+     * @return RecipientAccount
+     */
+    public static function find($recipientId, $accountId)
+    {
+        return Configuration::gateway()->recipientAccount()->find($recipientId, $accountId);
+    }
+
+    /**
+     * Create a new recipient account
+     * @param string $accountId
+     * @param mixed $attrib
+     * @return RecipientAccount
+     */
+    public static function create($recipientId, $attrib) {
+        return Configuration::gateway()->recipientAccount()->create($recipientId, $attrib);
+    }
+
+    /**
+     * Create a new recipient account for a given recipient
+     *
+     * @param string $recipientId
+     * @param mixed $attrib
+     */
+    public static function update($recipientId, $accountId, $attrib) {
+        return Configuration::gateway()->recipientAccount()->update($recipientId, $accountId, $attrib);
+    }
+
+    /**
+     * Delete a new recipient account
+     *
+     * @param string $accountId
+     * @throws Exception\NotFound
+     */
+    public static function delete($recipientId, $accountId) {
+        return Configuration::gateway()->recipientAccount()->delete($recipientId, $accountId);
+    }
+
+    /**
+     * sets instance properties from an array of values
+     *
+     * @ignore
+     * @access protected
+     * @param array $transactionAttribs array of transaction data
+     * @return void
+     */
+    protected function _initialize($attributes) {
+        $fields = [
+            "id",
+            "primary",
+            "currency",
+            "recipientAccountId",
+            "routeType",
+            "recipientFees",
+
+            "emailAddress",
+
+            "country",
+            "type",
+            "iban",
+            "accountNum",
+            "accountHolderName",
+            "swiftBic",
+            "branchId",
+            "bankId",
+            "bankName",
+            "bankAddress",
+            "bankCity",
+            "bankRegionCode",
+            "bankPostalCode",
+        ];
+
+        foreach ($fields as $field) {
+            if (isset($attributes[$field])) {
+                $this->_set($field, $attributes[$field]);
+            }
+        }
+    }
+
+
+   /**
+     *  factory method: returns an instance of Transaction
+     *  to the requesting method, with populated properties
+     *
+     * @ignore
+     * @return Transaction
+     */
+    public static function factory($attributes)
+    {
+        $instance = new self();
+        $instance->_initialize($attributes);
+        return $instance;
+    }
+}
+
+class_alias('PaymentRails\RecipientAccount', 'PaymentRails_RecipientAccount');

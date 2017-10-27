@@ -1,37 +1,39 @@
 {
     "name": "paymentrails/php",
-    "description": "",
+    "type": "library",
+    "description": "Payment Rails PHP Client Library",
     "keywords": [
         "PaymentRails",
         "PaymentRailsApi",
-        "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "https://bitbucket.org/paymentrails/php",
-    "license": "Apache v2",
+    "homepage": "https://github.com/PaymentRails/php-sdk",
+    "license": "MIT",
     "authors": [
         {
-            "name": "PaymentRails and contributors",
-            "homepage": "https://paymentrails.comn"
+            "name": "PaymentRails",
+            "homepage": "https://www.paymentrails.com"
         }
     ],
     "require": {
         "php": ">=5.4",
         "ext-curl": "*",
         "ext-json": "*",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "ext-openssl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.8",
-        "satooshi/php-coveralls": "~1.0",
-        "squizlabs/php_codesniffer": "~2.6"
+        "phpunit/phpunit": "5.7.*",
+        "ramsey/uuid": "*"
     },
     "autoload": {
-        "psr-4": { "PaymentRails\\Client\\" : "lib/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "PaymentRails\\Client\\" : "test/" }
+        "psr-0": {
+            "PaymentRails": "lib/"
+        },
+        "psr-4": {
+            "PaymentRails\\": "lib/PaymentRails"
+        }
     }
 }
