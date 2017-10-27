@@ -2,69 +2,63 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails Recipient module
+ * PaymentRails Payment Module
  * PHP Version 5
- * Creates and manages PaymentRails Recipients
+ * Creates and manages Payments
  *
  * @package   PaymentRails
  *
  */
-class Recipient extends Base
+class Payment extends Base
 {
     /**
      * @access protected
      * @var array registry of customer data
      */
     protected $_attributes = [
-        "id" => "",
-        "routeType" => "",
-        "estimatedFees" => "",
-        "referenceId" => "",
-        "email" => "",
-        "name" => "",
-        "lastName" => "",
-        "firstName" => "",
-        "type" => "",
-        "taxType" => "",
-        "status" => "",
-        "language" => "",
-        "complianceStatus" => "",
-        "dob" => "",
-        "passport" => "",
-        "updatedAt" => "",
-        "createdAt" => "",
-        "gravatarUrl" => "",
-        "governmentId" => "",
-        "ssn" => "",
-        "primaryCurrency" => "",
-        "merchantId" => "",
-        "payoutMethod" => "",
-
-        "compliance" => "",
-        "accounts" => "",
-        "address" => "",
+        'id',
+        'status',
+        'isSupplyPayment',
+        'returnedAmount',
+        'sourceAmount',
+        'sourceCurrency',
+        'targetAmount',
+        'targetCurrency',
+        'exchangeRate',
+        'fees',
+        'recipientFees',
+        'fxRate',
+        'memo',
+        'externalId',
+        'processedAt',
+        'createdAt',
+        'updatedAt',
+        'merchantFees',
+        'compliance',
+        'payoutMethod',
     ];
 
     /**
-     * Return all of the recipients
+     * Return all of the Payments
      *
      * @throws Exception\NotFound
      * @return Iterator of Recipient[]
      */
-    public static function all()
+    public static function all($params)
     {
-        return Configuration::gateway()->recipient()->search([]);
+        return Configuration::gateway()->payments()->search([]);
     }
 
     /**
-     *
+     * Search payments
+     * 
      * @param mixed $params
      * @throws Exception\NotFound
      * @return Iterator of Recipient[]
      */
     public static function search($params)
     {
-        return Configuration::gateway()->recipient()->search($params);
+        return Configuration::gateway()->payments()->search($params);
     }
 
     /**
@@ -109,34 +103,26 @@ class Recipient extends Base
      */
     protected function _initialize($attributes) {
         $fields = [
-            "id",
-            "routeType",
-            "estimatedFees",
-            "id",
-            "referenceId",
-            "email",
-            "name",
-            "lastName",
-            "firstName",
-            "type",
-            "taxType",
-            "status",
-            "language",
-            "complianceStatus",
-            "dob",
-            "passport",
-            "updatedAt",
-            "createdAt",
-            "gravatarUrl",
-            "governmentId",
-            "ssn",
-            "primaryCurrency",
-            "merchantId",
-            "payoutMethod",
-
-            "compliance",       // TODO: Factory
-            "accounts",         // TODO: Factory
-            "address",          // TODO: Factory
+            'id',
+            'status',
+            'isSupplyPayment',
+            'returnedAmount',
+            'sourceAmount',
+            'sourceCurrency',
+            'targetAmount',
+            'targetCurrency',
+            'exchangeRate',
+            'fees',
+            'recipientFees',
+            'fxRate',
+            'memo',
+            'externalId',
+            'processedAt',
+            'createdAt',
+            'updatedAt',
+            'merchantFees',
+            'compliance',
+            'payoutMethod',
         ];
 
         foreach ($fields as $field) {
@@ -162,4 +148,4 @@ class Recipient extends Base
     }
 }
 
-class_alias('PaymentRails\Recipient', 'PaymentRails_Recipient');
+class_alias('PaymentRails\Payment', 'PaymentRails_Payment');

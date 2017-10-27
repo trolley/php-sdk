@@ -45,7 +45,11 @@ class ResourceCollection implements Iterator
         $this->_records = $response["meta"]["records"];
         $this->_pager = $pager;
         $this->_index = 0;
-        $this->_maxPages = count($this->_items) === 0 ? 1 : $this->_records / count($this->_items);
+        if (isset($response["meta"]["pages"])) {
+            $this->_maxPages = $response["meta"]["pages"];
+        } else {
+            $this->_maxPages = count($this->_items) === 0 ? 1 : $this->_records / count($this->_items);
+        }
     }
 
     /**
@@ -93,7 +97,7 @@ class ResourceCollection implements Iterator
     public function valid()
     {
         if ($this->_index >= count($this->_items)) {
-            if ($this->_page === $this->_maxPages) {
+            if ($this->_page + 1 >= $this->_maxPages) {
                 return false;
             }
             $this->_getNextPage();

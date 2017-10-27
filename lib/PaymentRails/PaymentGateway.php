@@ -4,19 +4,19 @@ namespace PaymentRails;
 use InvalidArgumentException;
 
 /**
- * PaymentRails Recipient processor
+ * PaymentRails Payment processor
  * Creates and manages transactions
  *
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Recipient, see {@link http://docs.paymentrails.com/#recipients}
+ * For more detailed information on Payment, see {@link http://docs.paymentrails.com/#create-a-payment}
  *
  * @package    PaymentRails
  * @category   Resources
  */
 
-class RecipientGateway
+class PaymentGateway
 {
     private $_gateway;
     private $_config;
@@ -87,8 +87,9 @@ class RecipientGateway
 
     public function update($id, $attrib) {
         $response = $this->_http->patch('/v1/recipients/' . $id, $attrib);
+        print_r($response);
         if ($response['ok']) {
-            return true;
+            return Recipient::factory($response['recipient']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -102,6 +103,36 @@ class RecipientGateway
             throw new Exception\DownForMaintenance();
         }
     }
+
+
+    /**
+     * generic method for validating incoming gateway responses
+     *
+     * creates a new Transaction object and encapsulates
+     * it inside a Result\Successful object, or
+     * encapsulates a Errors object inside a Result\Error
+     * alternatively, throws an Unexpected exception if the response is invalid.
+     *
+     * @ignore
+     * @param array $response gateway response values
+     * @return Result\Successful|Result\Error
+     * @throws Exception\Unexpected
+     */
+    private function _verifyGatewayResponse($response)
+    {
+        if (isset($response['transaction'])) {
+            // return a populated instance of Transaction
+            return new Result\Successful(
+                    Transaction::factory($response['transaction'])
+            );
+        } else if (isset($response['apiErrorResponse'])) {
+            return new Result\Error($response['apiErrorResponse']);
+        } else {
+            throw new Exception\Unexpected(
+            "Expected transaction or apiErrorResponse"
+            );
+        }
+    }
 }
 
-class_alias('PaymentRails\RecipientGateway', 'PaymentRails_RecipientGateway');
+class_alias('PaymentRails\PaymentGateway', 'PaymentRails_PaymentGateway');

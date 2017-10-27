@@ -4,19 +4,18 @@ namespace PaymentRails;
 use InvalidArgumentException;
 
 /**
- * PaymentRails Recipient processor
- * Creates and manages transactions
+ * PaymentRails RecipientAccount processor
+ * Creates and manages bank accounts
  *
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Recipient, see {@link http://docs.paymentrails.com/#recipients}
+ * For more detailed information on RecipientAccounts, see {@link http://docs.paymentrails.com/#recipients-accounts}
  *
  * @package    PaymentRails
  * @category   Resources
  */
-
-class RecipientGateway
+class RecipientAccountGateway
 {
     private $_gateway;
     private $_config;
@@ -42,22 +41,14 @@ class RecipientGateway
      * @return ResourceCollection
      * @throws InvalidArgumentException
      */
-    public function search($query)
+    public function all($recipientId)
     {
-        $response = $this->_http->get('/v1/recipients', $query);
+        $response = $this->_http->get('/v1/recipients/' . $recipientId . '/accounts');
 
         if ($response['ok']) {
-            $pager = [
-                'object' => $this,
-                'method' => 'search',
-                'methodArgs' => $query
-            ];
-
-            $items = array_map(function ($item) {
-                return Recipient::factory($item);
-            }, $response['recipients']);
-
-            return new ResourceCollection($response, $items, $pager);
+            return array_map(function ($item) {
+                return RecipientAccount::factory($item);
+            }, $response['accounts']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -66,37 +57,37 @@ class RecipientGateway
     /**
      * Fetch a recipient by ID
      */
-    public function find($id) {
-        $response = $this->_http->get('/v1/recipients/' . $id, null);
+    public function find($recipientId, $accountId) {
+        $response = $this->_http->get('/v1/recipients/' . $recipientId . '/accounts/' . $accountId);
 
         if ($response['ok']) {
-            return Recipient::factory($response['recipient']);
+            return RecipientAccount::factory($response['account']);
         } else {
             throw new Exception\DownForMaintenance();
         }
     }
 
-    public function create($attrib) {
-        $response = $this->_http->post('/v1/recipients', $attrib);
+    public function create($recipientId, $attrib) {
+        $response = $this->_http->post('/v1/recipients/' . $recipientId . '/accounts', $attrib);
         if ($response['ok']) {
-            return Recipient::factory($response['recipient']);
+            return RecipientAccount::factory($response['account']);
         } else {
             throw new Exception\DownForMaintenance();
         }
     }
 
-    public function update($id, $attrib) {
-        $response = $this->_http->patch('/v1/recipients/' . $id, $attrib);
+    public function update($recipientId, $accountId, $attrib) {
+        $response = $this->_http->patch('/v1/recipients/' . $recipientId . '/accounts/' . $accountId, $attrib);
         if ($response['ok']) {
-            return true;
+            return Recipient::factory($response['account']);
         } else {
             throw new Exception\DownForMaintenance();
         }
     }
 
-    public function delete($id) {
-        $response = $this->_http->delete('/v1/recipients/' . $id);
-        if ($response) {
+    public function delete($recipientId, $accountId) {
+        $response = $this->_http->delete('/v1/recipients/' . $recipientId . '/accounts/' . $accountId);
+        if ($response['ok']) {
             return true;
         } else {
             throw new Exception\DownForMaintenance();
@@ -104,4 +95,4 @@ class RecipientGateway
     }
 }
 
-class_alias('PaymentRails\RecipientGateway', 'PaymentRails_RecipientGateway');
+class_alias('PaymentRails\RecipientAccountGateway', 'PaymentRails_RecipientAccountGateway');

@@ -23,12 +23,35 @@ class Gateway
     }
 
     /**
-     *
      * @return RecipientGateway
      */
     public function recipient()
     {
         return new RecipientGateway($this);
+    }
+
+    /**
+     * @return RecipientGateway
+     */
+    public function recipientAccount()
+    {
+        return new RecipientAccountGateway($this);
+    }
+
+    /**
+     * @return RecipientGateway
+     */
+    public function batch()
+    {
+        return new BatchGateway($this);
+    }
+
+    /**
+     * @return RecipientGateway
+     */
+    public function payment()
+    {
+        return new PaymentGateway($this);
     }
 }
 

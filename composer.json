@@ -25,14 +25,15 @@
         "ext-openssl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "5.7.*",
+        "ramsey/uuid": "*"
     },
     "autoload": {
         "psr-0": {
             "PaymentRails": "lib/"
         },
         "psr-4": {
-            "PaymentRails\\": "lib/Braintree"
+            "PaymentRails\\": "lib/PaymentRails"
         }
     }
 }

@@ -78,13 +78,13 @@ class Http
         $response = $this->_doRequest('DELETE', $this->_encodeQuery($path, $query), $params);
         $responseCode = $response['status'];
         if ($responseCode === 200 || $responseCode === 204) {
-            return true;
+            return json_decode($response['body'], true);
         } else {
             $this->_throwStatusCodeException($response['status']);
         }
     }
 
-    public function get($path, $query)
+    public function get($path, $query = null)
     {
         $response = $this->_doRequest('GET', $this->_encodeQuery($path, $query));
         if ($response['status'] === 200) {
@@ -96,7 +96,7 @@ class Http
 
     public function post($path, $params = null)
     {
-        $response = $this->_doRequest('POST', $path, json_encode($params));
+        $response = $this->_doRequest('POST', $path, $params ? json_encode($params) : null);
         $responseCode = $response['status'];
         if ($responseCode === 200 || $responseCode === 201) {
             return json_decode($response['body'], true);
@@ -107,7 +107,7 @@ class Http
 
     public function patch($path, $params = null)
     {
-        $response = $this->_doRequest('PATCH', $path, json_encode($params));
+        $response = $this->_doRequest('PATCH', $path, $params ? json_encode($params) : null);
         $responseCode = $response['status'];
         if ($responseCode === 200 || $responseCode === 201 || $responseCode === 422 || $responseCode == 400) {
             return json_decode($response['body'], true);
@@ -123,33 +123,9 @@ class Http
         ];
     }
 
-    private function _getAuthorization()
-    {
-        if ($this->_useClientCredentials) {
-            return [
-                'user' => $this->_config->getClientId(),
-                'password' => $this->_config->getClientSecret(),
-            ];
-        } else if ($this->_config->isAccessToken()) {
-            return [
-                'token' => $this->_config->getAccessToken(),
-            ];
-        } else {
-            return [
-                'user' => $this->_config->getPublicKey(),
-                'password' => $this->_config->getPrivateKey(),
-            ];
-        }
-    }
-
-    public function useClientCredentials()
-    {
-        $this->_useClientCredentials = true;
-    }
-
     private function _doRequest($httpVerb, $path, $requestBody = null)
     {
-        return $this->_doUrlRequest($httpVerb, $this->_config->baseUrl() . $path, $path, $requestBody, $file);
+        return $this->_doUrlRequest($httpVerb, $this->_config->baseUrl() . $path, $path, $requestBody);
     }
 
     public function _doUrlRequest($httpVerb, $url, $path, $requestBody = null)
