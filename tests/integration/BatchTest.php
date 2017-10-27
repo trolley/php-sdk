@@ -122,7 +122,25 @@ class BatchTest extends Setup {
         $this->assertNotNull($batch);
         $this->assertNotNull($batch->id);
 
-        $payments = PaymentRails\Batch::payments($batch->id);
+        $recipient = $this->createRecipient();
+
+        $payment = PaymentRails\Batch::createPayment($batch->id, [
+            "sourceAmount" => "10.00",
+            "recipient" => [ "id" => $recipient->id ]
+        ]);
+
+        $this->assertNotNull($payment);
+        $this->assertNotNull($payment->id);
+
+        $response = PaymentRails\Batch::updatePayment($batch->id, $payment->id, [
+            "sourceAmount" => "20.00",
+        ]);
+
+        $this->assertTrue($response);
+
+        $response = PaymentRails\Batch::deletePayment($batch->id, $payment->id);
+
+        $this->assertTrue($response);
     }
 
     public function testProcessing()

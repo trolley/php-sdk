@@ -114,6 +114,59 @@ class Batch extends Base
     }
 
     /**
+     * Add a single payment to a batch
+     * 
+     * @param string $batchId
+     * @param mixed $payment
+     * @throws Exception\NotFound
+     * @return Payment
+     */
+    public static function createPayment($batchId, $payment)
+    {
+        return Configuration::gateway()->batch()->createPayment($batchId, $payment);
+    }
+
+    /**
+     * Add a single payment to a batch
+     * 
+     * @param string $batchId
+     * @param mixed $payment
+     * @throws Exception\NotFound
+     * @return Payment
+     */
+    public static function findPayment($batchId, $paymentId)
+    {
+        return Configuration::gateway()->batch()->findPayment($batchId, $paymentId);
+    }
+
+    /**
+     * Add a update payment to a batch
+     * 
+     * @param string $batchId
+     * @param string $paymentId
+     * @param mixed $params
+     * @throws Exception\NotFound
+     * @return Payment
+     */
+    public static function updatePayment($batchId, $paymentId, $params)
+    {
+        return Configuration::gateway()->batch()->updatePayment($batchId, $paymentId, $params);
+    }
+
+    /**
+     * Delete a payment from a batch
+     * 
+     * @param string $batchId
+     * @param string $paymentId
+     * @throws Exception\NotFound
+     * @return Payment
+     */
+    public static function deletePayment($batchId, $paymentId)
+    {
+        return Configuration::gateway()->batch()->deletePayment($batchId, $paymentId);
+    }
+
+    /**
      * Generate the Quote for this batch
      *
      * @param string $batchId

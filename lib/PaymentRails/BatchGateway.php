@@ -87,8 +87,8 @@ class BatchGateway
         }
     }
 
-    public function update($id, $attrib) {
-        $response = $this->_http->patch('/v1/batches/' . $id, $attrib);
+    public function update($batchId, $attrib) {
+        $response = $this->_http->patch('/v1/batches/' . $batchId, $attrib);
         if ($response['ok']) {
             return true;
         } else {
@@ -96,8 +96,8 @@ class BatchGateway
         }
     }
 
-    public function delete($id) {
-        $response = $this->_http->delete('/v1/batches/' . $id);
+    public function delete($batchId) {
+        $response = $this->_http->delete('/v1/batches/' . $batchId);
         if ($response['ok']) {
             return true;
         } else {
@@ -105,8 +105,8 @@ class BatchGateway
         }
     }
 
-    public function summary($id) {
-        $response = $this->_http->get('/v1/batches/' . $id . '/summary');
+    public function summary($batchId) {
+        $response = $this->_http->get('/v1/batches/' . $batchId . '/summary');
         if ($response['ok']) {
             return BatchSummary::factory($response['batchSummary']);
         } else {
@@ -114,8 +114,8 @@ class BatchGateway
         }
     }
 
-    public function generateQuote($id) {
-        $response = $this->_http->post('/v1/batches/' . $id . '/generate-quote');
+    public function generateQuote($batchId) {
+        $response = $this->_http->post('/v1/batches/' . $batchId . '/generate-quote');
         if ($response['ok']) {
             return true;
         } else {
@@ -123,8 +123,44 @@ class BatchGateway
         }
     }
 
-    public function startProcessing($id) {
-        $response = $this->_http->post('/v1/batches/' . $id . '/start-processing');
+    public function startProcessing($batchId) {
+        $response = $this->_http->post('/v1/batches/' . $batchId . '/start-processing');
+        if ($response['ok']) {
+            return true;
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function createPayment($batchId, $payment) {
+        $response = $this->_http->post('/v1/batches/' . $batchId . '/payments', $payment);
+        if ($response['ok']) {
+            return Payment::factory($response['payment']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function findPayment($batchId, $paymentId) {
+        $response = $this->_http->get('/v1/batches/' . $batchId . '/payments/' . $paymentId);
+        if ($response['ok']) {
+            return Payment::factory($response['payment']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function updatePayment($batchId, $paymentId, $params) {
+        $response = $this->_http->patch('/v1/batches/' . $batchId . '/payments/' . $paymentId, $params);
+        if ($response['ok']) {
+            return true;
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function deletePayment($batchId, $paymentId) {
+        $response = $this->_http->delete('/v1/batches/' . $batchId . '/payments/' . $paymentId);
         if ($response['ok']) {
             return true;
         } else {
