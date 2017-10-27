@@ -1,5 +1,5 @@
 {
-    "name": "paymentrails/php",
+    "name": "paymentrails/php-sdk",
     "type": "library",
     "description": "Payment Rails PHP Client Library",
     "keywords": [
