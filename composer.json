@@ -4,7 +4,7 @@
     "description": "Payment Rails PHP Client Library",
     "homepage": "https://github.com/PaymentRails/php-sdk",
     "keywords": [
-        "PaymentRails",
+        "PaymentRails"
     ],
     "license": "MIT",
     "authors": [
