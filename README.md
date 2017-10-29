@@ -54,6 +54,7 @@ require_once 'vendor/autoload.php';
 use PaymentRails;
 
 // Configure API key authorization: merchantKey
+PaymentRails\Configuration::environment('production');
 PaymentRails\Configuration::publicKey(YOUR_PUBLIC_KEY);
 PaymentRails\Configuration::privateKey(YOUR_PRIVATE_KEY);
 
