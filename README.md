@@ -1,6 +1,6 @@
 # Payment Rails PHP Library
 
-[![Latest Stable Version](https://poser.pugx.org/paymentrails/php-sdk/v/stable.png)](https://packagist.org/packages/justinrainbow/json-schema)
+[![Latest Stable Version](https://poser.pugx.org/paymentrails/php-sdk/v/stable.png)](https://packagist.org/packages/paymentrails/php-sdk)
 
 The Payment Rails PHP library provides integration access to the Payment Rails API.
 
