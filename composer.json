@@ -2,14 +2,10 @@
     "name": "paymentrails/php-sdk",
     "type": "library",
     "description": "Payment Rails PHP Client Library",
+    "homepage": "https://github.com/PaymentRails/php-sdk",
     "keywords": [
         "PaymentRails",
-        "PaymentRailsApi",
-        "php",
-        "sdk",
-        "api"
     ],
-    "homepage": "https://github.com/PaymentRails/php-sdk",
     "license": "MIT",
     "authors": [
         {
