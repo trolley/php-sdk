@@ -60,7 +60,7 @@ PaymentRails\Configuration::privateKey(YOUR_PRIVATE_KEY);
 
 
 try {
-    $recipients = PaymentRails\Recipient::all()
+    $recipients = PaymentRails\Recipient::all();
 
     foreach ($recipients as $rcpt) {
       print_r($rcpt->id . "\n");
