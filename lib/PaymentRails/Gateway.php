@@ -49,7 +49,7 @@ class Gateway
     /**
      * @return RecipientGateway
      */
-    public function payment()
+    public function payments()
     {
         return new PaymentGateway($this);
     }

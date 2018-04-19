@@ -39,58 +39,26 @@ class Payment extends Base
     ];
 
     /**
-     * Return all of the Payments
+     * Return all of the Recipient Payments
      *
      * @throws Exception\NotFound
-     * @return Iterator of Recipient[]
+     * @return Iterator of Payment[]
      */
-    public static function all($params)
+    public static function all($id)
     {
-        return Configuration::gateway()->payments()->search([]);
+        return Configuration::gateway()->payments()->search($id, []);
     }
-
-    /**
-     * Search payments
-     * 
+	
+	/**
+	 * Returns searched Recipient payments.
+     *
      * @param mixed $params
      * @throws Exception\NotFound
-     * @return Iterator of Recipient[]
+     * @return Iterator of Payment[]
      */
-    public static function search($params)
+    public static function search($id, $params)
     {
-        return Configuration::gateway()->payments()->search($params);
-    }
-
-    /**
-     *
-     * @param int $id
-     * @throws Exception\NotFound
-     * @return Recipient
-     */
-    public static function find($id)
-    {
-        return Configuration::gateway()->recipient()->find($id);
-    }
-
-    /**
-     * Create a new recipient
-     */
-    public static function create($attrib) {
-        return Configuration::gateway()->recipient()->create($attrib);
-    }
-
-    /**
-     * Create a new recipient
-     */
-    public static function update($id, $attrib) {
-        return Configuration::gateway()->recipient()->update($id, $attrib);
-    }
-
-    /**
-     * Create a new recipient
-     */
-    public static function delete($id) {
-        return Configuration::gateway()->recipient()->delete($id);
+        return Configuration::gateway()->payments()->search($id, $params);
     }
 
     /**
