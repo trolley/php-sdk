@@ -391,16 +391,15 @@ class Configuration
         return !empty($this->_clientId);
     }
     /**
-     * returns the base pyamentrails gateway URL based on config values
+     * returns the base paymentrails gateway URL based on config values
      *
      * @access public
      * @param none
      * @return string pyamentrails gateway URL
      */
     public function baseUrl()
-    {
-		$baseUrl = $this->serverName();
-		return $baseUrl;
+    {		
+		return $this->serverName();
     }
 
     /**
