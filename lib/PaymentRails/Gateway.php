@@ -47,9 +47,9 @@ class Gateway
     }
 
     /**
-     * @return RecipientGateway
+     * @return PaymentGateway
      */
-    public function payment()
+    public function payments()
     {
         return new PaymentGateway($this);
     }

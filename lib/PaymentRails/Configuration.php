@@ -391,15 +391,15 @@ class Configuration
         return !empty($this->_clientId);
     }
     /**
-     * returns the base pyamentrails gateway URL based on config values
+     * returns the base paymentrails gateway URL based on config values
      *
      * @access public
      * @param none
      * @return string pyamentrails gateway URL
      */
     public function baseUrl()
-    {
-        return sprintf('%s://%s:%d', $this->protocol(), $this->serverName(), $this->portNumber());
+    {		
+		return $this->serverName();
     }
 
     /**
@@ -440,23 +440,22 @@ class Configuration
     {
         switch($this->_environment) {
          case 'production':
-             $serverName = 'api.paymentrails.com';
+             $serverName = 'https://api.paymentrails.com';
              break;
+	     case 'development':
          case 'qa':
-             $serverName = 'api.railz.io';
+             $serverName = 'http://api.railz.io';
              break;
          case 'sandbox':
-             $serverName = 'api.paymentrails.com';
-             break;
-         case 'development':
+             $serverName = 'https://api.sandbox.paymentrails.com';
+             break;         
          case 'integration':
-             $serverName = 'localhost';
+             $serverName = 'http://api.local.dev:3000';
              break;
          default:
-             $serverName = $this->_environment;
+             $serverName = 'https://api.paymentrails.com';
              break;
         }
-
         return $serverName;
     }
 
@@ -473,10 +472,10 @@ class Configuration
         switch($this->_environment) {
          case 'integration':
          case 'development':
+		 case 'qa':
              $ssl = false;
              break;
-         case 'production':
-         case 'qa':
+         case 'production':         
          case 'sandbox':
          default:
              $ssl = true;

@@ -29,8 +29,8 @@ class PaymentGateway
         $this->_config->assertHasAccessTokenOrKeys();
         $this->_http = new Http($gateway->config);
     }
-
-    /**
+	
+	/**
      * Returns a ResourceCollection of transactions matching the search query.
      *
      * If <b>query</b> is a string, the search will be a basic search.
@@ -42,9 +42,9 @@ class PaymentGateway
      * @return ResourceCollection
      * @throws InvalidArgumentException
      */
-    public function search($query)
+    public function search($id, $query)
     {
-        $response = $this->_http->get('/v1/recipients', $query);
+        $response = $this->_http->get('/v1/recipients/'.$id.'/payments', $query);
 
         if ($response['ok']) {
             $pager = [
@@ -54,56 +54,14 @@ class PaymentGateway
             ];
 
             $items = array_map(function ($item) {
-                return Recipient::factory($item);
-            }, $response['recipients']);
+                return Payment::factory($item);
+            }, $response['payments']);
 
             return new ResourceCollection($response, $items, $pager);
         } else {
             throw new Exception\DownForMaintenance();
         }
     }
-
-    /**
-     * Fetch a recipient by ID
-     */
-    public function find($id) {
-        $response = $this->_http->get('/v1/recipients/' . $id, null);
-
-        if ($response['ok']) {
-            return Recipient::factory($response['recipient']);
-        } else {
-            throw new Exception\DownForMaintenance();
-        }
-    }
-
-    public function create($attrib) {
-        $response = $this->_http->post('/v1/recipients', $attrib);
-        if ($response['ok']) {
-            return Recipient::factory($response['recipient']);
-        } else {
-            throw new Exception\DownForMaintenance();
-        }
-    }
-
-    public function update($id, $attrib) {
-        $response = $this->_http->patch('/v1/recipients/' . $id, $attrib);
-        print_r($response);
-        if ($response['ok']) {
-            return Recipient::factory($response['recipient']);
-        } else {
-            throw new Exception\DownForMaintenance();
-        }
-    }
-
-    public function delete($id) {
-        $response = $this->_http->delete('/v1/recipients/' . $id);
-        if ($response) {
-            return true;
-        } else {
-            throw new Exception\DownForMaintenance();
-        }
-    }
-
 
     /**
      * generic method for validating incoming gateway responses
