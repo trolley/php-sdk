@@ -47,7 +47,7 @@ class Gateway
     }
 
     /**
-     * @return RecipientGateway
+     * @return PaymentGateway
      */
     public function payments()
     {
