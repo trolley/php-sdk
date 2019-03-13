@@ -17,6 +17,8 @@ class Payment extends Base
      */
     protected $_attributes = [
         'id',
+        'methodDisplay',
+        'recipient',
         'status',
         'isSupplyPayment',
         'returnedAmount',
@@ -72,6 +74,8 @@ class Payment extends Base
     protected function _initialize($attributes) {
         $fields = [
             'id',
+            'methodDisplay',
+            'recipient',
             'status',
             'isSupplyPayment',
             'returnedAmount',
