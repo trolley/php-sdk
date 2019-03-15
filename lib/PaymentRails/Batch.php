@@ -108,9 +108,9 @@ class Batch extends Base
      * @throws Exception\NotFound
      * @return Interator Payments
      */
-    public static function payments($batchId)
+    public static function payments($batchId, $params = [])
     {
-        return Configuration::gateway()->batch()->payments($batchId);
+        return Configuration::gateway()->batch()->payments($batchId, $params);
     }
 
     /**
