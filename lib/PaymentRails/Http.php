@@ -43,20 +43,23 @@ class Http
      * @throws Exception multiple types depending on the error
      * @return void
      */
-    private function _throwStatusCodeException($statusCode, $message=null)
+    private function _throwStatusCodeException($response, $message=null)
     {
-        switch($statusCode) {
+        switch($response['status']) {
         case 400:
-            throw new Exception\Malformed();
+            // throw new Exception\Malformed();
+            throw new Exception\Standard($response['body']);
             break;
         case 401:
-            throw new Exception\Authentication();
+            // throw new Exception\Authentication();
+            throw new Exception\Standard($response['body']);
             break;
         case 403:
             throw new Exception\Authorization($message);
             break;
         case 404:
-            throw new Exception\NotFound();
+            // throw new Exception\NotFound();
+            throw new Exception\Standard($response['body']);
             break;
         case 429:
             throw new Exception\TooManyRequests();
@@ -80,7 +83,7 @@ class Http
         if ($responseCode === 200 || $responseCode === 204) {
             return json_decode($response['body'], true);
         } else {
-            $this->_throwStatusCodeException($response['status']);
+            $this->_throwStatusCodeException($response);
         }
     }
 
@@ -90,7 +93,7 @@ class Http
         if ($response['status'] === 200) {
             return json_decode($response['body'], true);
         } else {
-            $this->_throwStatusCodeException($response['status']);
+            $this->_throwStatusCodeException($response);
         }
     }
 
@@ -101,7 +104,7 @@ class Http
         if ($responseCode === 200 || $responseCode === 201) {
             return json_decode($response['body'], true);
         } else {
-            $this->_throwStatusCodeException($responseCode);
+            $this->_throwStatusCodeException($response);
         }
     }
 
@@ -112,7 +115,7 @@ class Http
         if ($responseCode === 200 || $responseCode === 201 || $responseCode === 422 || $responseCode == 400) {
             return json_decode($response['body'], true);
         } else {
-            $this->_throwStatusCodeException($responseCode);
+            $this->_throwStatusCodeException($response);
         }
     }
 

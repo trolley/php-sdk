@@ -168,17 +168,14 @@ class BatchGateway
         }
     }
 
-    public function payments($batchId, $page = 0) {
-        return $this->paymentsInternal([
-            "batchId" => $batchId,
-            "page" => $page,
-        ]);
+    public function payments($batchId, $params = []) {
+        return $this->paymentsInternal(
+            array_merge(['batchId' => $batchId], $params)
+        );
     }
 
     public function paymentsInternal($params) {
-        $response = $this->_http->get('/v1/batches/' . $params['batchId'] . '/payments', [
-            "page" => $params["page"],
-        ]);
+        $response = $this->_http->get('/v1/batches/' . $params['batchId'] . '/payments', $params);
         if ($response['ok']) {
             $pager = [
                 'object' => $this,
