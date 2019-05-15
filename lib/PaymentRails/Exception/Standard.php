@@ -19,7 +19,7 @@ class Standard extends Exception
       $message = "";
       foreach ($errors as $e) {
         if (isset($e->field)) {
-         $message = $message . $e->field . " " . $e->code . ": " . $e->message . "\n";
+          $message = $message . $e->field . " " . $e->code . ": " . $e->message . "\n";
         } else {
           $message = $message . $e->code . ": " . $e->message . "\n";
         }
