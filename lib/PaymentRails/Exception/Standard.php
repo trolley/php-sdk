@@ -18,7 +18,11 @@ class Standard extends Exception
       $errors = json_decode($errorBody)->errors;
       $message = "";
       foreach ($errors as $e) {
-        $message = $message . ($e->field ?? $e->code) . ": " . $e->message . "\n";
+        if (isset($e->field)) {
+          $message = $message . $e->field . " " . $e->code . ": " . $e->message . "\n";
+        } else {
+          $message = $message . $e->code . ": " . $e->message . "\n";
+        }
       }
       $this->message = $message;
   }
