@@ -71,7 +71,7 @@ class Http
             throw new Exception\DownForMaintenance();
             break;
         default:
-            throw new Exception\Unexpected('Unexpected HTTP_RESPONSE #' . $statusCode);
+            throw new Exception\Unexpected('Unexpected HTTP_RESPONSE #' . $response['status']);
             break;
         }
     }
