@@ -444,7 +444,7 @@ class Configuration
              break;
 	     case 'development':
          case 'qa':
-             $serverName = 'http://api.railz.io';
+             $serverName = 'https://api.railz.io';
              break;
          case 'sandbox':
              $serverName = 'https://api.sandbox.paymentrails.com';
