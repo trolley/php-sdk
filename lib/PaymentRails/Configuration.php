@@ -24,7 +24,7 @@ class Configuration
     private $_proxyType = null;
     private $_proxyUser = null;
     private $_proxyPassword = null;
-    private $_timeout = 60;
+    private $_timeout = 120;
     private $_sslVersion = null;
     private $_acceptGzipEncoding = true;
 

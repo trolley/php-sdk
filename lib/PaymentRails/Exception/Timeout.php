@@ -11,6 +11,11 @@ use PaymentRails\Exception;
  */
 class Timeout extends Exception
 {
+  // protected $errorBody;
 
+  public function __construct()
+  {
+      $this->message = "The request has timed out.";
+  }
 }
 class_alias('PaymentRails\Exception\Timeout', 'PaymentRails_Exception_Timeout');
