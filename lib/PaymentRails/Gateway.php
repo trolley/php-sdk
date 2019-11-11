@@ -53,6 +53,14 @@ class Gateway
     {
         return new PaymentGateway($this);
     }
+
+    /**
+     * @return OfflinePaymentGateway
+     */
+    public function offlinePayments()
+    {
+        return new OfflinePaymentGateway($this);
+    }
 }
 
 class_alias('PaymentRails\Gateway', 'PaymentRails_Gateway');
