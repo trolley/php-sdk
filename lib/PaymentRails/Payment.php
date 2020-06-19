@@ -22,6 +22,8 @@ class Payment extends Base
         'status',
         'isSupplyPayment',
         'returnedAmount',
+        'amount',
+        'currency',
         'sourceAmount',
         'sourceCurrency',
         'targetAmount',
@@ -38,6 +40,9 @@ class Payment extends Base
         'merchantFees',
         'compliance',
         'payoutMethod',
+        'coverFees',
+        'taxReportable',
+        'tags'
     ];
 
     /**
@@ -79,6 +84,8 @@ class Payment extends Base
             'status',
             'isSupplyPayment',
             'returnedAmount',
+            'amount',
+            'currency',
             'sourceAmount',
             'sourceCurrency',
             'targetAmount',
@@ -95,6 +102,9 @@ class Payment extends Base
             'merchantFees',
             'compliance',
             'payoutMethod',
+            'coverFees',
+            'taxReportable',
+            'tags',
         ];
 
         foreach ($fields as $field) {
