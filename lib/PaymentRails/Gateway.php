@@ -31,7 +31,7 @@ class Gateway
     }
 
     /**
-     * @return RecipientGateway
+     * @return RecipientAccountGateway
      */
     public function recipientAccount()
     {
@@ -39,7 +39,7 @@ class Gateway
     }
 
     /**
-     * @return RecipientGateway
+     * @return BatchGateway
      */
     public function batch()
     {
@@ -60,6 +60,14 @@ class Gateway
     public function offlinePayments()
     {
         return new OfflinePaymentGateway($this);
+    }
+
+    /**
+     * @return BalanceGateway
+     */
+    public function balance()
+    {
+        return new BalanceGateway($this);
     }
 }
 
