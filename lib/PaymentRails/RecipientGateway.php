@@ -102,6 +102,16 @@ class RecipientGateway
             throw new Exception\DownForMaintenance();
         }
     }
+
+    public function tax($id) {
+        $response = $this->_http->get('/v1/recipients/' . $id . '/tax');
+        if ($response) {
+            return $response;
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
 }
 
 class_alias('PaymentRails\RecipientGateway', 'PaymentRails_RecipientGateway');

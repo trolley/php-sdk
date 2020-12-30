@@ -79,6 +79,17 @@ class Recipient extends Base
     }
 
     /**
+     *
+     * @param int $id
+     * @throws Exception\NotFound
+     * @return Recipient
+     */
+    public static function tax($id)
+    {
+        return Configuration::gateway()->recipient()->tax($id);
+    }
+
+    /**
      * Create a new recipient
      */
     public static function create($attrib) {
