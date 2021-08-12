@@ -25,11 +25,16 @@ class RecipientTest extends Setup
             'firstName' => 'Tom',
             'lastName' => 'Jones',
             'email' => 'test.create+'.$uuid.'@example.com',
+            'address' => [
+                'phone' => "+15142580232",
+            ],
         ]);
 
         $this->assertNotNull($recipient);
         $this->assertEquals('Tom', $recipient->firstName);
         $this->assertEquals('Jones', $recipient->lastName);
+        $this->assertEquals('+15142580232', $recipient->address->phone);
+
         $this->assertContains($uuid, $recipient->email);
         $this->assertNotNull($recipient->id);
     }
@@ -118,5 +123,8 @@ class RecipientTest extends Setup
 
         $accountList = PaymentRails\RecipientAccount::all($recipient->id);
         $this->assertEquals(count($accountList), 1);
+
+        $updatedRecipient = PaymentRails\Recipient::find($recipient->id);
+        $this->assertEquals($updatedRecipient->accounts[0]->type, "bank-transfer");
     }
 }

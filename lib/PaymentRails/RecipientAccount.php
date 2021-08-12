@@ -138,17 +138,36 @@ class RecipientAccount extends Base
 
 
    /**
-     *  factory method: returns an instance of Transaction
+     *  factory method: returns an instance of RecipientAccount
      *  to the requesting method, with populated properties
      *
      * @ignore
-     * @return Transaction
+     * @return RecipientAccount
      */
     public static function factory($attributes)
     {
         $instance = new self();
         $instance->_initialize($attributes);
         return $instance;
+    }
+
+    /**
+     *  factory method: returns an array of RecipientAccount instances
+     *  to the requesting method, with populated properties
+     *
+     * @ignore
+     * @return Array RecipientAccount
+     */
+    public static function factoryArray($arr)
+    {
+        $instances = [];
+        foreach ($arr as $key => $account) {
+            $instance = new self();
+            $instance->_initialize($account);
+            array_push($instances, $instance);
+        }
+
+        return $instances;
     }
 }
 
