@@ -13,7 +13,7 @@ class Recipient extends Base
 {
     /**
      * @access protected
-     * @var array registry of customer data
+     * @var array registry of recipient data
      */
     protected $_attributes = [
         "id" => "",
@@ -135,24 +135,31 @@ class Recipient extends Base
             "payoutMethod",
 
             "compliance",       // TODO: Factory
-            "accounts",         // TODO: Factory
-            "address",          // TODO: Factory
+            "accounts" => 'PaymentRails\RecipientAccount::factoryArray',         // Specifies factory method
+            "address" => 'PaymentRails\RecipientAddress::factory',
         ];
 
-        foreach ($fields as $field) {
-            if (isset($attributes[$field])) {
-                $this->_set($field, $attributes[$field]);
+        foreach ($fields as $key => $field) {
+            if (is_numeric($key)) {
+                if (isset($attributes[$field])) {
+                    $this->_set($field, $attributes[$field]);
+                }
+            } else {
+                if (isset($attributes[$key])) {
+                    $this->_set($key, call_user_func($field, $attributes[$key]));
+                }
             }
+            
         }
     }
 
 
    /**
-     *  factory method: returns an instance of Transaction
+     *  factory method: returns an instance of Recipient
      *  to the requesting method, with populated properties
      *
      * @ignore
-     * @return Transaction
+     * @return Recipient
      */
     public static function factory($attributes)
     {
