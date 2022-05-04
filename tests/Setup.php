@@ -20,8 +20,8 @@ class Setup extends TestCase
     {
         Configuration::reset();
 
-        Configuration::environment('production');
-        Configuration::publicKey('ASC7AsydNKAKBB5BNEVFVZ0P');
-        Configuration::privateKey('4vapebxbpq26gmk7a2zdj837u0qn24ufynqnnjfq');
+        Configuration::environment('development');
+        Configuration::publicKey('integration_public_key');
+        Configuration::privateKey('integration_private_key');
     }
 }
