@@ -56,6 +56,8 @@ class BalanceGateway
             }, $response['balances']);
 
             return new ResourceCollection($response, $items, $pager);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
