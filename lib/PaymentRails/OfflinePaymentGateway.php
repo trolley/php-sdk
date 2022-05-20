@@ -62,6 +62,8 @@ class OfflinePaymentGateway
             }, $response['offlinePayments']);
 
             return new ResourceCollection($response, $items, $pager);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -71,6 +73,8 @@ class OfflinePaymentGateway
       $response = $this->_http->post('/v1/recipients/' . $recipientId . '/offlinePayments', $offlinePaymentBody);
       if ($response['ok']) {
           return OfflinePayment::factory($response['offlinePayment']);
+      } else if ($response['errors']){
+        throw new Exception\Standard($response['errors']);
       } else {
           throw new Exception\DownForMaintenance();
       }
@@ -80,6 +84,8 @@ class OfflinePaymentGateway
       $response = $this->_http->patch('/v1/recipients/' . $recipientId . '/offlinePayments/' . $offlinePaymentId, $offlinePaymentBody);
       if ($response['ok']) {
           return true;
+      } else if ($response['errors']){
+        throw new Exception\Standard($response['errors']);
       } else {
           throw new Exception\DownForMaintenance();
       }
@@ -89,6 +95,8 @@ class OfflinePaymentGateway
       $response = $this->_http->delete('/v1/recipients/' . $recipientId . '/offlinePayments/' . $offlinePaymentId);
       if ($response['ok']) {
           return true;
+      } else if ($response['errors']){
+        throw new Exception\Standard($response['errors']);
       } else {
           throw new Exception\DownForMaintenance();
       }

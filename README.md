@@ -74,3 +74,14 @@ try {
 ## Documentation for API Endpoints
 
 All URIs are available at http://docs.paymentrails.com/
+
+## Running SDK from Source  
+  1. Clone this repo.
+  2. Install dependencies by running `composer install` from the project root.
+  3. Access the SDK source code from your code by using `PaymentRails` namespace as per the path you put the SDK source code on.
+
+### Running the tests from SDK  
+To run the tests in the terminal, use the PHPUnit test suite from within the `tests` directory, like the following:  
+```
+$ ../vendor/bin/phpunit integration/RecipientTest.php
+```

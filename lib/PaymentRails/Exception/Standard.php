@@ -15,13 +15,12 @@ class Standard extends Exception
 
   public function __construct($errorBody)
   {
-      $errors = json_decode($errorBody)->errors;
       $message = "";
-      foreach ($errors as $e) {
-        if (isset($e->field)) {
-          $message = $message . $e->field . " " . $e->code . ": " . $e->message . "\n";
+      foreach ($errorBody as $e) {
+        if (isset($e['field'])) {
+          $message = $message . $e['code'] . ": " . $e['message'] . " (field: '" . $e['field'] . "') \n";
         } else {
-          $message = $message . $e->code . ": " . $e->message . "\n";
+          $message = $message . $e['code'] . ": " . $e['message'] . "\n";
         }
       }
       $this->message = $message;

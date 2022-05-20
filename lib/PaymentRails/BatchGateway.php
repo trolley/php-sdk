@@ -56,6 +56,8 @@ class BatchGateway
             }, $response['batches']);
 
             return new ResourceCollection($response, $items, $pager);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -82,6 +84,8 @@ class BatchGateway
         $response = $this->_http->post('/v1/batches', $copy);
         if ($response['ok']) {
             return Batch::factory($response['batch']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -91,6 +95,8 @@ class BatchGateway
         $response = $this->_http->patch('/v1/batches/' . $batchId, $attrib);
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -100,6 +106,8 @@ class BatchGateway
         $response = $this->_http->delete('/v1/batches/' . $batchId);
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -109,6 +117,8 @@ class BatchGateway
         $response = $this->_http->get('/v1/batches/' . $batchId . '/summary');
         if ($response['ok']) {
             return BatchSummary::factory($response['batchSummary']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -118,6 +128,8 @@ class BatchGateway
         $response = $this->_http->post('/v1/batches/' . $batchId . '/generate-quote');
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -127,6 +139,8 @@ class BatchGateway
         $response = $this->_http->post('/v1/batches/' . $batchId . '/start-processing');
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -136,6 +150,8 @@ class BatchGateway
         $response = $this->_http->post('/v1/batches/' . $batchId . '/payments', $payment);
         if ($response['ok']) {
             return Payment::factory($response['payment']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -145,6 +161,8 @@ class BatchGateway
         $response = $this->_http->get('/v1/batches/' . $batchId . '/payments/' . $paymentId);
         if ($response['ok']) {
             return Payment::factory($response['payment']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -154,6 +172,8 @@ class BatchGateway
         $response = $this->_http->patch('/v1/batches/' . $batchId . '/payments/' . $paymentId, $params);
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -163,6 +183,8 @@ class BatchGateway
         $response = $this->_http->delete('/v1/batches/' . $batchId . '/payments/' . $paymentId);
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -188,6 +210,8 @@ class BatchGateway
             }, $response['payments']);
 
             return new ResourceCollection($response, $items, $pager);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
