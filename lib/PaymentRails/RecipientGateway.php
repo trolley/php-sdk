@@ -58,6 +58,8 @@ class RecipientGateway
             }, $response['recipients']);
 
             return new ResourceCollection($response, $items, $pager);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -71,6 +73,8 @@ class RecipientGateway
 
         if ($response['ok']) {
             return Recipient::factory($response['recipient']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -80,6 +84,8 @@ class RecipientGateway
         $response = $this->_http->post('/v1/recipients', $attrib);
         if ($response['ok']) {
             return Recipient::factory($response['recipient']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
@@ -89,6 +95,8 @@ class RecipientGateway
         $response = $this->_http->patch('/v1/recipients/' . $id, $attrib);
         if ($response['ok']) {
             return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
