@@ -4,26 +4,33 @@ namespace PaymentRails\Exception;
 use PaymentRails\Exception;
 
 /**
- * Raised when a standard error request is received
- *
- * @package    PaymentRails
- * @subpackage Exception
- */
+* Raised when a standard error request is received
+*
+* @package    PaymentRails
+* @subpackage Exception
+*/
 class Standard extends Exception
 {
-  protected $errorBody;
+	protected $errorBody;
 
-  public function __construct($errorBody)
-  {
-      $message = "";
-      foreach ($errorBody as $e) {
-        if (isset($e['field'])) {
-          $message = $message . $e['code'] . ": " . $e['message'] . " (field: '" . $e['field'] . "') \n";
-        } else {
-          $message = $message . $e['code'] . ": " . $e['message'] . "\n";
-        }
-      }
-      $this->message = $message;
-  }
+	/**
+	 * @var $errorBody string|array
+	 */
+	public function __construct($errorBody)
+	{
+		$message = '';
+		if (is_array($errorBody)) {
+			foreach($errorBody as $e) {
+				$message .= "{$e['code']}: {$e['message']}";
+				if (!empty($e['field'])) {
+					$message .= " (field: {$e['field']})";
+				}
+				$message .= "\n";
+			}
+		} elseif (is_string($errorBody)) {
+			$message = $errorBody;
+		}
+		$this->message = $message;
+	}
 }
 class_alias('PaymentRails\Exception\Standard', 'PaymentRails_Exception_Standard');
