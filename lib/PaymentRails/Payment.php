@@ -43,9 +43,9 @@ class Payment extends Base
         'coverFees',
         'taxReportable',
         'tags',
-		'estimatedDeliveryAt',
-		'initiatedAt',
-		'returnedAt',
+        'estimatedDeliveryAt',
+        'initiatedAt',
+        'returnedAt',
     ];
 
     /**
@@ -108,9 +108,9 @@ class Payment extends Base
             'coverFees',
             'taxReportable',
             'tags',
-			'estimatedDeliveryAt',
-			'initiatedAt',
-			'returnedAt',
+            'estimatedDeliveryAt',
+            'initiatedAt',
+            'returnedAt',
         ];
 
         foreach ($fields as $field) {
