@@ -42,7 +42,10 @@ class Payment extends Base
         'payoutMethod',
         'coverFees',
         'taxReportable',
-        'tags'
+        'tags',
+		'estimatedDeliveryAt',
+		'initiatedAt',
+		'returnedAt',
     ];
 
     /**
@@ -105,6 +108,9 @@ class Payment extends Base
             'coverFees',
             'taxReportable',
             'tags',
+			'estimatedDeliveryAt',
+			'initiatedAt',
+			'returnedAt',
         ];
 
         foreach ($fields as $field) {
