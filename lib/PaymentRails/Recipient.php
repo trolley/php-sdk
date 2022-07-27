@@ -18,6 +18,7 @@ class Recipient extends Base
     protected $_attributes = [
         "id" => "",
         "routeType" => "",
+        "routeMinimum" => "",
         "estimatedFees" => "",
         "referenceId" => "",
         "email" => "",
@@ -111,6 +112,7 @@ class Recipient extends Base
         $fields = [
             "id",
             "routeType",
+            "routeMinimum",
             "estimatedFees",
             "id",
             "referenceId",
