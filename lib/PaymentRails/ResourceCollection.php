@@ -40,9 +40,10 @@ class ResourceCollection implements Iterator
      */
     public function  __construct($response, $items, $pager)
     {
-        $this->_page = $response["meta"]["page"];
+        // Add "meta" fields only when they exist in JSON response
+        $this->_page = isset($response["meta"]) ? $response["meta"]["page"] : null;
         $this->_items = $items;
-        $this->_records = $response["meta"]["records"];
+        $this->_records = isset($response["meta"]) ? $response["meta"]["records"] : null;
         $this->_pager = $pager;
         $this->_index = 0;
         if (isset($response["meta"]["pages"])) {
