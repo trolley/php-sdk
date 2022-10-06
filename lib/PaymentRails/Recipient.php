@@ -123,7 +123,7 @@ class Recipient extends Base
             "firstName",
             "type",
             "taxType",
-            "taxWithholdingPercentage" => "",
+            "taxWithholdingPercentage",
             "status",
             "language",
             "complianceStatus",
