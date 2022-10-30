@@ -85,7 +85,7 @@ class RecipientAccountGateway
     public function update($recipientId, $accountId, $attrib) {
         $response = $this->_http->patch('/v1/recipients/' . $recipientId . '/accounts/' . $accountId, $attrib);
         if ($response['ok']) {
-            return Recipient::factory($response['account']);
+            return RecipientAccount::factory($response['account']);
         } else if ($response['errors']){
             throw new Exception\Standard($response['errors']);
         } else {
