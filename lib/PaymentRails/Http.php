@@ -154,6 +154,7 @@ class Http
         $headers[] = "Authorization: prsign " . $this->_config->getPublicKey() . ":" . $signature;
         $headers[] = "X-PR-Timestamp: " . $timestamp;
         $headers[] = 'User-Agent: PaymentRails PHP Library version=' . Version::get();
+        $headers[] = "Trolley-Source: php-sdk_" . Version::get();
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
