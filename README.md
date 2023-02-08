@@ -83,5 +83,6 @@ All URIs are available at https://docs.trolley.com/
 ### Running the tests from SDK  
 To run the tests in the terminal, use the PHPUnit test suite from within the `tests` directory, like the following:  
 ```
+$ cd tests
 $ ../vendor/bin/phpunit integration/RecipientTest.php
 ```
