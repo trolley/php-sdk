@@ -4,12 +4,12 @@ namespace PaymentRails;
 use InvalidArgumentException;
 
 /**
- * PaymentRails Batch processor
+ * Trolley (PaymentRails) Batch processor
  * Creates and manages batches
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Batch, see {@link http://docs.paymentrails.com/#create-a-batch}
+ * For more detailed information on Batch, see {@link https://docs.trolley.com/api/#create-a-batch}
  *
  * @package    PaymentRails
  * @category   Resources
@@ -33,7 +33,7 @@ class BatchGateway
      *
      * If <b>query</b> is a string, the search will be a basic search.
      * If <b>query</b> is a hash, the search will be an advanced search.
-     * For more detailed information and examples, see {@link http://docs.paymentrails.com/#create-a-batch}
+     * For more detailed information and examples, see {@link https://docs.trolley.com/api/#create-a-batch}
      *
      * @param mixed $query search query
      * @param array $options options such as page number

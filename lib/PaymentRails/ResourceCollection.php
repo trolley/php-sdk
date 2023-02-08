@@ -4,7 +4,7 @@ namespace PaymentRails;
 use Iterator;
 
 /**
- * PaymentRails ResourceCollection
+ * Trolley (PaymentRails) ResourceCollection
  * ResourceCollection is a container object for result data
  *
  * stores and retrieves search results and aggregate data

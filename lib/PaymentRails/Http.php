@@ -4,7 +4,7 @@ namespace PaymentRails;
 use finfo;
 
 /**
- * PaymentRails HTTP Client
+ * Trolley (PaymentRails) HTTP Client
  * processes Http requests using curl
  */
 class Http

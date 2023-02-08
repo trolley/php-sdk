@@ -4,13 +4,13 @@ namespace PaymentRails;
 use InvalidArgumentException;
 
 /**
- * PaymentRails Offline Payment processor
+ * Trolley (PaymentRails) Offline Payment processor
  * Creates and manages transactions
  *
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Offline Payments, see {@link http://docs.paymentrails.com/#create-an-offline-payment}
+ * For more detailed information on Offline Payments, see {@link https://docs.trolley.com/api/#create-an-offline-payment}
  *
  * @package    PaymentRails
  * @category   Resources
@@ -35,7 +35,7 @@ class OfflinePaymentGateway
      *
      * If <b>query</b> is a string, the search will be a basic search.
      * If <b>query</b> is a hash, the search will be an advanced search.
-     * For more detailed information and examples, see {@link http://docs.paymentrails.com/#offline-payments}
+     * For more detailed information and examples, see {@link https://docs.trolley.com/api/#offline-payments}
      *
      * @param mixed $query search query
      * @param array $options options such as page number

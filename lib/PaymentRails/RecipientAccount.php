@@ -2,9 +2,9 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails RecipientAccount module
+ * Trolley (PaymentRails) RecipientAccount module
  * PHP Version 5
- * Creates and manages PaymentRails RecipientsAccounts
+ * Creates and manages Trolley RecipientsAccounts
  *
  * @package   PaymentRails
  *

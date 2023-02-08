@@ -2,8 +2,8 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails Library Version
- * stores version information about the PaymentRails library
+ * Trolley (PaymentRails) SDK Version
+ * stores version information about the Trolley SDK
  */
 class Version
 {
@@ -12,7 +12,7 @@ class Version
      */
     const MAJOR = 2;
     const MINOR = 1;
-    const TINY = 4;
+    const TINY = 5;
 
     /**
      * @ignore
@@ -24,7 +24,7 @@ class Version
 
     /**
      *
-     * @return string the current library version
+     * @return string the current SDK version
      */
     public static function get()
     {

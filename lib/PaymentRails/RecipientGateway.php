@@ -4,13 +4,13 @@ namespace PaymentRails;
 use InvalidArgumentException;
 
 /**
- * PaymentRails Recipient processor
+ * Trolley (PaymentRails) Recipient processor
  * Creates and manages transactions
  *
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Recipient, see {@link http://docs.paymentrails.com/#recipients}
+ * For more detailed information on Recipient, see {@link https://docs.trolley.com/api/#recipients}
  *
  * @package    PaymentRails
  * @category   Resources
@@ -35,7 +35,7 @@ class RecipientGateway
      *
      * If <b>query</b> is a string, the search will be a basic search.
      * If <b>query</b> is a hash, the search will be an advanced search.
-     * For more detailed information and examples, see {@link http://docs.paymentrails.com/#recipients}
+     * For more detailed information and examples, see {@link https://docs.trolley.com/api/#recipients}
      *
      * @param mixed $query search query
      * @param array $options options such as page number

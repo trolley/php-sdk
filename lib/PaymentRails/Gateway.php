@@ -2,7 +2,7 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails gateway module
+ * Trolley (PaymentRails) gateway module
  *
  * @package    PaymentRails
  * @category   Resources

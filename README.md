@@ -1,10 +1,10 @@
-# Payment Rails[^1] PHP Library
+# Trolley PHP SDK (Previously Payment Rails[^1])
 
 [![Latest Stable Version](https://poser.pugx.org/paymentrails/php-sdk/v/stable.png)](https://packagist.org/packages/paymentrails/php-sdk)
 
-The Payment Rails PHP library provides integration access to the Payment Rails API.
+The Trolley PHP SDK provides integration access to the Trolley API.
 
-[^1]: [Payment Rails is now Trolley](https://www.trolley.com/payment-rails-is-now-trolley-series-a), we'll be updating our SDKs to support the new domain during the first half of 2022.
+[^1]: [Payment Rails is now Trolley](https://www.trolley.com/payment-rails-is-now-trolley-series-a). We're in the process of updating our SDKs to support the new domain. In this transition phase, you might still see "PaymentRails" at some places.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ openssl
 
 ## Installation & Usage
 
-### Library
+### SDK
 
 ```bash
 git clone https://github.com/PaymentRails/php-sdk.git
@@ -73,7 +73,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are available at http://docs.paymentrails.com/
+All URIs are available at https://docs.trolley.com/
 
 ## Running SDK from Source  
   1. Clone this repo.

@@ -4,12 +4,12 @@ namespace PaymentRails;
 use InvalidArgumentException;
 
 /**
- * PaymentRails Balance processor
+ * Trolley (PaymentRails) Balance processor
  * Gets balances
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Balance, see {@link http://docs.paymentrails.com/#balances}
+ * For more detailed information on Balance, see {@link https://docs.trolley.com/api/#balances}
  *
  * @package    PaymentRails
  * @category   Resources
@@ -33,7 +33,7 @@ class BalanceGateway
      *
      * If <b>query</b> is a string, the search will be a basic search.
      * If <b>query</b> is a hash, the search will be an advanced search.
-     * For more detailed information and examples, see {@link http://docs.paymentrails.com/#balances}
+     * For more detailed information and examples, see {@link https://docs.trolley.com/api/#balances}
      *
      * @param mixed $query search query
      * @param array $options options such as page number

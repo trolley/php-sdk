@@ -29,7 +29,7 @@ class Configuration
     private $_acceptGzipEncoding = true;
 
     /**
-     * PaymentRails API version to use
+     * Trolley API version to use
      * @access public
      */
     const API_VERSION =  1;
@@ -85,7 +85,7 @@ class Configuration
      * Sets or gets the read timeout to use for making requests.
      *
      * @param integer $value If provided, sets the read timeout
-     * @return integer The read timeout used for connecting to PaymentRails
+     * @return integer The read timeout used for connecting to Trolley
      */
     public static function timeout($value=null)
     {
@@ -101,7 +101,7 @@ class Configuration
      * CURLOPT_SSLVERSION values.
      *
      * @param integer $value If provided, sets the SSL version
-     * @return integer The SSL version used for connecting to PaymentRails
+     * @return integer The SSL version used for connecting to Trolley
      */
     public static function sslVersion($value=null)
     {
@@ -112,10 +112,10 @@ class Configuration
     }
 
     /**
-     * Sets or gets the proxy host to use for connecting to PaymentRails
+     * Sets or gets the proxy host to use for connecting to Trolley
      *
      * @param string $value If provided, sets the proxy host
-     * @return string The proxy host used for connecting to PaymentRails
+     * @return string The proxy host used for connecting to Trolley
      */
     public static function proxyHost($value = null)
     {
@@ -126,10 +126,10 @@ class Configuration
     }
 
     /**
-     * Sets or gets the port of the proxy to use for connecting to PaymentRails
+     * Sets or gets the port of the proxy to use for connecting to Trolley
      *
      * @param string $value If provided, sets the port of the proxy
-     * @return string The port of the proxy used for connecting to PaymentRails
+     * @return string The port of the proxy used for connecting to Trolley
      */
     public static function proxyPort($value = null)
     {
@@ -140,11 +140,11 @@ class Configuration
     }
 
     /**
-     * Sets or gets the proxy type to use for connecting to PaymentRails. This value
+     * Sets or gets the proxy type to use for connecting to Trolley. This value
      * can be any of the CURLOPT_PROXYTYPE options in PHP cURL.
      *
      * @param string $value If provided, sets the proxy type
-     * @return string The proxy type used for connecting to PaymentRails
+     * @return string The proxy type used for connecting to Trolley
      */
     public static function proxyType($value = null)
     {
@@ -391,7 +391,7 @@ class Configuration
         return !empty($this->_clientId);
     }
     /**
-     * returns the base paymentrails gateway URL based on config values
+     * returns the base Trolley gateway URL based on config values
      *
      * @access public
      * @param none
@@ -440,20 +440,20 @@ class Configuration
     {
         switch($this->_environment) {
          case 'production':
-             $serverName = 'https://api.paymentrails.com';
+             $serverName = 'https://api.trolley.com';
              break;
 	     case 'development':
          case 'qa':
              $serverName = 'https://api.railz.io';
              break;
          case 'sandbox':
-             $serverName = 'https://api.sandbox.paymentrails.com';
+             $serverName = 'https://api.sandbox.trolley.com';
              break;         
          case 'integration':
              $serverName = 'http://api.local.dev:3000';
              break;
          default:
-             $serverName = 'https://api.paymentrails.com';
+             $serverName = 'https://api.trolley.com';
              break;
         }
         return $serverName;
@@ -496,7 +496,7 @@ class Configuration
      */
     public function logMessage($message)
     {
-        error_log('[PaymentRails] ' . $message);
+        error_log('[Trolley] ' . $message);
     }
 }
 
