@@ -2,9 +2,9 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails PHP Library.
+ * Trolley (PaymentRails) PHP SDK.
  *
- * PaymentRails base class and initialization
+ * Trolley base class and initialization
  * Provides methods to child classes. This class cannot be instantiated.
  *
  *  PHP version 5

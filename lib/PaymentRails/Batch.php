@@ -2,7 +2,7 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails Batch module
+ * Trolley (PaymentRails) Batch module
  * PHP Version 5
  * Creates and manages batches of payments
  *

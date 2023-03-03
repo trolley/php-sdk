@@ -3,7 +3,7 @@
 namespace PaymentRails;
 
 /**
- * super class for all PaymentRails exceptions
+ * super class for all Trolley (PaymentRails) exceptions
  *
  * @package    PaymentRails
  * @subpackage Exception

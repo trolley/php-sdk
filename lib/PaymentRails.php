@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PaymentRails PHP Library
+ * Trolley (PaymentRails) PHP SDK
  * Creates class_aliases for old class names replaced by PSR-4 Namespaces
  */
 
@@ -16,7 +16,7 @@ class PaymentRails {
         $requiredExtensions = ['xmlwriter', 'openssl', 'dom', 'hash', 'curl'];
         foreach ($requiredExtensions AS $ext) {
             if (!extension_loaded($ext)) {
-                throw new PaymentRails_Exception('The PaymentRails library requires the ' . $ext . ' extension.');
+                throw new PaymentRails_Exception('The Trolley SDK requires the ' . $ext . ' extension.');
             }
         }
     }

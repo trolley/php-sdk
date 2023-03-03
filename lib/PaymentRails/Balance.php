@@ -2,7 +2,7 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails Balance module
+ * Trolley (PaymentRails) Balance module
  * PHP Version 5
  * Gets merchant balances
  *

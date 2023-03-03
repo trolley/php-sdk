@@ -2,7 +2,7 @@
 namespace PaymentRails;
 
 /**
- * PaymentRails Payment Module
+ * Trolley (PaymentRails) Payment Module
  * PHP Version 5
  * Creates and manages Payments
  *

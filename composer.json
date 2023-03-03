@@ -1,16 +1,17 @@
 {
     "name": "paymentrails/php-sdk",
     "type": "library",
-    "description": "Payment Rails PHP Client Library",
+    "description": "Trolley PHP SDK",
     "homepage": "https://github.com/PaymentRails/php-sdk",
     "keywords": [
-        "PaymentRails"
+        "PaymentRails",
+        "Trolley"
     ],
     "license": "MIT",
     "authors": [
         {
-            "name": "PaymentRails",
-            "homepage": "https://www.paymentrails.com"
+            "name": "Trolley (previously PaymentRails)",
+            "homepage": "https://www.trolley.com"
         }
     ],
     "require": {

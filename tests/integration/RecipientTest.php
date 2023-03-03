@@ -16,6 +16,13 @@ class RecipientTest extends Setup
         $this->assertTrue($all->maximumCount() > 0);
     }
 
+    public function testRouteMinimum()
+    {
+        $all = PaymentRails\Recipient::all();
+        $this->assertTrue(isset($all->firstItem()->routeMinimum));
+        $this->assertGreaterThanOrEqual(0, $all->firstItem()->routeMinimum);
+    }
+
     public function testCreate()
     {
         $uuid = (string)Uuid::uuid4();
