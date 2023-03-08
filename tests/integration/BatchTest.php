@@ -34,6 +34,11 @@ class BatchTest extends Setup {
         return $recipient;
     }
 
+    private function deleteRecipient($recipientId) {
+        $response = PaymentRails\Recipient::delete($recipientId);
+        $this->assertTrue($response);
+    }
+
     public function testAll_smokeTest()
     {
         $all = PaymentRails\Batch::all();
@@ -51,6 +56,9 @@ class BatchTest extends Setup {
 
         $all = PaymentRails\Batch::all();
         $this->assertTrue($all->maximumCount() > 0);
+
+        $response = PaymentRails\Batch::delete($batch->id);
+        $this->assertTrue($response);
     }
 
     public function testUpdate() {
@@ -111,6 +119,12 @@ class BatchTest extends Setup {
         foreach ($payments as $item) {
             $this->assertEquals("pending", $item->status);
         }
+
+        $response = PaymentRails\Batch::delete($batch->id);
+        $this->assertTrue($response);
+
+        $this->deleteRecipient($recipientAlpha->id);
+        $this->deleteRecipient($recipientBeta->id);
     }
 
     public function testPayments()
@@ -141,6 +155,11 @@ class BatchTest extends Setup {
         $response = PaymentRails\Batch::deletePayment($batch->id, $payment->id);
 
         $this->assertTrue($response);
+
+        $response = PaymentRails\Batch::delete($batch->id);
+        $this->assertTrue($response);
+
+        $this->deleteRecipient($recipient->id);
     }
 
     public function testProcessing()
@@ -167,7 +186,6 @@ class BatchTest extends Setup {
         $this->assertNotNull($batch->id);
 
         $summary = PaymentRails\Batch::summary($batch->id);
-
         $this->assertEquals(2, $summary->methods['bank-transfer']['count']);
 
         $quote = PaymentRails\Batch::generateQuote($batch->id);
@@ -177,5 +195,8 @@ class BatchTest extends Setup {
         $start = PaymentRails\Batch::startProcessing($batch->id);
 
         $this->assertNotNull($start);
+
+        $this->deleteRecipient($recipientAlpha->id);
+        $this->deleteRecipient($recipientBeta->id);
     }
 }

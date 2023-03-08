@@ -23,11 +23,11 @@ class Setup extends TestCase
     public static function doSetup()
     {
         $envFile = (__DIR__.DIRECTORY_SEPARATOR. '..');
-        if(file_exists($envFile)){
+        if(!file_exists($envFile)){
             throw new Exception('.env file not found in project root. Instructions on how to generate one from example are in README.');
         }
 
-        $dotenv = Dotenv::createImmutable();
+        $dotenv = Dotenv::createImmutable($envFile);
         $dotenv->load();
 
         Configuration::reset();
