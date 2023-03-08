@@ -1,5 +1,6 @@
 <?php
 namespace PaymentRails;
+use Dotenv\Dotenv;
 
 /**
  *
@@ -217,9 +218,7 @@ class Configuration
     public function assertHasAccessTokenOrKeys()
     {
         if (empty($this->_accessToken)) {
-            if (empty($this->_environment)) {
-                throw new Exception\Configuration('PaymentRails\\Configuration::environment needs to be set.');
-            } else if (empty($this->_publicKey)) {
+            if (empty($this->_publicKey)) {
                 throw new Exception\Configuration('PaymentRails\\Configuration::publicKey needs to be set.');
             } else if (empty($this->_privateKey)) {
                 throw new Exception\Configuration('PaymentRails\\Configuration::privateKey needs to be set.');
@@ -439,18 +438,10 @@ class Configuration
     public function serverName()
     {
         switch($this->_environment) {
-         case 'production':
-             $serverName = 'https://api.trolley.com';
-             break;
 	     case 'development':
-         case 'qa':
-             $serverName = 'https://api.railz.io';
-             break;
-         case 'sandbox':
-             $serverName = 'https://api.sandbox.trolley.com';
-             break;         
-         case 'integration':
-             $serverName = 'http://api.local.dev:3000';
+             $dotenv = Dotenv::createImmutable(__DIR__.DIRECTORY_SEPARATOR. '..' .DIRECTORY_SEPARATOR. '..');
+             $dotenv->load();
+             $serverName = $_ENV['SERVER_URL'];
              break;
          default:
              $serverName = 'https://api.trolley.com';
@@ -470,13 +461,9 @@ class Configuration
     public function sslOn()
     {
         switch($this->_environment) {
-         case 'integration':
          case 'development':
-		 case 'qa':
              $ssl = false;
              break;
-         case 'production':         
-         case 'sandbox':
          default:
              $ssl = true;
              break;
