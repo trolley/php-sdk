@@ -5,7 +5,7 @@ require_once dirname(__DIR__) . '/Setup.php';
 
 use Test;
 use Test\Setup;
-use PaymentRails;
+use Trolley;
 use Ramsey\Uuid\Uuid;
 
 //Class responsible for testing recipient payments.
@@ -14,9 +14,9 @@ class PaymentTest extends Setup
 	//Function which will test to see if all recipient payments are returned.
     public function testAllPayments()
     {
-        $recipientId = 'R-Ekce7ne2JfhXtq51UC1Bnt';
+        $recipientId = 'R-4QoXiSPjbnLuUmQR2bgb8C';
 
-		$payments = PaymentRails\Payment::all($recipientId);
+		$payments = Trolley\Payment::all($recipientId);
 		foreach($payments as $pay)
 		{
 			$fee = $pay->fees;
@@ -29,9 +29,9 @@ class PaymentTest extends Setup
 	//first 10 payments.
     public function testOnlyGet10Payments()
     {
-        $recipientId = 'R-Ekce7ne2JfhXtq51UC1Bnt';
+        $recipientId = 'R-4QoXiSPjbnLuUmQR2bgb8C';
 
-		$payments = PaymentRails\Payment::search($recipientId, ['pageSize' => 10]);
+		$payments = Trolley\Payment::search($recipientId, ['pageSize' => 10]);
 		$count = 0;
 		foreach($payments as $pay)
 		{
