@@ -54,10 +54,8 @@ require_once 'vendor/autoload.php';
 
 use PaymentRails;
 
-// Configure API key authorization: merchantKey
-PaymentRails\Configuration::environment('production');
-PaymentRails\Configuration::publicKey(YOUR_PUBLIC_KEY);
-PaymentRails\Configuration::privateKey(YOUR_PRIVATE_KEY);
+PaymentRails\Configuration::publicKey(YOUR_ACCESS_KEY);
+PaymentRails\Configuration::privateKey(YOUR_SECRET_KEY);
 
 
 try {
@@ -80,9 +78,34 @@ All URIs are available at https://docs.trolley.com/
   2. Install dependencies by running `composer install` from the project root.
   3. Access the SDK source code from your code by using `PaymentRails` namespace as per the path you put the SDK source code on.
 
-### Running the tests from SDK  
-To run the tests in the terminal, use the PHPUnit test suite from within the `tests` directory, like the following:  
+### Environment Variables
+While running from source locally, you can use a `.env` file to supply a custom server URL.
+
+The tests use the `.env` file anyway to load the API keys.  
+If you're running tests, make sure the `.env` file exists in the project root.
+
+For your ease, a sample `.env.example` file is provided, which can be copied to create the `.env` file:
+
 ```
+$ cp .env.example .env
+```
+
+Once copied, edit the `.env` file to supply the values needed.
+
+### Running the tests from SDK  
+To run the tests in the terminal, you'll need to setup the `.env` file to supply API Keys, and then use the PHPUnit test suite from within the `tests` directory, like the following:  
+```
+$ cp .env.example .env
+ // Edit the .env file to supply API Keys
+
 $ cd tests
 $ ../vendor/bin/phpunit integration/RecipientTest.php
 ```
+
+If you want to provide a custom server URL, provide the server URL in the `.env` file , and set the sdk configuration to use the `development` server:
+
+```
+Configuration::environment('development');
+```
+
+Refer to the inline documentation about this in the test setup file: [/tests/Setup.php:38](https://github.com/PaymentRails/php-sdk/blob/master/tests/Setup.php#L38)

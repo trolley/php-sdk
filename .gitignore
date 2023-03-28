@@ -4,3 +4,4 @@ vendor
 composer.phar
 run.php
 .vscode
+.env
