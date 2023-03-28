@@ -10,8 +10,6 @@ use Trolley\Exception;
 * @subpackage Exception
 */
 
-ini_set('display_errors', '1');
-
 class Standard extends Exception
 {
 	protected $errorBody;
