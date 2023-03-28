@@ -42,7 +42,7 @@ class BatchTest extends Setup {
         $this->assertTrue($response);
     }
 
-    /* public function testErrors(){
+    public function testErrors(){
 
         //create inactive Recipient to send payment to
         $recipient = $this->createRecipient();
@@ -197,7 +197,7 @@ class BatchTest extends Setup {
         $this->assertTrue($response);
 
         $this->deleteRecipient($recipient->id);
-    } */
+    }
 
     public function testProcessing()
     {
@@ -225,7 +225,7 @@ class BatchTest extends Setup {
         $this->assertNotNull($batch->id);
 
         $summary = Trolley\Batch::summary($batch->id);
-        $this->assertEquals(2, $summary->methods['bank-transfer']['count']);
+        $this->assertEquals(2, $summary->detail['bank-transfer']['count']);
 
         $quote = Trolley\Batch::generateQuote($batch->id);
 
