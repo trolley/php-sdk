@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($className) {
-    if (strpos($className, 'PaymentRails') !== 0) {
+    if (strpos($className, 'Trolley') !== 0) {
         return;
     }
 
