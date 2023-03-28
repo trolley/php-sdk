@@ -9,9 +9,13 @@ use Trolley\Exception;
 * @package    Trolley
 * @subpackage Exception
 */
+
+ini_set('display_errors', '1');
+
 class Standard extends Exception
 {
 	protected $errorBody;
+	private $errorArray;
 
 	/**
 	 * @var $errorBody string|array
@@ -19,18 +23,22 @@ class Standard extends Exception
 	public function __construct($errorBody)
 	{
 		$message = '';
-		if (is_array($errorBody)) {
-			foreach($errorBody as $e) {
-				$message .= "{$e['code']}: {$e['message']}";
-				if (!empty($e['field'])) {
-					$message .= " (field: {$e['field']})";
-				}
-				$message .= "\n";
-			}
-		} elseif (is_string($errorBody)) {
-			$message = $errorBody;
+
+		if (is_string($errorBody)) {
+			$errorBody = json_decode($errorBody, true);
 		}
+
+		$this->errorArray = $errorBody["errors"];
+		$message = json_encode($this->errorArray);
+
 		$this->message = $message;
+	}
+
+	/**
+	 * Get the error messages as Array.
+	 */
+	public function getAllErrorsAsArray(){
+		return $this->errorArray;
 	}
 }
 class_alias('Trolley\Exception\Standard', 'Trolley_Exception_Standard');
