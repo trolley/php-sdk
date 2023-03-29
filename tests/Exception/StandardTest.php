@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use PaymentRails\Exception\Standard;
+use Trolley\Exception\Standard;
 
 class StandardTest extends TestCase
 {
