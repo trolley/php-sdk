@@ -29,7 +29,8 @@ class Recipient extends Base
         "dob" => "",
         "passport" => "",
         "ssn" => "",
-        "governmentId" => "",
+        "governmentId" => "",       //deprecated
+        "governmentIds" => "",
         "routeType" => "",
         "routeMinimum" => "",
         
@@ -109,35 +110,34 @@ class Recipient extends Base
      */
     protected function _initialize($attributes) {
         $fields = [
-            "id",
-            "routeType",
-            "routeMinimum",
-            "estimatedFees",
-            "id",
-            "referenceId",
-            "email",
-            "name",
-            "lastName",
-            "firstName",
-            "type",
-            "taxType",
-            "status",
-            "language",
-            "complianceStatus",
-            "dob",
-            "passport",
-            "updatedAt",
-            "createdAt",
-            "gravatarUrl",
-            "governmentId",
-            "ssn",
-            "primaryCurrency",
-            "merchantId",
-            "payoutMethod",
-
-            "compliance",       // TODO: Factory
-            "accounts" => 'Trolley\RecipientAccount::factoryArray',         // Specifies factory method
-            "address" => 'Trolley\RecipientAddress::factory',
+        "id",
+        "referenceId",
+        "email",
+        "name",
+        "lastName",
+        "firstName",
+        "status",
+        "complianceStatus",
+        "gravatarUrl",
+        "language",
+        "dob",
+        "passport",
+        "ssn",
+        "governmentId",       //deprecated
+        "governmentIds",
+        "routeType",
+        "routeMinimum",
+        
+        "estimatedFees",
+        "type",
+        "updatedAt",
+        "createdAt",
+        "primaryCurrency",
+        "merchantId",
+        "payoutMethod",
+        "compliance",
+        "accounts" => 'Trolley\RecipientAccount::factoryArray',         // Specifies factory method
+        "address" => 'Trolley\RecipientAddress::factory',
         ];
 
         foreach ($fields as $key => $field) {

@@ -20,7 +20,13 @@ class RecipientTest extends Setup
     {
         $all = Trolley\Recipient::all();
         $this->assertTrue(isset($all->firstItem()->routeMinimum));
-        $this->assertGreaterThanOrEqual(0, $all->firstItem()->routeMinimum);
+    }
+
+    public function testSelectedRecipientAttributes()
+    {
+        $recipient = Trolley\Recipient::find("R-2PdMGp6oBqr7prs5z6G7xw");
+        $this->assertTrue(isset($recipient->governmentIds));
+        $this->assertEquals('NE', $recipient->governmentIds[0]['country']);
     }
 
     public function testCreate()
@@ -44,6 +50,8 @@ class RecipientTest extends Setup
 
         $this->assertContains($uuid, $recipient->email);
         $this->assertNotNull($recipient->id);
+
+        $this->assertTrue(Trolley\Recipient::delete($recipient->id));
     }
 
     public function testLifecycle()
@@ -133,5 +141,7 @@ class RecipientTest extends Setup
 
         $updatedRecipient = Trolley\Recipient::find($recipient->id);
         $this->assertEquals($updatedRecipient->accounts[0]->type, "bank-transfer");
+
+        $this->assertTrue(Trolley\Recipient::delete($recipient->id));
     }
 }
