@@ -110,6 +110,15 @@ class RecipientGateway
             throw new Exception\DownForMaintenance();
         }
     }
+
+    public function deleteMultiple($ids) {
+        $response = $this->_http->delete('/v1/recipients/', null, $ids);
+        if ($response) {
+            return true;
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
 }
 
 class_alias('Trolley\RecipientGateway', 'Trolley_RecipientGateway');

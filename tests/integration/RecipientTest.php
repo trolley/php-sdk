@@ -83,6 +83,35 @@ class RecipientTest extends Setup
         $this->assertEquals('archived', $fetchDeletedResult->status);
     }
 
+    public function testMultipleDelete()
+    {
+        $uuid = (string)Uuid::uuid4();
+
+        $recipientAlpha = Trolley\Recipient::create([
+            'type' => "individual",
+            'firstName' => 'Tom',
+            'lastName' => 'Jones',
+            'email' => 'test.lifecycle+'.$uuid.'@example.com',
+        ]);
+
+        $uuid = (string)Uuid::uuid4();
+        $recipientBeta = Trolley\Recipient::create([
+            'type' => "individual",
+            'firstName' => 'Tom',
+            'lastName' => 'Jones',
+            'email' => 'test.lifecycle+'.$uuid.'@example.com',
+        ]);
+
+        $this->assertNotNull($recipientAlpha);
+        $this->assertNotNull($recipientBeta);
+
+        $deleteResult = Trolley\Recipient::deleteMultiple([$recipientAlpha->id, $recipientBeta->id]);
+        $this->assertTrue($deleteResult);
+
+        $fetchDeletedResult = Trolley\Recipient::find($recipientAlpha->id);
+        $this->assertEquals('archived', $fetchDeletedResult->status);
+    }
+
     //
     //  Recipient Account testing
     //

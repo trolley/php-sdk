@@ -87,17 +87,24 @@ class Recipient extends Base
     }
 
     /**
-     * Create a new recipient
+     * Update a recipient
      */
     public static function update($id, $attrib) {
         return Configuration::gateway()->recipient()->update($id, $attrib);
     }
 
     /**
-     * Create a new recipient
+     * Delete a recipient
      */
     public static function delete($id) {
         return Configuration::gateway()->recipient()->delete($id);
+    }
+
+    /**
+     * Delete multiple recipients
+     */
+    public static function deleteMultiple($ids) {
+        return Configuration::gateway()->recipient()->deleteMultiple(["ids" => $ids]);
     }
 
     /**

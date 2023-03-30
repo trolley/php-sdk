@@ -78,7 +78,8 @@ class Http
 
     public function delete($path, $query = null, $params = null)
     {
-        $response = $this->_doRequest('DELETE', $this->_encodeQuery($path, $query), $params);
+        $response = $this->_doRequest('DELETE', $this->_encodeQuery($path, $query), 
+            (!is_null($params)?json_encode($params):$params));
         $responseCode = $response['status'];
         if ($responseCode === 200 || $responseCode === 204) {
             return json_decode($response['body'], true);
