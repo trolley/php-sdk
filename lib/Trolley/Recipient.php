@@ -106,6 +106,13 @@ class Recipient extends Base
     public static function deleteMultiple($ids) {
         return Configuration::gateway()->recipient()->deleteMultiple(["ids" => $ids]);
     }
+    
+    /**
+     * Get all logs of a recipient
+     */
+    public static function getAllLogs($id) {
+        return Configuration::gateway()->recipient()->getAllLogs([$id]);
+    }    
 
     /**
      * sets instance properties from an array of values

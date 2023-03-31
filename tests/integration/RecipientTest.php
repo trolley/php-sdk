@@ -173,4 +173,26 @@ class RecipientTest extends Setup
 
         $this->assertTrue(Trolley\Recipient::delete($recipient->id));
     }
+
+    public function testAllLogs()
+    {
+        $uuid = (string)Uuid::uuid4();
+        $recipient = Trolley\Recipient::create([
+            'type' => "individual",
+            'firstName' => 'Tom',
+            'lastName' => 'Jones',
+            'email' => 'test.create+'.$uuid.'@example.com',
+            'address' => [
+                'phone' => "+15142580232",
+            ],
+        ]);
+
+        $this->assertNotNull($recipient);
+
+        $allLogs = Trolley\Recipient::getAllLogs($recipient->id);
+        $this->assertTrue($allLogs->maximumCount() > 0);
+
+        $this->assertTrue(Trolley\Recipient::delete($recipient->id));
+    }
+
 }

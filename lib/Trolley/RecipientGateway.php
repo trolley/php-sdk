@@ -119,6 +119,27 @@ class RecipientGateway
             throw new Exception\DownForMaintenance();
         }
     }
+
+    public function getAllLogs($id) {
+        $response = $this->_http->get("/v1/recipients/{$id[0]}/logs", null);
+        if ($response["ok"]) {
+            $pager = [
+                'object' => $this,
+                'method' => 'getAllLogs',
+                'methodArgs' => $id[0]
+            ];
+
+            $items = array_map(function ($item) {
+                return RecipientLogs::factory($item);
+            }, $response['recipientLogs']);
+
+            return new ResourceCollection($response, $items, $pager);
+        } else if($response["errors"]){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
 }
 
 class_alias('Trolley\RecipientGateway', 'Trolley_RecipientGateway');
