@@ -118,7 +118,7 @@ class Batch extends Base
             throw new Exception\Malformed("array parameters is empty.");
         }
 
-        return Configuration::gateway()->batch()->delete($batchId);
+        return Configuration::gateway()->batch()->deleteMultiple(["ids" => $batchIds]);
     }
 
     /**

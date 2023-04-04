@@ -114,7 +114,7 @@ class BatchGateway
     }
 
     public function deleteMultiple($batchIds) {
-        $response = $this->_http->delete('/v1/batches/' . $batchId);
+        $response = $this->_http->delete('/v1/batches/', null, $batchIds);
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
