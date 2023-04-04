@@ -113,6 +113,17 @@ class BatchGateway
         }
     }
 
+    public function deleteMultiple($batchIds) {
+        $response = $this->_http->delete('/v1/batches/' . $batchId);
+        if ($response['ok']) {
+            return true;
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
     public function summary($batchId) {
         $response = $this->_http->get('/v1/batches/' . $batchId . '/summary');
         if ($response['ok']) {
