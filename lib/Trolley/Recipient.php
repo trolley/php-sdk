@@ -1,6 +1,6 @@
 <?php
 namespace Trolley;
-
+use Malformed;
 /**
  * Trolley Recipient module
  * PHP Version 5
@@ -104,6 +104,13 @@ class Recipient extends Base
      * Delete multiple recipients
      */
     public static function deleteMultiple($ids) {
+        if(!is_array($ids)){
+            throw new Exception\Malformed("Recipient::deleteMultiple() expects array parameters.");
+        }
+
+        if(count($ids)==0){
+            throw new Exception\Malformed("array parameters is empty.");
+        }
         return Configuration::gateway()->recipient()->deleteMultiple(["ids" => $ids]);
     }
     
