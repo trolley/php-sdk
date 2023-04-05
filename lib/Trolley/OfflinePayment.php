@@ -16,17 +16,36 @@ class OfflinePayment extends Base
      * @var array registry of customer data
      */
     protected $_attributes = [
-        'id',
-        'externalId',
-        'memo',
-        'tags',
-        'taxReportable',
-        'category',
-        'amount',
-        'currency',
-        'withholdingAmount',
-        'withholdingCurrency',
-        'processedAt',
+        "id" => "",
+        "recipientId" => "",
+        "taxFormId" => "",
+        "entered" => "",
+        "withholding" => "",
+        "equivalentWithholding" => "",
+        "amount" => "",
+        "currency" => "",
+        "withholdingAmount" => "",
+        "withholdingCurrency" => "",
+        "equivalentWithholdingAmount" => "",
+        "equivalentWithholdingCurrency" => "",
+        "paymentId" => "",
+        "externalId" => "",
+        "memo" => "",
+        "payoutMethod" => "",
+        "tags" => "",
+        "taxReportable" => "",
+        "category" => "",
+        "processedAt" => "",
+        "forceUsTaxActivity" => "",
+        "taxWithholdingReason" => "",
+        "equivalentUntaxedAmount" => "",
+        "modifiedSinceCreation" => "",
+        "taxPaidByWithholdingAgents" => "",
+        "status" => "",
+        "enteredAmount" => "",
+        "updatedAt" => "",
+        "createdAt" => "",
+        "deletedAt" => "",
     ];
 
     /**
@@ -69,13 +88,34 @@ class OfflinePayment extends Base
 	/**
 	 * Returns searched Offline Payments.
      *
-     * @param mixed $params
+     * @param mixed $params[
+     *      "page",     (optional)
+     *      "pageSize", (optional)
+     *      "search"    (optional)
+     *  ]
+     * 
      * @throws Exception\NotFound
      * @return Iterator of OfflinePayment[]
      */
     public static function search($params = [])
     {
         return Configuration::gateway()->offlinePayments()->search($params);
+    }
+
+    /**
+	 * Returns all Offline Payments.
+     *
+     * @param integer $page
+     * @param integer $pageSize
+     * @throws Exception\NotFound
+     * @return Iterator of OfflinePayment[]
+     */
+    public static function all($page = 1, $pageSize = 10)
+    {
+        return Configuration::gateway()->offlinePayments()->search([
+            "page" => $page,
+            "pageSize" => $pageSize
+        ]);
     }
 
     /**
@@ -88,17 +128,36 @@ class OfflinePayment extends Base
      */
     protected function _initialize($attributes) {
         $fields = [
-            'id',
-            'externalId',
-            'memo',
-            'tags',
-            'taxReportable',
-            'category',
-            'amount',
-            'currency',
-            'withholdingAmount',
-            'withholdingCurrency',
-            'processedAt',
+            "id",
+            "recipientId",
+            "taxFormId",
+            "entered",
+            "withholding",
+            "equivalentWithholding",
+            "amount",
+            "currency",
+            "withholdingAmount",
+            "withholdingCurrency",
+            "equivalentWithholdingAmount",
+            "equivalentWithholdingCurrency",
+            "paymentId",
+            "externalId",
+            "memo",
+            "payoutMethod",
+            "tags",
+            "taxReportable",
+            "category",
+            "processedAt",
+            "forceUsTaxActivity",
+            "taxWithholdingReason",
+            "equivalentUntaxedAmount",
+            "modifiedSinceCreation",
+            "taxPaidByWithholdingAgents",
+            "status",
+            "enteredAmount",
+            "updatedAt",
+            "createdAt",
+            "deletedAt"
         ];
 
         foreach ($fields as $field) {
