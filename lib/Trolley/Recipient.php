@@ -119,7 +119,19 @@ class Recipient extends Base
      */
     public static function getAllLogs($id) {
         return Configuration::gateway()->recipient()->getAllLogs([$id]);
-    }    
+    }
+
+    /**
+     * Return all of the Recipient Payments
+     *
+     * @param string $recipientId of the recipient whose payments need to be fetched
+     * @throws Exception\NotFound
+     * @return Iterator of Payment[]
+     */
+    public static function getAllPayments($recipientId)
+    {
+        return Configuration::gateway()->recipient()->getAllPayments($recipientId);
+    }
 
     /**
      * sets instance properties from an array of values

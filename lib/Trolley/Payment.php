@@ -50,7 +50,7 @@ class Payment extends Base
 
     /**
      * Return all of the Recipient Payments
-     *
+     * @deprecated deprecated since version 3.x.x, will be removed in Q4 2023
      * @throws Exception\NotFound
      * @return Iterator of Payment[]
      */

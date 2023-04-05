@@ -14,6 +14,9 @@ class RecipientTest extends Setup
     {
         $all = Trolley\Recipient::all();
         $this->assertTrue($all->maximumCount() > 0);
+
+        $all = Trolley\Recipient::getAllPayments("R-4QoXiSPjbnLuUmQR2bgb8C");
+        $this->assertTrue($all->maximumCount() > 0);
     }
 
     public function testRouteMinimum()
