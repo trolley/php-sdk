@@ -71,6 +71,14 @@ class Gateway
     }
 
     /**
+     * @return InvoiceLineGateway
+     */
+    public function invoiceLine()
+    {
+        return new InvoiceLineGateway($this);
+    }
+
+    /**
      * @return BalanceGateway
      */
     public function balance()
