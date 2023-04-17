@@ -5,20 +5,20 @@ require_once dirname(__DIR__) . '/Setup.php';
 
 use Test;
 use Test\Setup;
-use PaymentRails;
+use Trolley;
 use Ramsey\Uuid\Uuid;
 
 class RecipientTest extends Setup
 {
     public function testAll_smokeTest()
     {
-        $all = PaymentRails\Recipient::all();
+        $all = Trolley\Recipient::all();
         $this->assertTrue($all->maximumCount() > 0);
     }
 
     public function testRouteMinimum()
     {
-        $all = PaymentRails\Recipient::all();
+        $all = Trolley\Recipient::all();
         $this->assertTrue(isset($all->firstItem()->routeMinimum));
         $this->assertGreaterThanOrEqual(0, $all->firstItem()->routeMinimum);
     }
@@ -27,7 +27,7 @@ class RecipientTest extends Setup
     {
         $uuid = (string)Uuid::uuid4();
 
-        $recipient = PaymentRails\Recipient::create([
+        $recipient = Trolley\Recipient::create([
             'type' => "individual",
             'firstName' => 'Tom',
             'lastName' => 'Jones',
@@ -50,7 +50,7 @@ class RecipientTest extends Setup
     {
         $uuid = (string)Uuid::uuid4();
 
-        $createResult = PaymentRails\Recipient::create([
+        $createResult = Trolley\Recipient::create([
             'type' => "individual",
             'firstName' => 'Tom',
             'lastName' => 'Jones',
@@ -60,18 +60,18 @@ class RecipientTest extends Setup
         $this->assertEquals('Tom', $createResult->firstName);
         $this->assertEquals('incomplete', $createResult->status);
 
-        $updateResult = PaymentRails\Recipient::update($createResult->id, [
+        $updateResult = Trolley\Recipient::update($createResult->id, [
             "firstName" => "Bob",
         ]);
         $this->assertNotNull($updateResult);
 
-        $fetchResult = PaymentRails\Recipient::find($createResult->id);
+        $fetchResult = Trolley\Recipient::find($createResult->id);
         $this->assertEquals('Bob', $fetchResult->firstName);
 
-        $deleteResult = PaymentRails\Recipient::delete($createResult->id);
+        $deleteResult = Trolley\Recipient::delete($createResult->id);
         $this->assertTrue($deleteResult);
 
-        $fetchDeletedResult = PaymentRails\Recipient::find($createResult->id);
+        $fetchDeletedResult = Trolley\Recipient::find($createResult->id);
         $this->assertEquals('archived', $fetchDeletedResult->status);
     }
 
@@ -82,7 +82,7 @@ class RecipientTest extends Setup
     {
         $uuid = (string)Uuid::uuid4();
 
-        $recipient = PaymentRails\Recipient::create([
+        $recipient = Trolley\Recipient::create([
             'type' => "individual",
             'firstName' => 'Tom',
             'lastName' => 'Jones',
@@ -101,7 +101,7 @@ class RecipientTest extends Setup
         $this->assertContains($uuid, $recipient->email);
         $this->assertNotNull($recipient->id);
 
-        $account = PaymentRails\RecipientAccount::create($recipient->id, [
+        $account = Trolley\RecipientAccount::create($recipient->id, [
             "type" => "bank-transfer",
             "currency" => "EUR",
             "iban" => "DE89 3704 0044 0532 0130 00",
@@ -109,7 +109,7 @@ class RecipientTest extends Setup
 
         $this->assertNotNull($account);
 
-        $account = PaymentRails\RecipientAccount::create($recipient->id, [
+        $account = Trolley\RecipientAccount::create($recipient->id, [
             "type" => "bank-transfer",
             "currency" => "EUR",
             "iban" => "FR14 2004 1010 0505 0001 3M02 606",
@@ -117,21 +117,21 @@ class RecipientTest extends Setup
 
         $this->assertNotNull($account);
 
-        $findAccount = PaymentRails\RecipientAccount::find($recipient->id, $account->id);
+        $findAccount = Trolley\RecipientAccount::find($recipient->id, $account->id);
         $this->assertEquals($account->iban, $findAccount->iban);
 
-        $accountList = PaymentRails\RecipientAccount::all($recipient->id);
+        $accountList = Trolley\RecipientAccount::all($recipient->id);
 
         $this->assertEquals(count($accountList), 2);
         $this->assertEquals($accountList[0]->currency, "EUR");
 
-        $result = PaymentRails\RecipientAccount::delete($recipient->id, $account->id);
+        $result = Trolley\RecipientAccount::delete($recipient->id, $account->id);
         $this->assertEquals(true, $result);
 
-        $accountList = PaymentRails\RecipientAccount::all($recipient->id);
+        $accountList = Trolley\RecipientAccount::all($recipient->id);
         $this->assertEquals(count($accountList), 1);
 
-        $updatedRecipient = PaymentRails\Recipient::find($recipient->id);
+        $updatedRecipient = Trolley\Recipient::find($recipient->id);
         $this->assertEquals($updatedRecipient->accounts[0]->type, "bank-transfer");
     }
 }
