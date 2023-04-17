@@ -1,6 +1,6 @@
 <?php
 namespace Trolley;
-
+use Malformed;
 /**
  * Trolley Batch module
  * PHP Version 5
@@ -99,6 +99,26 @@ class Batch extends Base
     public static function delete($batchId)
     {
         return Configuration::gateway()->batch()->delete($batchId);
+    }
+
+    /**
+     * Delete multiple batches
+     *
+     * @param array $batchIds
+     * @throws Exception\NotFound
+     * @return boolean
+     */
+    public static function deleteMultiple($batchIds)
+    {
+        if(!is_array($batchIds)){
+            throw new Exception\Malformed("Batch::deleteMultiple() expects array parameters.");
+        }
+
+        if(count($batchIds)==0){
+            throw new Exception\Malformed("array parameters is empty.");
+        }
+
+        return Configuration::gateway()->batch()->deleteMultiple(["ids" => $batchIds]);
     }
 
     /**
