@@ -16,17 +16,11 @@ class BatchSummary extends Base
      * @var array registry of customer data
      */
     protected $_attributes = [
-        "id" => "",
-        "amount" => "",
-        "completedAt" => "",
-        "createdAt" => "",
-        "currency" => "",
-        "description" => "",
-        "sentAt" => "",
-        "status" => "",
-        "totalPayments" => "",
-        "updatedAt" => "",
-        "methods" => "",
+        "batchId" => "",
+        "detail" => "",
+        "total" => "",
+        "balances" => "",
+        "accounts" => ""
     ];
 
     /**
@@ -39,17 +33,11 @@ class BatchSummary extends Base
      */
     protected function _initialize($attributes) {
         $fields = [
-            "id",
-            "amount",
-            "completedAt",
-            "createdAt",
-            "currency",
-            "description",
-            "sentAt",
-            "status",
-            "totalPayments",
-            "updatedAt",
-            "methods",
+            "batchId",
+            "detail",
+            "total",
+            "balances",
+            "accounts",
         ];
 
         foreach ($fields as $field) {
