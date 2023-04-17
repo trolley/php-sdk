@@ -62,7 +62,7 @@ class Invoice extends Base
     }
 
     /**
-     * Saerch for invoices
+     * Search for invoices
      * @param mixed $params search keywords and parameters
      * @throws Exception\NotFound
      * @return Iterator of Invoice[]
