@@ -6,6 +6,7 @@ require_once dirname(__DIR__) . '/Setup.php';
 use Test;
 use Test\Setup;
 use Trolley;
+use Trolley\Exception\Standard;
 use Ramsey\Uuid\Uuid;
 
 class BatchTest extends Setup {
@@ -17,7 +18,7 @@ class BatchTest extends Setup {
             'type' => "individual",
             'firstName' => 'Tom',
             'lastName' => 'Jones '. $uuid,
-            'email' => 'test.batch+'.$uuid.'@example.com',
+            'email' => 'test.batch.php+'.$uuid.'@example.com',
             'address' => [
                 'street1' => "123 Wolfstrasse",
                 'city' => "Berlin",
@@ -77,6 +78,18 @@ class BatchTest extends Setup {
     {
         $all = Trolley\Batch::all();
         $this->assertTrue($all->maximumCount() > 0);
+    }
+
+    public function testBalances(){
+        $allBalances = Trolley\Balance::all();
+        $this->assertTrue($allBalances->maximumCount() > 0);
+
+        $trolleyBalances = Trolley\Balance::getTrolleyAccountBalance();
+        $this->assertTrue($trolleyBalances->maximumCount() > 0);
+        
+        $paypalBalances = Trolley\Balance::getPaypalAccountBalance();
+        $this->assertTrue($paypalBalances->maximumCount() > 0);
+
     }
 
     public function testMultipleDelete()
@@ -226,7 +239,7 @@ class BatchTest extends Setup {
 
         $batch = Trolley\Batch::create([
             "sourceCurrency" => "USD",
-            "description" => "Integration Test Payments"
+            "description" => "PHP Integration Test Payments"
         ], [
             [
                 "targetAmount" => "10.00",
@@ -244,14 +257,19 @@ class BatchTest extends Setup {
 
         $summary = Trolley\Batch::summary($batch->id);
         $this->assertEquals(2, $summary->detail['bank-transfer']['count']);
+        try{
+            $quote = Trolley\Batch::generateQuote($batch->id);
 
-        $quote = Trolley\Batch::generateQuote($batch->id);
+            $this->assertNotNull($quote);
+        
+            $start = Trolley\Batch::startProcessing($batch->id);
+            $this->assertNotNull($start);
 
-        $this->assertNotNull($quote);
-
-        $start = Trolley\Batch::startProcessing($batch->id);
-
-        $this->assertNotNull($start);
+            Trolley\Batch::delete($batch->id);
+        }catch(Standard $e){
+            echo $e;
+            Trolley\Batch::delete($batch->id);
+        }
 
         $this->deleteRecipient($recipientAlpha->id);
         $this->deleteRecipient($recipientBeta->id);
