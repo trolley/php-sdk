@@ -54,7 +54,8 @@ class RecipientTest extends Setup
         $this->assertContains($uuid, $recipient->email);
         $this->assertNotNull($recipient->id);
 
-        $this->assertTrue(Trolley\Recipient::delete($recipient->id));
+        $deleteRecipient = Trolley\Recipient::delete($recipient->id);
+        $this->assertTrue($deleteRecipient);
     }
 
     public function testLifecycle()
@@ -174,7 +175,8 @@ class RecipientTest extends Setup
         $updatedRecipient = Trolley\Recipient::find($recipient->id);
         $this->assertEquals($updatedRecipient->accounts[0]->type, "bank-transfer");
 
-        $this->assertTrue(Trolley\Recipient::delete($recipient->id));
+        $deleteRecipient = Trolley\Recipient::delete($recipient->id);
+        $this->assertTrue($deleteRecipient);
     }
 
     public function testAllLogs()
@@ -195,7 +197,8 @@ class RecipientTest extends Setup
         $allLogs = Trolley\Recipient::getAllLogs($recipient->id);
         $this->assertTrue($allLogs->maximumCount() > 0);
 
-        $this->assertTrue(Trolley\Recipient::delete($recipient->id));
+        $deleteRecipient = Trolley\Recipient::delete($recipient->id);
+        $this->assertTrue($deleteRecipient);
     }
 
 }
