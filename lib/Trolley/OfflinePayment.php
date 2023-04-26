@@ -72,8 +72,8 @@ class OfflinePayment extends Base
         return Configuration::gateway()->offlinePayments()->delete($recipientId, $offlinePaymentId);
     }
 	
-	/**
-	 * Returns searched Offline Payments.
+     /**
+     * Returns searched Offline Payments.
      *
      * @param mixed $params[
      *      "page",     (optional)
@@ -90,7 +90,7 @@ class OfflinePayment extends Base
     }
 
     /**
-	 * Returns all Offline Payments.
+     * Returns all Offline Payments.
      *
      * @param integer $page
      * @param integer $pageSize
