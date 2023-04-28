@@ -1,6 +1,6 @@
 <?php
 namespace Trolley;
-
+use Malformed;
 /**
  * Trolley Recipient module
  * PHP Version 5
@@ -17,30 +17,30 @@ class Recipient extends Base
      */
     protected $_attributes = [
         "id" => "",
-        "routeType" => "",
-        "routeMinimum" => "",
-        "estimatedFees" => "",
         "referenceId" => "",
         "email" => "",
         "name" => "",
         "lastName" => "",
         "firstName" => "",
-        "type" => "",
-        "taxType" => "",
         "status" => "",
-        "language" => "",
         "complianceStatus" => "",
+        "gravatarUrl" => "",
+        "language" => "",
         "dob" => "",
         "passport" => "",
+        "ssn" => "",
+        "governmentId" => "",       //deprecated
+        "governmentIds" => "",
+        "routeType" => "",
+        "routeMinimum" => "",
+        
+        "estimatedFees" => "",
+        "type" => "",
         "updatedAt" => "",
         "createdAt" => "",
-        "gravatarUrl" => "",
-        "governmentId" => "",
-        "ssn" => "",
         "primaryCurrency" => "",
         "merchantId" => "",
         "payoutMethod" => "",
-
         "compliance" => "",
         "accounts" => "",
         "address" => "",
@@ -87,17 +87,50 @@ class Recipient extends Base
     }
 
     /**
-     * Create a new recipient
+     * Update a recipient
      */
     public static function update($id, $attrib) {
         return Configuration::gateway()->recipient()->update($id, $attrib);
     }
 
     /**
-     * Create a new recipient
+     * Delete a recipient
      */
     public static function delete($id) {
         return Configuration::gateway()->recipient()->delete($id);
+    }
+
+    /**
+     * Delete multiple recipients
+     */
+    public static function deleteMultiple($ids) {
+        if(!is_array($ids)){
+            throw new Exception\Malformed("Recipient::deleteMultiple() expects array parameters.");
+        }
+
+        if(count($ids)==0){
+            throw new Exception\Malformed("array parameters is empty.");
+        }
+        return Configuration::gateway()->recipient()->deleteMultiple(["ids" => $ids]);
+    }
+    
+    /**
+     * Get all logs of a recipient
+     */
+    public static function getAllLogs($id) {
+        return Configuration::gateway()->recipient()->getAllLogs([$id]);
+    }
+
+    /**
+     * Return all of the Recipient Payments
+     *
+     * @param string $recipientId of the recipient whose payments need to be fetched
+     * @throws Exception\NotFound
+     * @return Iterator of Payment[]
+     */
+    public static function getAllPayments($recipientId)
+    {
+        return Configuration::gateway()->recipient()->getAllPayments($recipientId);
     }
 
     /**
@@ -110,35 +143,34 @@ class Recipient extends Base
      */
     protected function _initialize($attributes) {
         $fields = [
-            "id",
-            "routeType",
-            "routeMinimum",
-            "estimatedFees",
-            "id",
-            "referenceId",
-            "email",
-            "name",
-            "lastName",
-            "firstName",
-            "type",
-            "taxType",
-            "status",
-            "language",
-            "complianceStatus",
-            "dob",
-            "passport",
-            "updatedAt",
-            "createdAt",
-            "gravatarUrl",
-            "governmentId",
-            "ssn",
-            "primaryCurrency",
-            "merchantId",
-            "payoutMethod",
-
-            "compliance",       // TODO: Factory
-            "accounts" => 'Trolley\RecipientAccount::factoryArray',         // Specifies factory method
-            "address" => 'Trolley\RecipientAddress::factory',
+        "id",
+        "referenceId",
+        "email",
+        "name",
+        "lastName",
+        "firstName",
+        "status",
+        "complianceStatus",
+        "gravatarUrl",
+        "language",
+        "dob",
+        "passport",
+        "ssn",
+        "governmentId",       //deprecated
+        "governmentIds",
+        "routeType",
+        "routeMinimum",
+        
+        "estimatedFees",
+        "type",
+        "updatedAt",
+        "createdAt",
+        "primaryCurrency",
+        "merchantId",
+        "payoutMethod",
+        "compliance",
+        "accounts" => 'Trolley\RecipientAccount::factoryArray',         // Specifies factory method
+        "address" => 'Trolley\RecipientAddress::factory',
         ];
 
         foreach ($fields as $key => $field) {

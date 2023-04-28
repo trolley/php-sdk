@@ -79,6 +79,24 @@ class BatchTest extends Setup {
         $this->assertTrue($all->maximumCount() > 0);
     }
 
+    public function testMultipleDelete()
+    {
+        $batchAlpha = Trolley\Batch::create([
+            "sourceCurrency" => "USD",
+            "description" => "Integration Test Create : Delete Multiple Batch 1"
+        ]);
+        $batchBeta = Trolley\Batch::create([
+            "sourceCurrency" => "USD",
+            "description" => "Integration Test Create : Delete Multiple Batch 1"
+        ]);
+
+        $this->assertNotNull($batchAlpha);
+        $this->assertNotNull($batchBeta->id);
+
+        $response = Trolley\Batch::deleteMultiple([$batchAlpha->id, $batchBeta->id]);
+        $this->assertTrue($response);
+    }
+
     public function testCreate()
     {
         $batch = Trolley\Batch::create([
