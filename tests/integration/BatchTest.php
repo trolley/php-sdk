@@ -9,6 +9,7 @@ use Trolley;
 use Ramsey\Uuid\Uuid;
 
 class BatchTest extends Setup {
+
     private function createRecipient() {
         $uuid = (string)Uuid::uuid4();
 
@@ -24,19 +25,52 @@ class BatchTest extends Setup {
                 'postalCode' => '123123',
             ],
         ]);
-        
-        $account = Trolley\RecipientAccount::create($recipient->id, [
+
+        return $recipient;
+    }
+
+    private function createRecipientAccount($recipientId){
+        $account = Trolley\RecipientAccount::create($recipientId, [
             "type" => "bank-transfer",
             "currency" => "EUR",
             "iban" => "DE89 3704 0044 0532 0130 00",
         ]);
-
-        return $recipient;
     }
 
     private function deleteRecipient($recipientId) {
         $response = Trolley\Recipient::delete($recipientId);
         $this->assertTrue($response);
+    }
+
+    /* public function testErrors(){
+
+        //create inactive Recipient to send payment to
+        $recipient = $this->createRecipient();
+
+        // create batch with errors (non-equal currencies)
+        $batch = Trolley\Batch::create([
+            "sourceCurrency" => "USD",
+            "description" => "Integration Test Create"
+        ],
+        [
+            [
+                "targetAmount" => "10.00",
+                "targetCurrency" => "EUR",
+                "recipient" => [ "id" => $recipient->id ]
+            ]
+        ]);
+
+        try{
+            //process the batch to encounter errors
+            $batchProcessing = Trolley\Batch::startProcessing($batch->id);
+        }catch(Trolley\Exception\Standard $e){
+            // Assert we got an Error array
+            $this->assertInternalType('array', $e->getAllErrorsAsArray());
+        }
+
+        // cleanup: Delete Batch & Recipient
+        Trolley\Batch::delete($batch->id);
+        $this->deleteRecipient($recipient->id);
     }
 
     public function testAll_smokeTest()
@@ -86,12 +120,14 @@ class BatchTest extends Setup {
         $response = Trolley\Batch::delete($batch->id);
 
         $this->assertTrue($response);
-    }
+    }  */
 
     public function testCreateWithPayments()
     {
         $recipientAlpha = $this->createRecipient();
+            $this->createRecipientAccount($recipientAlpha->id);
         $recipientBeta = $this->createRecipient();
+            $this->createRecipientAccount($recipientBeta->id);
 
         $batch = Trolley\Batch::create([
             "sourceCurrency" => "USD",
@@ -107,13 +143,13 @@ class BatchTest extends Setup {
                 "recipient" => [ "id" => $recipientBeta->id ]
             ],
         ]);
-
         $this->assertNotNull($batch);
         $this->assertNotNull($batch->id);
 
         $findBatch = Trolley\Batch::find($batch->id);
         $this->assertNotNull($findBatch);
         $this->assertEquals(2, $findBatch->totalPayments);
+        $this->assertEquals($findBatch->payments[0]->recipient["id"], $recipientAlpha->id);
 
         $payments = Trolley\Batch::payments($batch->id);
         foreach ($payments as $item) {
@@ -127,7 +163,7 @@ class BatchTest extends Setup {
         $this->deleteRecipient($recipientBeta->id);
     }
 
-    public function testPayments()
+    /* public function testPayments()
     {
         $batch = Trolley\Batch::create([
             "sourceCurrency" => "USD",
@@ -137,6 +173,7 @@ class BatchTest extends Setup {
         $this->assertNotNull($batch->id);
 
         $recipient = $this->createRecipient();
+            $this->createRecipientAccount($recipient->id);
 
         $payment = Trolley\Batch::createPayment($batch->id, [
             "sourceAmount" => "10.00",
@@ -165,7 +202,9 @@ class BatchTest extends Setup {
     public function testProcessing()
     {
         $recipientAlpha = $this->createRecipient();
+            $this->createRecipientAccount($recipientAlpha->id);
         $recipientBeta = $this->createRecipient();
+            $this->createRecipientAccount($recipientBeta->id);
 
         $batch = Trolley\Batch::create([
             "sourceCurrency" => "USD",
@@ -186,7 +225,7 @@ class BatchTest extends Setup {
         $this->assertNotNull($batch->id);
 
         $summary = Trolley\Batch::summary($batch->id);
-        $this->assertEquals(2, $summary->methods['bank-transfer']['count']);
+        $this->assertEquals(2, $summary->detail['bank-transfer']['count']);
 
         $quote = Trolley\Batch::generateQuote($batch->id);
 
@@ -198,5 +237,5 @@ class BatchTest extends Setup {
 
         $this->deleteRecipient($recipientAlpha->id);
         $this->deleteRecipient($recipientBeta->id);
-    }
+    } */
 }

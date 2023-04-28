@@ -134,6 +134,25 @@ class Payment extends Base
         $instance->_initialize($attributes);
         return $instance;
     }
+
+    /**
+     *  factory method: returns an array of Payment instances
+     *  to the requesting method, with populated properties
+     *
+     * @ignore
+     * @return Array Payment
+     */
+    public static function factoryArray($arr)
+    {   
+        $instances = [];
+        foreach ($arr as $key => $payment) {       
+            $instance = new self();
+            $instance->_initialize($payment);
+            array_push($instances, $instance);
+        }
+
+        return $instances;
+    }
 }
 
 class_alias('Trolley\Payment', 'Trolley_Payment');
