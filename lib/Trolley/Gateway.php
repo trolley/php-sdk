@@ -79,6 +79,15 @@ class Gateway
     }
 
     /**
+     * @return InvoicePaymentGateway
+     */
+    public function invoicePayment()
+    {
+        return new InvoicePaymentGateway($this);
+        
+    }
+
+    /**
      * @return BalanceGateway
      */
     public function balance()
