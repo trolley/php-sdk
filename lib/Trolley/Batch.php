@@ -26,6 +26,7 @@ class Batch extends Base
         "status" => "",
         "totalPayments" => "",
         "updatedAt" => "",
+        "payments" => ""
     ];
 
     /**
@@ -219,11 +220,22 @@ class Batch extends Base
             "status",
             "totalPayments",
             "updatedAt",
+            "payments"  => 'Trolley\Payment::factoryArray'
         ];
 
-        foreach ($fields as $field) {
-            if (isset($attributes[$field])) {
-                $this->_set($field, $attributes[$field]);
+        foreach ($fields as $key => $field) {
+            if (is_numeric($key)) {
+                if (isset($attributes[$field])) {
+                    $this->_set($field, $attributes[$field]);
+                }
+            } else {
+                if (isset($attributes[$key])) {
+                    if($key === "payments"){
+                        $this->_set($key, call_user_func($field, $attributes[$key]["payments"]));
+                    }else{
+                        $this->_set($key, call_user_func($field, $attributes[$key]));
+                    }                    
+                }
             }
         }
     }
