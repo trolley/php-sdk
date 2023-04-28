@@ -28,7 +28,7 @@ class Http
         foreach ($query as $key => $value) {
             $output .= (strlen($output) == 0 ? '?' : '&') . urlencode($key) . '=';
             if (is_array($value)) {
-                $output .= join(',', array_map(urlencode, $value));
+                $output .= join(',', array_map('urlencode', $value));
             } else {
                 $output .= urlencode($value);
             }
