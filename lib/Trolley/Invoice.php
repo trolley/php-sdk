@@ -124,7 +124,7 @@ class Invoice extends Base
             "paidAmount",
             "dueAmount",
             "tags",
-            "lines",
+            "lines" => "Trolley\InvoiceLine::factoryArray",
             "recipientId"
         ];
 

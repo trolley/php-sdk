@@ -106,7 +106,6 @@ class InvoiceTest extends Setup
 			$firstInvoice->id,
 			$secondInvoice->id
 		]);
-		print_r($deleteInvoices);
 		$this->assertTrue($deleteInvoices);
 
 		// Delete test recipient
