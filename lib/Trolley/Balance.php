@@ -38,7 +38,27 @@ class Balance extends Base
      */
     public static function all()
     {
-        return Configuration::gateway()->balance()->search([]);
+        return Configuration::gateway()->balance()->search("",[]);
+    }
+
+    /**
+     * Show Trolley account balances
+     *
+     * @return Balance
+     */
+    public static function getTrolleyAccountBalance()
+    {
+        return Configuration::gateway()->balance()->search("paymentrails", []);
+    }
+
+    /**
+     * Show Paypal account balances
+     *
+     * @return Balance
+     */
+    public static function getPaypalAccountBalance()
+    {
+        return Configuration::gateway()->balance()->search("paypal", []);
     }
 
     /**

@@ -40,9 +40,10 @@ class BalanceGateway
      * @return ResourceCollection
      * @throws InvalidArgumentException
      */
-    public function search($query)
+    public function search($params, $query)
     {
-        $response = $this->_http->get('/v1/balances', $query);
+        $response = $this->_http->get('/v1/balances/'.$params, $query);
+        
 
         if ($response['ok']) {
             $pager = [

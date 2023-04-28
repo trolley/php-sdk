@@ -120,7 +120,7 @@ class InvoiceLine extends Base
 
 
    /**
-     *  factory method: returns an instance of Invoice
+     *  factory method: returns an instance of InvoiceLine
      *  to the requesting method, with populated properties
      *
      * @ignore
