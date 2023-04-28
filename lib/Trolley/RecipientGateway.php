@@ -110,6 +110,69 @@ class RecipientGateway
             throw new Exception\DownForMaintenance();
         }
     }
+
+    public function deleteMultiple($ids) {
+        $response = $this->_http->delete('/v1/recipients/', null, $ids);
+        if ($response) {
+            return true;
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function getAllLogs($id) {
+        $response = $this->_http->get("/v1/recipients/{$id[0]}/logs", null);
+        if ($response["ok"]) {
+            $pager = [
+                'object' => $this,
+                'method' => 'getAllLogs',
+                'methodArgs' => $id[0]
+            ];
+
+            $items = array_map(function ($item) {
+                return RecipientLogs::factory($item);
+            }, $response['recipientLogs']);
+
+            return new ResourceCollection($response, $items, $pager);
+        } else if($response["errors"]){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    /**
+     * Returns a ResourceCollection of all payments belonging to a recipient.
+     *
+     * For more detailed information and examples, see {@link https://docs.trolley.com/api/#retrieve-all-payments}
+     *
+     * @param string $recipientId of the recipient whose payments need to be fetched
+     * @return ResourceCollection
+     * @throws Standard
+     * @throws DownForMaintenance
+     */
+    public function getAllPayments($recipientId)
+    {
+        $response = $this->_http->get('/v1/recipients/'.$recipientId.'/payments');
+
+        if ($response['ok']) {
+            $pager = [
+                'object' => $this,
+                'method' => 'search',
+                'methodArgs' => $recipientId
+            ];
+
+            $items = array_map(function ($item) {
+                return Payment::factory($item);
+            }, $response['payments']);
+
+            return new ResourceCollection($response, $items, $pager);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
 }
 
 class_alias('Trolley\RecipientGateway', 'Trolley_RecipientGateway');

@@ -16,19 +16,19 @@ class RecipientAccount extends Base
      * @var array registry of customer data
      */
     protected $_attributes = [
-        "id" => "",
+        "status" => "",
+        "type" => "",
         "primary" => "",
         "currency" => "",
+        "id" => "",
+        "recipientId" => "",
         "recipientAccountId" => "",
-        "routeType" => "",
-        "recipientFees" => "",
-
-        "emailAddress" => "",
-
+        "disabledAt" => "",
+        "deliveryBusinessDaysEstimate" => "",
         "country" => "",
-        "type" => "",
         "iban" => "",
         "accountNum" => "",
+        "bankAccountType" => "",
         "accountHolderName" => "",
         "swiftBic" => "",
         "branchId" => "",
@@ -38,6 +38,8 @@ class RecipientAccount extends Base
         "bankCity" => "",
         "bankRegionCode" => "",
         "bankPostalCode" => "",
+        "routeType" => "",
+        "recipientFees" => ""
     ];
 
     /**
@@ -105,19 +107,19 @@ class RecipientAccount extends Base
      */
     protected function _initialize($attributes) {
         $fields = [
-            "id",
+            "status",
+            "type",
             "primary",
             "currency",
+            "id",
+            "recipientId",
             "recipientAccountId",
-            "routeType",
-            "recipientFees",
-
-            "emailAddress",
-
+            "disabledAt",
+            "deliveryBusinessDaysEstimate",
             "country",
-            "type",
             "iban",
             "accountNum",
+            "bankAccountType",
             "accountHolderName",
             "swiftBic",
             "branchId",
@@ -127,6 +129,8 @@ class RecipientAccount extends Base
             "bankCity",
             "bankRegionCode",
             "bankPostalCode",
+            "routeType",
+            "recipientFees"
         ];
 
         foreach ($fields as $field) {
