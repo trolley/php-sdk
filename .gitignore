@@ -4,3 +4,6 @@ vendor
 composer.phar
 run.php
 .vscode
+.env
+.DS_Store
+tests/.DS_Store
