@@ -27,7 +27,14 @@ class Standard extends Exception
 		}
 
 		$this->errorArray = $errorBody["errors"];
-		$message = json_encode($this->errorArray);
+
+		foreach($this->errorArray as $e) {
+			$message .= "{$e['message']}";
+			if (!empty($e['field'])) {
+				$message .= " (field: {$e['field']})";
+			}
+			$message .= "\n";
+		}
 
 		$this->message = $message;
 	}
