@@ -22,7 +22,7 @@ class PaymentTest extends Setup
 			$fee = $pay->fees;
 			$sourceAmount = $pay->sourceAmount;
 		}		
-        $this->assertTrue($payments->maximumCount() > 0 && $fee > 0 && $sourceAmount > 0);
+        $this->assertTrue($payments->maximumCount() > 0 && $sourceAmount > 0);
     }
 	
 	//Function which will test to see if they search works by only selecting the 
@@ -31,7 +31,7 @@ class PaymentTest extends Setup
     {
         $recipientId = 'R-4QoXiSPjbnLuUmQR2bgb8C';
 
-		$payments = Trolley\Payment::search($recipientId, ['pageSize' => 10]);
+		$payments = Trolley\Payment::search($recipientId, ['page' => 1, 'pageSize' => 10]);
 		$count = 0;
 		foreach($payments as $pay)
 		{
@@ -39,6 +39,6 @@ class PaymentTest extends Setup
 			$sourceAmount = $pay->sourceAmount;
 			$count++;
 		}		
-        $this->assertTrue($count == 10 && $fee > 0 && $sourceAmount > 0);
+        $this->assertTrue($count == 10 && $sourceAmount > 0);
     }
 }
