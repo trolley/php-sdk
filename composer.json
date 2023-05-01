@@ -1,5 +1,5 @@
 {
-    "name": "paymentrails/php-sdk",
+    "name": "trolley/core",
     "type": "library",
     "description": "Trolley PHP SDK",
     "homepage": "https://github.com/PaymentRails/php-sdk",
@@ -10,7 +10,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Trolley (previously PaymentRails)",
+            "name": "Trolley",
             "homepage": "https://www.trolley.com"
         }
     ],
@@ -19,7 +19,8 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "ext-openssl": "*"
+        "ext-openssl": "*",
+        "vlucas/phpdotenv": "^5.5"
     },
     "require-dev": {
         "phpunit/phpunit": "5.7.*",
@@ -27,10 +28,10 @@
     },
     "autoload": {
         "psr-0": {
-            "PaymentRails": "lib/"
+            "Trolley": "lib/"
         },
         "psr-4": {
-            "PaymentRails\\": "lib/PaymentRails"
+            "Trolley\\": "lib/Trolley"
         }
     }
 }
