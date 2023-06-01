@@ -43,7 +43,7 @@ class BatchTest extends Setup {
         $this->assertTrue($response);
     }
 
-    /* public function testErrors(){
+    public function testErrors(){
 
         //create inactive Recipient to send payment to
         $recipient = $this->createRecipient();
@@ -151,7 +151,7 @@ class BatchTest extends Setup {
         $response = Trolley\Batch::delete($batch->id);
 
         $this->assertTrue($response);
-    }  */
+    } 
 
     public function testCreateWithPayments()
     {
@@ -194,7 +194,7 @@ class BatchTest extends Setup {
         $this->deleteRecipient($recipientBeta->id);
     }
 
-    /* public function testPayments()
+    public function testPayments()
     {
         $batch = Trolley\Batch::create([
             "sourceCurrency" => "USD",
@@ -273,5 +273,5 @@ class BatchTest extends Setup {
 
         $this->deleteRecipient($recipientAlpha->id);
         $this->deleteRecipient($recipientBeta->id);
-    } */
+    }
 }
