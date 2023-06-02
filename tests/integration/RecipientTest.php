@@ -80,6 +80,15 @@ class RecipientTest extends Setup
         $fetchResult = Trolley\Recipient::find($createResult->id);
         $this->assertEquals('Bob', $fetchResult->firstName);
 
+        $searchResult = Trolley\Recipient::search(
+            [
+                "name"      =>  $createResult->firstName,
+                "page"      =>  1,
+                "pageSize"  =>  2
+            ]
+        );
+        $this->assertEquals($searchResult->firstItem()->firstName, $createResult->firstName);
+
         $deleteResult = Trolley\Recipient::delete($createResult->id);
         $this->assertTrue($deleteResult);
 

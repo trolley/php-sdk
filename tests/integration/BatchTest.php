@@ -78,6 +78,23 @@ class BatchTest extends Setup {
     {
         $all = Trolley\Batch::all();
         $this->assertTrue($all->maximumCount() > 0);
+
+        $batch = Trolley\Batch::create([
+            "sourceCurrency" => "USD",
+            "description"    => "Integration Test Create : PHP SDK",
+            "tags"           => ["PHPSDK"]
+        ]);
+
+        $searchResult = Trolley\Batch::search([
+            "search"    => "PHPSDK",
+            "page"      => 1,
+            "pageSize"  => 5
+        ]);
+
+        $this->assertEquals($searchResult->firstItem()->id, $batch->id);
+        
+        $response = Trolley\Batch::delete($batch->id);
+        $this->assertTrue($response);
     }
 
     public function testBalances(){
@@ -219,6 +236,9 @@ class BatchTest extends Setup {
         ]);
 
         $this->assertTrue($response);
+
+        $response = Trolley\Batch::findPayment($batch->id, $payment->id);
+        $this->assertEquals($response->id, $payment->id);
 
         $response = Trolley\Batch::deletePayment($batch->id, $payment->id);
 
