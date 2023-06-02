@@ -68,13 +68,13 @@ class Batch extends Base
     /**
      * Create a batch
      *
-     * @param mixed $params
+     * @param mixed $batchDescription
      * @param mixed $payments
      * @return Batch
      */
-    public static function create($params, $payments = null)
+    public static function create($batchDescription, $payments = null)
     {
-        return Configuration::gateway()->batch()->create($params, $payments);
+        return Configuration::gateway()->batch()->create($batchDescription, $payments);
     }
 
     /**

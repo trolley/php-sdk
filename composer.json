@@ -2,7 +2,7 @@
     "name": "trolley/core",
     "type": "library",
     "description": "Trolley PHP SDK",
-    "homepage": "https://github.com/PaymentRails/php-sdk",
+    "homepage": "https://github.com/Trolley/php-sdk",
     "keywords": [
         "PaymentRails",
         "Trolley"

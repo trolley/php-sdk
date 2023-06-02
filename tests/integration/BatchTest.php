@@ -43,7 +43,7 @@ class BatchTest extends Setup {
         $this->assertTrue($response);
     }
 
-    /* public function testErrors(){
+    public function testErrors(){
 
         //create inactive Recipient to send payment to
         $recipient = $this->createRecipient();
@@ -78,6 +78,23 @@ class BatchTest extends Setup {
     {
         $all = Trolley\Batch::all();
         $this->assertTrue($all->maximumCount() > 0);
+
+        $batch = Trolley\Batch::create([
+            "sourceCurrency" => "USD",
+            "description"    => "Integration Test Create : PHP SDK",
+            "tags"           => ["PHPSDK"]
+        ]);
+
+        $searchResult = Trolley\Batch::search([
+            "search"    => "PHPSDK",
+            "page"      => 1,
+            "pageSize"  => 5
+        ]);
+
+        $this->assertEquals($searchResult->firstItem()->id, $batch->id);
+        
+        $response = Trolley\Batch::delete($batch->id);
+        $this->assertTrue($response);
     }
 
     public function testBalances(){
@@ -151,7 +168,7 @@ class BatchTest extends Setup {
         $response = Trolley\Batch::delete($batch->id);
 
         $this->assertTrue($response);
-    }  */
+    } 
 
     public function testCreateWithPayments()
     {
@@ -194,7 +211,7 @@ class BatchTest extends Setup {
         $this->deleteRecipient($recipientBeta->id);
     }
 
-    /* public function testPayments()
+    public function testPayments()
     {
         $batch = Trolley\Batch::create([
             "sourceCurrency" => "USD",
@@ -219,6 +236,9 @@ class BatchTest extends Setup {
         ]);
 
         $this->assertTrue($response);
+
+        $response = Trolley\Batch::findPayment($batch->id, $payment->id);
+        $this->assertEquals($response->id, $payment->id);
 
         $response = Trolley\Batch::deletePayment($batch->id, $payment->id);
 
@@ -273,5 +293,5 @@ class BatchTest extends Setup {
 
         $this->deleteRecipient($recipientAlpha->id);
         $this->deleteRecipient($recipientBeta->id);
-    } */
+    }
 }
