@@ -468,7 +468,7 @@ class Configuration
                 $ssl = true;
                 break;
            }
-           if (substr($this->_environment, 0, strlen('localhost')) === 'localhost') {
+           if (substr($this->_environment ?? '', 0, strlen('localhost')) === 'localhost') {
                $ssl = false;
            }
    
