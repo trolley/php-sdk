@@ -42,6 +42,7 @@ class Payment extends Base
         'payoutMethod',
         'coverFees',
         'taxReportable',
+        'checkNumber',
         'tags',
         'estimatedDeliveryAt',
         'initiatedAt',
@@ -50,7 +51,7 @@ class Payment extends Base
 
     /**
      * Return all of the Recipient Payments
-     * @deprecated deprecated since version 3.x.x, will be removed in Q4 2023
+     * @deprecated deprecated since version 3.x.x, will be removed in Q4 2023. Use Recipient.getAllPayments() instead.
      * @throws Exception\NotFound
      * @return Iterator of Payment[]
      */
@@ -107,6 +108,7 @@ class Payment extends Base
             'payoutMethod',
             'coverFees',
             'taxReportable',
+            'checkNumber',
             'tags',
             'estimatedDeliveryAt',
             'initiatedAt',
