@@ -7,7 +7,7 @@ The Trolley PHP SDK provides integration access to the Trolley API.
 
 ## Requirements
 
-PHP version >= 5.4.0 is required.
+PHP version >= 8.1 is required.
 
 The following PHP extensions are required:
 
