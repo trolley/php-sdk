@@ -7,7 +7,7 @@ The Payment Rails PHP library provides integration access to the Payment Rails A
 
 ## Requirements
 
-PHP version >= 5.4.0 is required.
+PHP version >= 8.1 is required.
 
 The following PHP extensions are required:
 
