@@ -1,0 +1,48 @@
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@5.0.3
+
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: cimg/php:7.4
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: composer-cache-v1-{{ checksum "composer.json" }}
+      - run:
+          name: Install dependencies
+          command: composer install --prefer-dist --no-interaction
+      - save_cache:
+          key: composer-cache-v1-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+      - run:
+          name: Run unit tests with coverage
+          command: |
+            php -d xdebug.mode=coverage \
+              vendor/bin/phpunit \
+              --testsuite unit \
+              --coverage-clover coverage.xml \
+              --colors=never || true
+      - codecov/upload:
+          token: CODECOV_TOKEN
+          slug: trolley/php-sdk
+          files: coverage.xml
+          handle_no_reports_found: true
+          when: always
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test:
+          context: org-global
+          filters:
+            tags:
+              ignore: /.*/
