@@ -56,9 +56,9 @@ class ResourceCollection implements Iterator
     /**
      * returns the current item when iterating with foreach
      */
-    public function current()
+    public function current(): mixed
     {
-        return $this->_items[$this->_index];
+        return $this->_items[$this->_index] ?? false;
     }
 
     /**
@@ -66,9 +66,9 @@ class ResourceCollection implements Iterator
      *
      * @return mixed
      */
-    public function firstItem()
+    public function firstItem(): mixed
     {
-        return $this->_items[0];
+        return $this->_items[0] ?? false;
     }
 
     public function key()
@@ -79,7 +79,7 @@ class ResourceCollection implements Iterator
     /**
      * advances to the next item in the collection when iterating with foreach
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_index;
     }
@@ -87,7 +87,7 @@ class ResourceCollection implements Iterator
     /**
      * rewinds the testIterateOverResults collection to the first item when iterating with foreach
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_index = 0;
     }
@@ -95,7 +95,7 @@ class ResourceCollection implements Iterator
     /**
      * returns whether the current item is valid when iterating with foreach
      */
-    public function valid()
+    public function valid(): bool
     {
         if ($this->_index >= count($this->_items)) {
             if ($this->_page + 1 >= $this->_maxPages) {
@@ -111,7 +111,7 @@ class ResourceCollection implements Iterator
         return $this->_records;
     }
 
-    private function _getNextPage()
+    private function _getNextPage(): void
     {
         $result = $this->_getPage($this->_page + 1);
         $this->_items = $result->_items;
@@ -119,12 +119,14 @@ class ResourceCollection implements Iterator
         ++$this->_page;
     }
 
-    /**
-     * requests the next page of results for the collection
-     *
-     * @return void
-     */
-    private function _getPage($page)
+	/**
+	 * requests the next page of results for the collection
+	 *
+	 * @param $page
+	 *
+	 * @return mixed
+	 */
+    private function _getPage($page): mixed
     {
         $object = $this->_pager['object'];
         $method = $this->_pager['method'];
