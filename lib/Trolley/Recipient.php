@@ -43,6 +43,7 @@ class Recipient extends Base
         "payoutMethod" => "",
         "compliance" => "",
         "accounts" => "",
+        "tags" => "",
         "address" => "",
     ];
 
@@ -169,7 +170,8 @@ class Recipient extends Base
         "merchantId",
         "payoutMethod",
         "compliance",
-        "accounts" => 'Trolley\RecipientAccount::factoryArray',         // Specifies factory method
+        "accounts" => 'Trolley\RecipientAccount::factoryArray',
+        "tags",         // Specifies factory method
         "address" => 'Trolley\RecipientAddress::factory',
         ];
 

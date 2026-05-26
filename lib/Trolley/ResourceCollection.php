@@ -56,9 +56,10 @@ class ResourceCollection implements Iterator
     /**
      * returns the current item when iterating with foreach
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
-        return $this->_items[$this->_index];
+        return isset($this->_items[$this->_index]) ? $this->_items[$this->_index] : false;
     }
 
     /**
@@ -68,9 +69,10 @@ class ResourceCollection implements Iterator
      */
     public function firstItem()
     {
-        return $this->_items[0];
+        return isset($this->_items[0]) ? $this->_items[0] : false;
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return null;
@@ -79,6 +81,7 @@ class ResourceCollection implements Iterator
     /**
      * advances to the next item in the collection when iterating with foreach
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->_index;
@@ -87,6 +90,7 @@ class ResourceCollection implements Iterator
     /**
      * rewinds the testIterateOverResults collection to the first item when iterating with foreach
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_index = 0;
@@ -95,6 +99,7 @@ class ResourceCollection implements Iterator
     /**
      * returns whether the current item is valid when iterating with foreach
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         if ($this->_index >= count($this->_items)) {

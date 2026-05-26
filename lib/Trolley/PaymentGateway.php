@@ -65,6 +65,18 @@ class PaymentGateway
         }
     }
 
+    public function find($paymentId)
+    {
+        $response = $this->_http->get("/v1/payments/{$paymentId}");
+        if ($response['ok']) {
+            return Payment::factory($response['payment']);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
     /**
      * generic method for validating incoming gateway responses
      *

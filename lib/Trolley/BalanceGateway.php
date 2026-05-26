@@ -42,7 +42,8 @@ class BalanceGateway
      */
     public function search($params, $query)
     {
-        $response = $this->_http->get('/v1/balances/'.$params, $query);
+        $path = $params ? "/v1/balances/{$params}" : '/v1/balances';
+        $response = $this->_http->get($path, $query);
         
 
         if ($response['ok']) {
@@ -58,6 +59,38 @@ class BalanceGateway
 
             return new ResourceCollection($response, $items, $pager);
         } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function all()
+    {
+        $response = $this->_http->get('/v1/balances');
+        return $this->balancesCollection($response);
+    }
+
+    public function paymentrails()
+    {
+        $response = $this->_http->get('/v1/balances/paymentrails');
+        return $this->balancesCollection($response);
+    }
+
+    public function paypal()
+    {
+        $response = $this->_http->get('/v1/balances/paypal');
+        return $this->balancesCollection($response);
+    }
+
+    private function balancesCollection($response)
+    {
+        if ($response['ok']) {
+            $items = array_map(function ($item) {
+                return Balance::factory($item);
+            }, $response['balances']);
+            return new ResourceCollection($response, $items, []);
+        } else if ($response['errors']) {
             throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();

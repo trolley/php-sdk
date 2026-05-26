@@ -39,7 +39,15 @@ class RecipientAccount extends Base
         "bankRegionCode" => "",
         "bankPostalCode" => "",
         "routeType" => "",
-        "recipientFees" => ""
+        "recipientFees",
+            "emailAddress",
+            "cardDetails",
+            "mailing",
+            "phoneNumber" => "",
+        "emailAddress" => "",
+        "cardDetails" => "",
+        "mailing" => "",
+        "phoneNumber" => ""
     ];
 
     /**
@@ -130,7 +138,11 @@ class RecipientAccount extends Base
             "bankRegionCode",
             "bankPostalCode",
             "routeType",
-            "recipientFees"
+            "recipientFees",
+            "emailAddress",
+            "cardDetails",
+            "mailing",
+            "phoneNumber"
         ];
 
         foreach ($fields as $field) {
