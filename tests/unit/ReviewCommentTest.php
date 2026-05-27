@@ -39,7 +39,7 @@ class ReviewCommentTest extends TestCase
         $gateway = $this->gatewayWithHttp('Trolley\RecipientGateway', $http);
 
         $ids = [];
-        foreach ($gateway->getAllOfflinePayments('R-1', ['pageSize' => 1]) as $payment) {
+        foreach ($gateway->getAllOfflinePayments('R-1', ['recipientId' => 'R-wrong', 'pageSize' => 1]) as $payment) {
             $ids[] = $payment->id;
         }
 
@@ -91,13 +91,39 @@ class ReviewCommentTest extends TestCase
         $gateway = $this->gatewayWithHttp('Trolley\BalanceGateway', $http);
 
         $accountNumbers = [];
-        foreach ($gateway->search('paypal', ['pageSize' => 1]) as $balance) {
+        foreach ($gateway->search('paypal', ['params' => 'wrong', 'pageSize' => 1]) as $balance) {
             $accountNumbers[] = $balance->accountNumber;
         }
 
         $this->assertSame(['A-1', 'A-2'], $accountNumbers);
         $this->assertSame('/v1/balances/paypal', $http->requests[1][0]);
         $this->assertSame(['page' => 2, 'pageSize' => 1], $http->requests[1][1]);
+    }
+
+    public function testBatchPaymentsPaginationKeepsBatchId()
+    {
+        $http = new FakeHttp([
+            [
+                'ok' => true,
+                'payments' => [['id' => 'P-1']],
+                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+            ],
+            [
+                'ok' => true,
+                'payments' => [['id' => 'P-2']],
+                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+            ],
+        ]);
+        $gateway = $this->gatewayWithHttp('Trolley\BatchGateway', $http);
+
+        $ids = [];
+        foreach ($gateway->payments('B-1', ['batchId' => 'B-wrong', 'pageSize' => 1]) as $payment) {
+            $ids[] = $payment->id;
+        }
+
+        $this->assertSame(['P-1', 'P-2'], $ids);
+        $this->assertSame('/v1/batches/B-1/payments', $http->requests[1][0]);
+        $this->assertSame(['page' => 2, 'batchId' => 'B-1', 'pageSize' => 1], $http->requests[1][1]);
     }
 
     public function testVerificationSearchPaginationKeepsQuery()

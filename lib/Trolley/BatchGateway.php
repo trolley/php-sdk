@@ -216,7 +216,7 @@ class BatchGateway
             $pager = [
                 'object' => $this,
                 'method' => 'paymentsInternal',
-                'methodArgs' => array_merge(['batchId' => $batchId], $params),
+                'methodArgs' => array_merge($params, ['batchId' => $batchId]),
             ];
 
             $items = array_map(function ($item) {

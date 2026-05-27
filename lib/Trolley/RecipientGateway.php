@@ -184,7 +184,7 @@ class RecipientGateway
             return new ResourceCollection($response, $items, [
                 'object' => $this,
                 'method' => 'getAllOfflinePaymentsPage',
-                'methodArgs' => array_merge(['recipientId' => $recipientId], $query)
+                'methodArgs' => array_merge($query, ['recipientId' => $recipientId])
             ]);
         } else if ($response['errors']){
             throw new Exception\Standard($response['errors']);

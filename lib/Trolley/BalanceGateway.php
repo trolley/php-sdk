@@ -50,7 +50,7 @@ class BalanceGateway
             $pager = [
                 'object' => $this,
                 'method' => 'searchPage',
-                'methodArgs' => array_merge(['params' => $params], $query)
+                'methodArgs' => array_merge($query, ['params' => $params])
             ];
 
             $items = array_map(function ($item) {
