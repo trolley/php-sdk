@@ -32,9 +32,7 @@ class OfflinePayment extends Base
         "enteredAmount" => "",
         "updatedAt" => "",
         "createdAt" => "",
-        "deletedAt",
-            "activityCount",
-            "taxReportable" => "",
+        "deletedAt" => "",
         "activityCount" => "",
         "taxReportable" => "",
     ];

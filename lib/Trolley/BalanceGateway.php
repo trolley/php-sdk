@@ -49,8 +49,8 @@ class BalanceGateway
         if ($response['ok']) {
             $pager = [
                 'object' => $this,
-                'method' => 'search',
-                'methodArgs' => $query
+                'method' => 'searchPage',
+                'methodArgs' => array_merge(['params' => $params], $query)
             ];
 
             $items = array_map(function ($item) {
@@ -65,31 +65,44 @@ class BalanceGateway
         }
     }
 
-    public function all()
+    public function searchPage($query)
     {
-        $response = $this->_http->get('/v1/balances');
-        return $this->balancesCollection($response);
+        $params = isset($query['params']) ? $query['params'] : '';
+        unset($query['params']);
+        return $this->search($params, $query);
     }
 
-    public function paymentrails()
+    public function all($query = [])
     {
-        $response = $this->_http->get('/v1/balances/paymentrails');
-        return $this->balancesCollection($response);
+        $response = $this->_http->get('/v1/balances', $query);
+        return $this->balancesCollection($response, 'all', $query);
     }
 
-    public function paypal()
+    public function paymentrails($query = [])
     {
-        $response = $this->_http->get('/v1/balances/paypal');
-        return $this->balancesCollection($response);
+        $response = $this->_http->get('/v1/balances/paymentrails', $query);
+        return $this->balancesCollection($response, 'paymentrails', $query);
     }
 
-    private function balancesCollection($response)
+    public function paypal($query = [])
+    {
+        $response = $this->_http->get('/v1/balances/paypal', $query);
+        return $this->balancesCollection($response, 'paypal', $query);
+    }
+
+    private function balancesCollection($response, $method, $query)
     {
         if ($response['ok']) {
+            $pager = [
+                'object' => $this,
+                'method' => $method,
+                'methodArgs' => $query
+            ];
+
             $items = array_map(function ($item) {
                 return Balance::factory($item);
             }, $response['balances']);
-            return new ResourceCollection($response, $items, []);
+            return new ResourceCollection($response, $items, $pager);
         } else if ($response['errors']) {
             throw new Exception\Standard($response['errors']);
         } else {

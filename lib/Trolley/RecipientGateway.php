@@ -183,14 +183,21 @@ class RecipientGateway
             }, $response['offlinePayments']);
             return new ResourceCollection($response, $items, [
                 'object' => $this,
-                'method' => 'getAllOfflinePayments',
-                'methodArgs' => $recipientId
+                'method' => 'getAllOfflinePaymentsPage',
+                'methodArgs' => array_merge(['recipientId' => $recipientId], $query)
             ]);
         } else if ($response['errors']){
             throw new Exception\Standard($response['errors']);
         } else {
             throw new Exception\DownForMaintenance();
         }
+    }
+
+    public function getAllOfflinePaymentsPage($query)
+    {
+        $recipientId = $query['recipientId'];
+        unset($query['recipientId']);
+        return $this->getAllOfflinePayments($recipientId, $query);
     }
 }
 
