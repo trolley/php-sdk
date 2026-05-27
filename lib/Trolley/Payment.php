@@ -63,7 +63,6 @@ class Payment extends Base
         'withholdingCurrency',
         'visibleToRecipient',
         'initiatedAt',
-        'returnedAt',
     ];
 
     /**
