@@ -18,7 +18,7 @@ class VerificationGateway
     public function search($query = [])
     {
         $response = $this->_http->get('/v1/verifications', $query);
-        return $this->buildCollection($response);
+        return $this->buildCollection($response, $query);
     }
 
     public function expire($body)
@@ -44,13 +44,13 @@ class VerificationGateway
         return $this->triggerWatchlist($body);
     }
 
-    private function buildCollection($response)
+    private function buildCollection($response, $query = [])
     {
         if ($response['ok']) {
             $pager = [
                 'object' => $this,
                 'method' => 'search',
-                'methodArgs' => []
+                'methodArgs' => $query
             ];
 
             return new ResourceCollection($response, $response['verifications'], $pager);

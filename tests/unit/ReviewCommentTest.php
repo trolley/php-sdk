@@ -100,6 +100,32 @@ class ReviewCommentTest extends TestCase
         $this->assertSame(['page' => 2, 'pageSize' => 1], $http->requests[1][1]);
     }
 
+    public function testVerificationSearchPaginationKeepsQuery()
+    {
+        $http = new FakeHttp([
+            [
+                'ok' => true,
+                'verifications' => [['id' => 'V-1']],
+                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+            ],
+            [
+                'ok' => true,
+                'verifications' => [['id' => 'V-2']],
+                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+            ],
+        ]);
+        $gateway = $this->gatewayWithHttp('Trolley\VerificationGateway', $http);
+
+        $ids = [];
+        foreach ($gateway->search(['search' => 'Jane', 'pageSize' => 1]) as $verification) {
+            $ids[] = $verification['id'];
+        }
+
+        $this->assertSame(['V-1', 'V-2'], $ids);
+        $this->assertSame('/v1/verifications', $http->requests[1][0]);
+        $this->assertSame(['page' => 2, 'search' => 'Jane', 'pageSize' => 1], $http->requests[1][1]);
+    }
+
     private function attributesFor($model)
     {
         $property = new ReflectionProperty($model, '_attributes');
