@@ -44,10 +44,10 @@ class VerificationGateway
         return $this->triggerWatchlist($body);
     }
 
-    private function buildCollection($response, $query = [])
+    private function buildCollection($response, $query = null)
     {
         if ($response['ok']) {
-            $pager = [
+            $pager = $query === null ? [] : [
                 'object' => $this,
                 'method' => 'search',
                 'methodArgs' => $query

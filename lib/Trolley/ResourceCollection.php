@@ -106,6 +106,9 @@ class ResourceCollection implements Iterator
             if ($this->_page + 1 >= $this->_maxPages) {
                 return false;
             }
+            if (!$this->_hasPager()) {
+                return false;
+            }
             $this->_getNextPage();
         }
         return $this->_index < $this->_records;
@@ -122,6 +125,11 @@ class ResourceCollection implements Iterator
         $this->_items = $result->_items;
         $this->_index = 0;
         ++$this->_page;
+    }
+
+    private function _hasPager()
+    {
+        return isset($this->_pager['object'], $this->_pager['method'], $this->_pager['methodArgs']);
     }
 
     /**

@@ -126,6 +126,26 @@ class ReviewCommentTest extends TestCase
         $this->assertSame(['page' => 2, 'search' => 'Jane', 'pageSize' => 1], $http->requests[1][1]);
     }
 
+    public function testVerificationMutationCollectionDoesNotPageThroughSearch()
+    {
+        $http = new FakeHttp([
+            [
+                'ok' => true,
+                'verifications' => [['id' => 'V-1']],
+                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+            ],
+        ]);
+        $gateway = $this->gatewayWithHttp('Trolley\VerificationGateway', $http);
+
+        $ids = [];
+        foreach ($gateway->triggerWatchlist(['recipientId' => 'R-1']) as $verification) {
+            $ids[] = $verification['id'];
+        }
+
+        $this->assertSame(['V-1'], $ids);
+        $this->assertSame([['post', '/v1/verifications/watchlist/trigger', ['recipientId' => 'R-1']]], $http->requests);
+    }
+
     private function attributesFor($model)
     {
         $property = new ReflectionProperty($model, '_attributes');
@@ -157,6 +177,12 @@ class FakeHttp
     public function get($path, $query = null)
     {
         $this->requests[] = [$path, $query];
+        return array_shift($this->responses);
+    }
+
+    public function post($path, $body = null)
+    {
+        $this->requests[] = ['post', $path, $body];
         return array_shift($this->responses);
     }
 }
