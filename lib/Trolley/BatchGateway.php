@@ -67,7 +67,7 @@ class BatchGateway
      * Fetch a Batch by ID
      */
     public function find($id) {
-        $response = $this->_http->get('/v1/batches/' . $id, null);
+        $response = $this->_http->get("/v1/batches/{$id}", null);
 
         if ($response['ok']) {
             return Batch::factory($response['batch']);
@@ -92,7 +92,7 @@ class BatchGateway
     }
 
     public function update($batchId, $attrib) {
-        $response = $this->_http->patch('/v1/batches/' . $batchId, $attrib);
+        $response = $this->_http->patch("/v1/batches/{$batchId}", $attrib);
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -103,7 +103,7 @@ class BatchGateway
     }
 
     public function delete($batchId) {
-        $response = $this->_http->delete('/v1/batches/' . $batchId);
+        $response = $this->_http->delete("/v1/batches/{$batchId}");
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -125,7 +125,7 @@ class BatchGateway
     }
 
     public function summary($batchId) {
-        $response = $this->_http->get('/v1/batches/' . $batchId . '/summary');
+        $response = $this->_http->get("/v1/batches/{$batchId}/summary");
         if ($response['ok']) {
             return BatchSummary::factory($response['batchSummary']);
         } else if ($response['errors']){
@@ -136,7 +136,7 @@ class BatchGateway
     }
 
     public function generateQuote($batchId) {
-        $response = $this->_http->post('/v1/batches/' . $batchId . '/generate-quote');
+        $response = $this->_http->post("/v1/batches/{$batchId}/generate-quote");
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -147,7 +147,7 @@ class BatchGateway
     }
 
     public function startProcessing($batchId) {
-        $response = $this->_http->post('/v1/batches/' . $batchId . '/start-processing');
+        $response = $this->_http->post("/v1/batches/{$batchId}/start-processing");
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -158,7 +158,7 @@ class BatchGateway
     }
 
     public function createPayment($batchId, $payment) {
-        $response = $this->_http->post('/v1/batches/' . $batchId . '/payments', $payment);
+        $response = $this->_http->post("/v1/batches/{$batchId}/payments", $payment);
         if ($response['ok']) {
             return Payment::factory($response['payment']);
         } else if ($response['errors']){
@@ -169,7 +169,7 @@ class BatchGateway
     }
 
     public function findPayment($batchId, $paymentId) {
-        $response = $this->_http->get('/v1/batches/' . $batchId . '/payments/' . $paymentId);
+        $response = $this->_http->get("/v1/batches/{$batchId}/payments/{$paymentId}");
         if ($response['ok']) {
             return Payment::factory($response['payment']);
         } else if ($response['errors']){
@@ -180,7 +180,7 @@ class BatchGateway
     }
 
     public function updatePayment($batchId, $paymentId, $params) {
-        $response = $this->_http->patch('/v1/batches/' . $batchId . '/payments/' . $paymentId, $params);
+        $response = $this->_http->patch("/v1/batches/{$batchId}/payments/{$paymentId}", $params);
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -191,7 +191,7 @@ class BatchGateway
     }
 
     public function deletePayment($batchId, $paymentId) {
-        $response = $this->_http->delete('/v1/batches/' . $batchId . '/payments/' . $paymentId);
+        $response = $this->_http->delete("/v1/batches/{$batchId}/payments/{$paymentId}");
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -202,18 +202,23 @@ class BatchGateway
     }
 
     public function payments($batchId, $params = []) {
-        return $this->paymentsInternal(
-            array_merge(['batchId' => $batchId], $params)
-        );
+        $response = $this->_http->get("/v1/batches/{$batchId}/payments", $params);
+        return $this->paymentsCollection($response, $batchId, $params);
     }
 
     public function paymentsInternal($params) {
-        $response = $this->_http->get('/v1/batches/' . $params['batchId'] . '/payments', $params);
+        $batchId = $params['batchId'];
+        unset($params['batchId']);
+        $response = $this->_http->get("/v1/batches/{$batchId}/payments", $params);
+        return $this->paymentsCollection($response, $batchId, $params);
+    }
+
+    private function paymentsCollection($response, $batchId, $params) {
         if ($response['ok']) {
             $pager = [
                 'object' => $this,
                 'method' => 'paymentsInternal',
-                'methodArgs' => $params,
+                'methodArgs' => array_merge($params, ['batchId' => $batchId]),
             ];
 
             $items = array_map(function ($item) {

@@ -45,7 +45,7 @@ class OfflinePaymentGateway
     public function search($query)
     {
         if (isset($query["recipientId"])) {
-          $response = $this->_http->get('/v1/recipients/'.$query["recipientId"].'/offlinePayments', $query);
+          $response = $this->_http->get("/v1/recipients/{$query['recipientId']}/offlinePayments", $query);
         } else {
           $response = $this->_http->get('/v1/offline-payments', $query);
         }
@@ -70,7 +70,7 @@ class OfflinePaymentGateway
     }
 
     public function create($recipientId, $offlinePaymentBody) {
-      $response = $this->_http->post('/v1/recipients/' . $recipientId . '/offlinePayments', $offlinePaymentBody);
+      $response = $this->_http->post("/v1/recipients/{$recipientId}/offlinePayments", $offlinePaymentBody);
       if ($response['ok']) {
           return OfflinePayment::factory($response['offlinePayment']);
       } else if ($response['errors']){
@@ -81,7 +81,7 @@ class OfflinePaymentGateway
     }
 
     public function update($recipientId, $offlinePaymentId, $offlinePaymentBody) {
-      $response = $this->_http->patch('/v1/recipients/' . $recipientId . '/offlinePayments/' . $offlinePaymentId, $offlinePaymentBody);
+      $response = $this->_http->patch("/v1/recipients/{$recipientId}/offlinePayments/{$offlinePaymentId}", $offlinePaymentBody);
       if ($response['ok']) {
           return true;
       } else if ($response['errors']){
@@ -92,7 +92,7 @@ class OfflinePaymentGateway
     }
 
     public function delete($recipientId, $offlinePaymentId) {
-      $response = $this->_http->delete('/v1/recipients/' . $recipientId . '/offlinePayments/' . $offlinePaymentId);
+      $response = $this->_http->delete("/v1/recipients/{$recipientId}/offlinePayments/{$offlinePaymentId}");
       if ($response['ok']) {
           return true;
       } else if ($response['errors']){

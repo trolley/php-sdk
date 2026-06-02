@@ -13,7 +13,7 @@ class Configuration
 {
     public static $global;
 
-    private $_environment = null;
+    private $_environment = "production";
     private $_merchantId = null;
     private $_publicKey = null;
     private $_privateKey = null;

@@ -33,6 +33,8 @@ class OfflinePayment extends Base
         "updatedAt" => "",
         "createdAt" => "",
         "deletedAt" => "",
+        "activityCount" => "",
+        "taxReportable" => "",
     ];
 
     /**
@@ -132,6 +134,8 @@ class OfflinePayment extends Base
             "updatedAt",
             "createdAt",
             "deletedAt",
+            "activityCount",
+            "taxReportable",
         ];
 
         foreach ($fields as $field) {

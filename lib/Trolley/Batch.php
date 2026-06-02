@@ -26,7 +26,9 @@ class Batch extends Base
         "status" => "",
         "totalPayments" => "",
         "updatedAt" => "",
-        "payments" => ""
+        "payments" => "",
+        "quoteExpiredAt" => "",
+        "tags" => ""
     ];
 
     /**
@@ -240,7 +242,9 @@ class Batch extends Base
             "status",
             "totalPayments",
             "updatedAt",
-            "payments"  => 'Trolley\Payment::factoryArray'
+            "payments"  => 'Trolley\Payment::factoryArray',
+            "quoteExpiredAt",
+            "tags"
         ];
 
         foreach ($fields as $key => $field) {

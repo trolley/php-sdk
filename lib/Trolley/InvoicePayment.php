@@ -19,7 +19,14 @@ class InvoicePayment extends Base
         "invoiceId" => "",
         "invoiceLineId" => "",
         "paymentId" => "",
-        "amount" => ""
+        "amount" => "",
+        "batchId" => "",
+        "invoicePayments" => "",
+        "status" => "",
+        "memo" => "",
+        "externalId" => "",
+        "tags" => "",
+        "coverFees" => ""
     ];
 
     /**
@@ -95,7 +102,14 @@ class InvoicePayment extends Base
             "invoiceId",
             "invoiceLineId",
             "paymentId",
-            "amount"
+            "amount",
+            "batchId",
+            "invoicePayments",
+            "status",
+            "memo",
+            "externalId",
+            "tags",
+            "coverFees"
         ];
 
         foreach ($fields as $key => $field) {

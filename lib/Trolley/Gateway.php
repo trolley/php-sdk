@@ -94,6 +94,22 @@ class Gateway
     {
         return new BalanceGateway($this);
     }
+
+    /**
+     * @return VerificationGateway
+     */
+    public function verification()
+    {
+        return new VerificationGateway($this);
+    }
+
+    /**
+     * @return VerificationGateway
+     */
+    public function trust()
+    {
+        return $this->verification();
+    }
 }
 
 class_alias('Trolley\Gateway', 'Trolley_Gateway');

@@ -43,7 +43,7 @@ class RecipientAccountGateway
      */
     public function all($recipientId)
     {
-        $response = $this->_http->get('/v1/recipients/' . $recipientId . '/accounts');
+        $response = $this->_http->get("/v1/recipients/{$recipientId}/accounts");
 
         if ($response['ok']) {
             return array_map(function ($item) {
@@ -60,7 +60,7 @@ class RecipientAccountGateway
      * Fetch a recipient by ID
      */
     public function find($recipientId, $accountId) {
-        $response = $this->_http->get('/v1/recipients/' . $recipientId . '/accounts/' . $accountId);
+        $response = $this->_http->get("/v1/recipients/{$recipientId}/accounts/{$accountId}");
 
         if ($response['ok']) {
             return RecipientAccount::factory($response['account']);
@@ -72,7 +72,7 @@ class RecipientAccountGateway
     }
 
     public function create($recipientId, $attrib) {
-        $response = $this->_http->post('/v1/recipients/' . $recipientId . '/accounts', $attrib);
+        $response = $this->_http->post("/v1/recipients/{$recipientId}/accounts", $attrib);
         if ($response['ok']) {
             return RecipientAccount::factory($response['account']);
         } else if ($response['errors']){
@@ -83,9 +83,9 @@ class RecipientAccountGateway
     }
 
     public function update($recipientId, $accountId, $attrib) {
-        $response = $this->_http->patch('/v1/recipients/' . $recipientId . '/accounts/' . $accountId, $attrib);
+        $response = $this->_http->patch("/v1/recipients/{$recipientId}/accounts/{$accountId}", $attrib);
         if ($response['ok']) {
-            return Recipient::factory($response['account']);
+            return RecipientAccount::factory($response['account']);
         } else if ($response['errors']){
             throw new Exception\Standard($response['errors']);
         } else {
@@ -94,7 +94,7 @@ class RecipientAccountGateway
     }
 
     public function delete($recipientId, $accountId) {
-        $response = $this->_http->delete('/v1/recipients/' . $recipientId . '/accounts/' . $accountId);
+        $response = $this->_http->delete("/v1/recipients/{$recipientId}/accounts/{$accountId}");
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){

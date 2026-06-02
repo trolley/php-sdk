@@ -69,7 +69,7 @@ class RecipientGateway
      * Fetch a recipient by ID
      */
     public function find($id) {
-        $response = $this->_http->get('/v1/recipients/' . $id, null);
+        $response = $this->_http->get("/v1/recipients/{$id}", null);
 
         if ($response['ok']) {
             return Recipient::factory($response['recipient']);
@@ -92,7 +92,7 @@ class RecipientGateway
     }
 
     public function update($id, $attrib) {
-        $response = $this->_http->patch('/v1/recipients/' . $id, $attrib);
+        $response = $this->_http->patch("/v1/recipients/{$id}", $attrib);
         if ($response['ok']) {
             return true;
         } else if ($response['errors']){
@@ -103,7 +103,7 @@ class RecipientGateway
     }
 
     public function delete($id) {
-        $response = $this->_http->delete('/v1/recipients/' . $id);
+        $response = $this->_http->delete("/v1/recipients/{$id}");
         if ($response) {
             return true;
         } else {
@@ -153,7 +153,7 @@ class RecipientGateway
      */
     public function getAllPayments($recipientId)
     {
-        $response = $this->_http->get('/v1/recipients/'.$recipientId.'/payments');
+        $response = $this->_http->get("/v1/recipients/{$recipientId}/payments");
 
         if ($response['ok']) {
             $pager = [
@@ -172,6 +172,32 @@ class RecipientGateway
         } else {
             throw new Exception\DownForMaintenance();
         }
+    }
+
+    public function getAllOfflinePayments($recipientId, $query = [])
+    {
+        $response = $this->_http->get("/v1/recipients/{$recipientId}/offlinePayments", $query);
+        if ($response['ok']) {
+            $items = array_map(function ($item) {
+                return OfflinePayment::factory($item);
+            }, $response['offlinePayments']);
+            return new ResourceCollection($response, $items, [
+                'object' => $this,
+                'method' => 'getAllOfflinePaymentsPage',
+                'methodArgs' => array_merge($query, ['recipientId' => $recipientId])
+            ]);
+        } else if ($response['errors']){
+            throw new Exception\Standard($response['errors']);
+        } else {
+            throw new Exception\DownForMaintenance();
+        }
+    }
+
+    public function getAllOfflinePaymentsPage($query)
+    {
+        $recipientId = $query['recipientId'];
+        unset($query['recipientId']);
+        return $this->getAllOfflinePayments($recipientId, $query);
     }
 }
 
