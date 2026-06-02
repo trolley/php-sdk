@@ -123,7 +123,7 @@ class ReviewCommentTest extends TestCase
 
         $this->assertSame(['P-1', 'P-2'], $ids);
         $this->assertSame('/v1/batches/B-1/payments', $http->requests[1][0]);
-        $this->assertSame(['page' => 2, 'batchId' => 'B-1', 'pageSize' => 1], $http->requests[1][1]);
+        $this->assertSame(['page' => 2, 'pageSize' => 1], $http->requests[1][1]);
     }
 
     public function testVerificationSearchPaginationKeepsQuery()

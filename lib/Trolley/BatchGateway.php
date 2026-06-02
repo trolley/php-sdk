@@ -207,8 +207,10 @@ class BatchGateway
     }
 
     public function paymentsInternal($params) {
-        $response = $this->_http->get("/v1/batches/{$params['batchId']}/payments", $params);
-        return $this->paymentsCollection($response, $params['batchId'], $params);
+        $batchId = $params['batchId'];
+        unset($params['batchId']);
+        $response = $this->_http->get("/v1/batches/{$batchId}/payments", $params);
+        return $this->paymentsCollection($response, $batchId, $params);
     }
 
     private function paymentsCollection($response, $batchId, $params) {
