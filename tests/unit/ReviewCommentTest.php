@@ -28,12 +28,12 @@ class ReviewCommentTest extends TestCase
             [
                 'ok' => true,
                 'offlinePayments' => [['id' => 'OP-1']],
-                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 1, 'pages' => 2, 'records' => 2],
             ],
             [
                 'ok' => true,
                 'offlinePayments' => [['id' => 'OP-2']],
-                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 2, 'pages' => 2, 'records' => 2],
             ],
         ]);
         $gateway = $this->gatewayWithHttp('Trolley\RecipientGateway', $http);
@@ -54,12 +54,12 @@ class ReviewCommentTest extends TestCase
             [
                 'ok' => true,
                 'balances' => [['accountNumber' => 'A-1']],
-                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 1, 'pages' => 2, 'records' => 2],
             ],
             [
                 'ok' => true,
                 'balances' => [['accountNumber' => 'A-2']],
-                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 2, 'pages' => 2, 'records' => 2],
             ],
         ]);
         $gateway = $this->gatewayWithHttp('Trolley\BalanceGateway', $http);
@@ -80,12 +80,12 @@ class ReviewCommentTest extends TestCase
             [
                 'ok' => true,
                 'balances' => [['accountNumber' => 'A-1']],
-                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 1, 'pages' => 2, 'records' => 2],
             ],
             [
                 'ok' => true,
                 'balances' => [['accountNumber' => 'A-2']],
-                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 2, 'pages' => 2, 'records' => 2],
             ],
         ]);
         $gateway = $this->gatewayWithHttp('Trolley\BalanceGateway', $http);
@@ -106,12 +106,12 @@ class ReviewCommentTest extends TestCase
             [
                 'ok' => true,
                 'payments' => [['id' => 'P-1']],
-                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 1, 'pages' => 2, 'records' => 2],
             ],
             [
                 'ok' => true,
                 'payments' => [['id' => 'P-2']],
-                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 2, 'pages' => 2, 'records' => 2],
             ],
         ]);
         $gateway = $this->gatewayWithHttp('Trolley\BatchGateway', $http);
@@ -132,12 +132,12 @@ class ReviewCommentTest extends TestCase
             [
                 'ok' => true,
                 'verifications' => [['id' => 'V-1']],
-                'meta' => ['page' => 1, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 1, 'pages' => 2, 'records' => 2],
             ],
             [
                 'ok' => true,
                 'verifications' => [['id' => 'V-2']],
-                'meta' => ['page' => 2, 'pages' => 3, 'records' => 2],
+                'meta' => ['page' => 2, 'pages' => 2, 'records' => 2],
             ],
         ]);
         $gateway = $this->gatewayWithHttp('Trolley\VerificationGateway', $http);

@@ -103,7 +103,7 @@ class ResourceCollection implements Iterator
     public function valid()
     {
         if ($this->_index >= count($this->_items)) {
-            if ($this->_page + 1 >= $this->_maxPages) {
+            if ($this->_page + 1 > $this->_maxPages) {
                 return false;
             }
             if (!$this->_hasPager()) {
