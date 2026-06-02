@@ -208,12 +208,14 @@ class BatchGateway
     }
 
     public function paymentsInternal($params) {
-        $response = $this->_http->get('/v1/batches/' . $params['batchId'] . '/payments', $params);
+        $batchId = $params['batchId'];
+        unset($params['batchId']);
+        $response = $this->_http->get('/v1/batches/' . $batchId . '/payments', $params);
         if ($response['ok']) {
             $pager = [
                 'object' => $this,
                 'method' => 'paymentsInternal',
-                'methodArgs' => $params,
+                'methodArgs' => array_merge(['batchId' => $batchId], $params),
             ];
 
             $items = array_map(function ($item) {
